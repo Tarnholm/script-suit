@@ -271,11 +271,89 @@
     }
   }
 
+  // ── "What's New" changelog cards (shown after an update) ─────────────
+  function cmpVer(a, b) {
+    const pa = String(a).split(/[.\-]/).map(n => parseInt(n, 10) || 0);
+    const pb = String(b).split(/[.\-]/).map(n => parseInt(n, 10) || 0);
+    for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+      const d = (pa[i] || 0) - (pb[i] || 0);
+      if (d) return d > 0 ? 1 : -1;
+    }
+    return 0;
+  }
+  function mdInline(s) {
+    const esc = String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return esc
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/`([^`]+)`/g, '<code style="background:rgba(255,255,255,.08);padding:1px 4px;border-radius:3px">$1</code>');
+  }
+  function showWhatsNew(entries, currentVersion) {
+    const colours = window.SPS_TYPE_COLOURS || {};
+    const overlay = document.createElement('div');
+    Object.assign(overlay.style, {
+      position: 'fixed', inset: '0', zIndex: '100000', background: 'rgba(0,0,0,.55)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      font: '13px/1.5 system-ui, sans-serif',
+    });
+    const card = document.createElement('div');
+    Object.assign(card.style, {
+      width: 'min(560px, 92vw)', maxHeight: '82vh', display: 'flex', flexDirection: 'column',
+      background: '#26262d', color: '#e5e7eb', borderRadius: '12px',
+      border: '1px solid #3a3a42', boxShadow: '0 16px 48px rgba(0,0,0,.55)', overflow: 'hidden',
+    });
+    let entriesHtml = '';
+    for (const e of entries) {
+      let items = '';
+      for (const it of (e.items || [])) {
+        const col = colours[it.type] || '#888';
+        items += `<li style="display:flex;gap:8px;align-items:flex-start;margin:8px 0">`
+          + `<span style="flex:none;margin-top:1px;background:${col};color:#10131a;font-weight:700;font-size:.66rem;`
+          + `text-transform:uppercase;letter-spacing:.03em;padding:2px 7px;border-radius:999px">${it.type}</span>`
+          + `<span>${mdInline(it.text)}</span></li>`;
+      }
+      entriesHtml += `<div style="padding:14px 0;border-top:1px solid #34343c">`
+        + `<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:2px">`
+        + `<span style="font-weight:700;color:#fbbf24">v${e.version}</span>`
+        + `<span style="font-size:.72rem;color:#9ca3af">${e.date || ''}</span></div>`
+        + `<ul style="list-style:none;margin:0;padding:0">${items}</ul></div>`;
+    }
+    card.innerHTML = `
+      <div style="padding:18px 20px 4px 20px">
+        <h2 style="margin:0;font-size:1.15rem">What's New</h2>
+        <p style="margin:2px 0 0;color:#9ca3af;font-size:.8rem">Updated to v${currentVersion}</p>
+      </div>
+      <div style="padding:0 20px;overflow-y:auto;flex:1">${entriesHtml}</div>
+      <div style="padding:12px 20px;display:flex;justify-content:flex-end;border-top:1px solid #34343c">
+        <button id="sps-whatsnew-continue"
+          style="padding:7px 18px;border:none;border-radius:8px;background:#fbbf24;color:#1a1a1a;font-weight:700;cursor:pointer">Continue</button>
+      </div>`;
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+    const close = () => {
+      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      try { localStorage.setItem('sps_lastSeenVersion', currentVersion); } catch {}
+    };
+    card.querySelector('#sps-whatsnew-continue').onclick = close;
+    overlay.addEventListener('click', (ev) => { if (ev.target === overlay) close(); });
+  }
+  function maybeShowWhatsNew() {
+    const cl = window.SPS_CHANGELOG || [];
+    if (!cl.length || !appVersion) return;
+    let lastSeen = null;
+    try { lastSeen = localStorage.getItem('sps_lastSeenVersion'); } catch {}
+    const entries = lastSeen ? cl.filter(e => cmpVer(e.version, lastSeen) > 0) : cl;
+    if (!entries.length) {
+      try { localStorage.setItem('sps_lastSeenVersion', appVersion); } catch {}
+      return;
+    }
+    showWhatsNew(entries, appVersion);
+  }
+
   // ── init ─────────────────────────────────────────────────────────────
   function init() {
     mountVersionLabel();
     if (api.getAppVersion) {
-      api.getAppVersion().then(v => { if (v) { appVersion = v; updateVersionLabel(); } });
+      api.getAppVersion().then(v => { if (v) { appVersion = v; updateVersionLabel(); maybeShowWhatsNew(); } });
     }
     // Recover cached status (main may have fired before we subscribed).
     if (api.getUpdateStatus) api.getUpdateStatus().then(s => { if (s) handle(s); });
