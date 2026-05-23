@@ -39,8 +39,8 @@ BUILDING_TO_RESOURCES = {
     "mines": ["gold", "silver", "copper", "lead", "tin", "iron"],
     "purple_dye_production": ["purple_dye"],
     "marble_production": ["marble"],
-    "jewelry": ["gold", "silver", "gemstones"],
-    "artisans": ["copper", "iron", "gemstones"],
+    "jewelry": ["gold", "silver", "gemstones", "glass", "elephants", "amber"],
+    "artisans": ["copper", "iron", "lead", "tin"],
     "stone_quarry": ["stone"],
     "sulphur_industry": ["sulphur"],
     "tin_mine": ["tin"], "lead_mine": ["lead"], "silver_mine": ["silver"],
@@ -49,6 +49,18 @@ BUILDING_TO_RESOURCES = {
     "timber_industry": ["timber"], "glass_production": ["glass"],
     "amber_trade": ["amber"], "slave_market": ["slave_trade"], "wine_production": ["wine"],
 }
+
+# Per-building resource weight overrides. A (building, resource) entry here
+# overrides the global RESOURCE_SCORES weight for THAT building only — so e.g.
+# jewelry can value amber differently from amber_trade.
+BUILDING_RESOURCE_SCORES = {
+    "smith":    {"coal": 5},
+    "jewelry":  {"glass": 3, "elephants": 3, "amber": 3},
+    "artisans": {"lead": 3, "tin": 5},
+}
+
+def resource_score(building, resource):
+    return BUILDING_RESOURCE_SCORES.get(building, {}).get(resource, RESOURCE_SCORES.get(resource, 0))
 
 EXPLICIT_HEAVY_IND_TIE_BREAKER_ORDER = [
     "smith", "mines", "purple_dye_production", "marble_production",
@@ -145,7 +157,7 @@ class HeavyIndustryProcessor:
         for b, reqs in BUILDING_TO_RESOURCES.items():
             lvls = chains.get(b, [])
             if not lvls or tier < min(LEVEL_TO_TIER.get(l['settlement_min'], 99) for l in lvls): continue
-            val = max([res_dict.get(r, 0) * RESOURCE_SCORES.get(r, 0) for r in reqs] + [0])
+            val = max([res_dict.get(r, 0) * resource_score(b, r) for r in reqs] + [0])
             if val >= 10: scores[b] = val
         if not scores: return None, None, [], {}
         m_val = max(scores.values())

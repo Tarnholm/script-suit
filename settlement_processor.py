@@ -11,7 +11,13 @@ OUTPUT_DIR = BASE_DIR / "processed_output"
 
 EXCLUDE_SETTLEMENTS = set()
 
-NO_DEFENSES_REGIONS = {"lakonia"}  # Regions that get no defenses assigned
+NO_DEFENSES_REGIONS = {"lakonia", "elis", "kappadokia", "lucensia_meridionalis"}  # Regions that get no defenses assigned
+
+# Walls (the "defenses" chain) are capped at this tier for every region.
+MAX_WALL_TIER = 3
+# Per-region wall-tier exceptions (region name lowercased -> cap). These OVERRIDE
+# both MAX_WALL_TIER and NO_DEFENSES_REGIONS.
+WALL_TIER_EXCEPTIONS = {"trinakria": 4, "korinthia": 3}
 
 TRADER_OVERRIDE_QTY = 4  # Minimum resource quantity to trigger trader override in towns
 TRADER_OVERRIDE_RESOURCES = set()  # Leave empty = ALL resources count. Add names to restrict.
@@ -425,8 +431,16 @@ class SettlementProcessor:
         building_map: Dict[str, str] = {}
         debug_log.append("\n  Assigning Managed Building Chains (bump logic each run):")
 
-        if region.lower() not in NO_DEFENSES_REGIONS:
-            self._assign_chain(building_map, assigned_chains, "defenses", tier, debug_log)
+        region_key = region.lower()
+        if region_key in WALL_TIER_EXCEPTIONS:
+            wall_tier = min(tier, WALL_TIER_EXCEPTIONS[region_key])
+            debug_log.append(f"    - Defenses: {region} exception cap {WALL_TIER_EXCEPTIONS[region_key]} -> tier {wall_tier}")
+            self._assign_chain(building_map, assigned_chains, "defenses", wall_tier, debug_log)
+        elif region_key not in NO_DEFENSES_REGIONS:
+            wall_tier = min(tier, MAX_WALL_TIER)
+            if wall_tier != tier:
+                debug_log.append(f"    - Defenses: capped tier {tier} -> {wall_tier} (MAX_WALL_TIER={MAX_WALL_TIER})")
+            self._assign_chain(building_map, assigned_chains, "defenses", wall_tier, debug_log)
         else:
             debug_log.append(f"    - Defenses: Skipped for {region} (in NO_DEFENSES_REGIONS)")
 

@@ -360,8 +360,8 @@ _HI_BUILDING_TO_RESOURCES = {
     "mines": ["gold", "silver", "copper", "lead", "tin", "iron"],
     "purple_dye_production": ["purple_dye"],
     "marble_production": ["marble"],
-    "jewelry": ["gold", "silver", "gemstones"],
-    "artisans": ["copper", "iron", "gemstones"],
+    "jewelry": ["gold", "silver", "gemstones", "glass", "elephants", "amber"],
+    "artisans": ["copper", "iron", "lead", "tin"],
     "stone_quarry": ["stone"],
     "sulphur_industry": ["sulphur"],
     "tin_mine": ["tin"], "lead_mine": ["lead"], "silver_mine": ["silver"],
@@ -376,6 +376,16 @@ _HI_TIE_BREAKER_ORDER = [
     "smith", "mines", "purple_dye_production", "marble_production",
     "jewelry", "artisans", "sulphur_industry", "stone_quarry",
 ]
+# Per-building resource weight overrides (override global _HI_RESOURCE_SCORES
+# for that building only — e.g. jewelry values amber differently from amber_trade).
+_HI_BUILDING_RESOURCE_SCORES = {
+    "smith":    {"coal": 5},
+    "jewelry":  {"glass": 3, "elephants": 3, "amber": 3},
+    "artisans": {"lead": 3, "tin": 5},
+}
+
+def _hi_resource_score(building, resource):
+    return _HI_BUILDING_RESOURCE_SCORES.get(building, {}).get(resource, _HI_RESOURCE_SCORES.get(resource, 0))
 _HI_BUILDINGS = {
     "smith", "mines", "purple_dye_production", "marble_production",
     "jewelry", "artisans", "stone_quarry", "sulphur_industry", "tin_mine",
@@ -484,7 +494,7 @@ def _hi_select_building(res_dict, tier, chains):
             continue
         if tier < min(_HI_LEVEL_TO_TIER.get(l["settlement_min"], 99) for l in lvls):
             continue
-        val = max([res_dict.get(r, 0) * _HI_RESOURCE_SCORES.get(r, 0) for r in reqs] + [0])
+        val = max([res_dict.get(r, 0) * _hi_resource_score(b, r) for r in reqs] + [0])
         if val >= 10:
             scores[b] = val
     if not scores:
