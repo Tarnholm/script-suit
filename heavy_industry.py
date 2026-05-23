@@ -62,6 +62,16 @@ BUILDING_RESOURCE_SCORES = {
 def resource_score(building, resource):
     return BUILDING_RESOURCE_SCORES.get(building, {}).get(resource, RESOURCE_SCORES.get(resource, 0))
 
+# Luxury rule: a settlement that has any of these "luxury" inputs should build
+# jewelry instead of raw mining (gold/silver/etc. otherwise make `mines` win on
+# a tie). This does NOT override the dedicated luxury buildings
+# (glass_production / amber_trade) — only the mining family below.
+LUXURY_RESOURCES = ("glass", "amber", "elephants")
+JEWELRY_OVER_MINING = {
+    "mines", "gold_mine", "silver_mine", "copper_mine",
+    "lead_mine", "tin_mine", "iron_mine",
+}
+
 EXPLICIT_HEAVY_IND_TIE_BREAKER_ORDER = [
     "smith", "mines", "purple_dye_production", "marble_production",
     "jewelry", "artisans", "sulphur_industry", "stone_quarry",
@@ -155,6 +165,7 @@ class HeavyIndustryProcessor:
     def select_building(self, res_dict, tier, chains):
         scores = {}
         for b, reqs in BUILDING_TO_RESOURCES.items():
+            if b not in HEAVY_IND_BUILDINGS: continue  # glass/amber/etc. are urban chains — not in this competition
             lvls = chains.get(b, [])
             if not lvls or tier < min(LEVEL_TO_TIER.get(l['settlement_min'], 99) for l in lvls): continue
             val = max([res_dict.get(r, 0) * resource_score(b, r) for r in reqs] + [0])
@@ -163,6 +174,12 @@ class HeavyIndustryProcessor:
         m_val = max(scores.values())
         tied = [b for b, v in scores.items() if v == m_val]
         best_b = next((b for b in EXPLICIT_HEAVY_IND_TIE_BREAKER_ORDER if b in tied), tied[0])
+        # Luxury override: a settlement with glass/amber/elephants builds jewelry
+        # instead of raw mining (gold/silver otherwise make `mines` win the tie).
+        if best_b in JEWELRY_OVER_MINING and any(res_dict.get(r, 0) > 0 for r in LUXURY_RESOURCES):
+            jl = chains.get("jewelry", [])
+            if jl and tier >= min(LEVEL_TO_TIER.get(l['settlement_min'], 99) for l in jl):
+                best_b = "jewelry"
         allowed = [l['level'] for l in chains[best_b] if tier >= LEVEL_TO_TIER.get(l['settlement_min'], 99)]
         return best_b, (allowed[-1] if allowed else None), tied, scores
 

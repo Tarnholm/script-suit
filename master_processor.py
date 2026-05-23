@@ -391,6 +391,13 @@ _HI_BUILDINGS = {
     "jewelry", "artisans", "stone_quarry", "sulphur_industry", "tin_mine",
     "lead_mine", "silver_mine", "gold_mine", "copper_mine", "iron_mine",
 }
+# Luxury inputs make jewelry beat raw mining (the dedicated glass/amber chains
+# are urban — handled in the urban step — so they don't compete here).
+_HI_LUXURY_RESOURCES = ("glass", "amber", "elephants")
+_HI_JEWELRY_OVER_MINING = {
+    "mines", "gold_mine", "silver_mine", "copper_mine",
+    "lead_mine", "tin_mine", "iron_mine",
+}
 
 
 def _hi_get_block(text, start_offset):
@@ -489,6 +496,8 @@ def _hi_parse_resources_by_region(strat_text):
 def _hi_select_building(res_dict, tier, chains):
     scores = {}
     for b, reqs in _HI_BUILDING_TO_RESOURCES.items():
+        if b not in _HI_BUILDINGS:
+            continue  # urban/rural chains (glass/amber/etc.) don't compete here
         lvls = chains.get(b, [])
         if not lvls:
             continue
@@ -502,6 +511,11 @@ def _hi_select_building(res_dict, tier, chains):
     m_val = max(scores.values())
     tied = [b for b, v in scores.items() if v == m_val]
     best_b = next((b for b in _HI_TIE_BREAKER_ORDER if b in tied), tied[0])
+    # Luxury override: glass/amber/elephants present -> jewelry beats raw mining.
+    if best_b in _HI_JEWELRY_OVER_MINING and any(res_dict.get(r, 0) > 0 for r in _HI_LUXURY_RESOURCES):
+        jl = chains.get("jewelry", [])
+        if jl and tier >= min(_HI_LEVEL_TO_TIER.get(l["settlement_min"], 99) for l in jl):
+            best_b = "jewelry"
     allowed = [l["level"] for l in chains[best_b] if tier >= _HI_LEVEL_TO_TIER.get(l["settlement_min"], 99)]
     return best_b, (allowed[-1] if allowed else None), tied, scores
 
