@@ -136,7 +136,7 @@
   }
 
   // ── version label (titlebar) ─────────────────────────────────────────
-  let versionEl, progressEl;
+  let versionEl, progressEl, watchEl;
   function mountVersionLabel() {
     if (versionEl) return;
     versionEl = document.createElement('span');
@@ -152,6 +152,19 @@
       background: '#dca64a', transition: 'width .2s linear', display: 'none',
     });
     versionEl.appendChild(progressEl);
+
+    // "👀 watching…" indicator (with a soft pulse) while the watch loop is active.
+    if (!document.getElementById('sps-updater-style')) {
+      const st = document.createElement('style');
+      st.id = 'sps-updater-style';
+      st.textContent = '@keyframes spsWatchPulse{0%,100%{opacity:1}50%{opacity:.45}}.sps-watch-pulse{animation:spsWatchPulse 1.2s ease-in-out infinite}';
+      document.head.appendChild(st);
+    }
+    watchEl = document.createElement('span');
+    watchEl.className = 'sps-watch-pulse';
+    watchEl.textContent = ' 👀 watching…';
+    Object.assign(watchEl.style, { marginLeft: '5px', color: '#dca64a', fontWeight: '600', display: 'none' });
+    versionEl.appendChild(watchEl);
 
     versionEl.onmouseenter = () => { versionEl.style.opacity = '0.95'; versionEl.style.background = 'rgba(220,166,74,0.18)'; };
     versionEl.onmouseleave = () => { versionEl.style.opacity = watching ? '0.95' : '0.55'; versionEl.style.background = ''; };
@@ -181,6 +194,7 @@
       : watching
         ? 'Watching for updates every 5s — double-click to stop'
         : 'Click to check for updates · double-click to keep watching until one appears';
+    if (watchEl) watchEl.style.display = (watching && downloadPct == null) ? '' : 'none';
     if (downloadPct != null) {
       progressEl.style.display = '';
       progressEl.style.width = `${downloadPct}%`;

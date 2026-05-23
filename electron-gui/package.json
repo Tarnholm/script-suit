@@ -1,6 +1,6 @@
 {
   "name": "apple-settlement-processor",
-  "version": "0.16.1",
+  "version": "0.16.2",
   "description": "Settlement Processor Suite - Electron GUI",
   "main": "main.js",
   "author": "Apple",
