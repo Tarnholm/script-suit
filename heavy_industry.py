@@ -28,9 +28,9 @@ LEVEL_TO_TIER = {
 SETTLEMENT_LEVEL_ORDER = ["town", "large_town", "city", "large_city", "huge_city"]
 
 RESOURCE_SCORES = {
-    "gold": 10, "silver": 8, "copper": 5, "lead": 3, "coal": 1, "iron": 6,
+    "gold": 10, "silver": 8, "copper": 5, "lead": 3, "coal": 5, "iron": 6,
     "marble": 3, "stone": 2, "purple_dye": 8, "sulphur": 4, "tin": 3,
-    "gemstones": 6, "glass": 4, "amber": 6, "sheep": 1, "cotton": 1,
+    "gemstones": 6, "glass": 3, "amber": 3, "elephants": 3, "sheep": 1, "cotton": 1,
     "flax": 1, "timber": 1, "livestock": 1, "slave_trade": 2, "wine": 1,
 }
 
@@ -54,9 +54,10 @@ BUILDING_TO_RESOURCES = {
 # overrides the global RESOURCE_SCORES weight for THAT building only — so e.g.
 # jewelry can value amber differently from amber_trade.
 BUILDING_RESOURCE_SCORES = {
-    "smith":    {"coal": 5},
-    "jewelry":  {"glass": 3, "elephants": 3, "amber": 3},
-    "artisans": {"lead": 3, "tin": 5},
+    # tin is shared (smith/mines/tin_mine); artisans needs a HIGHER tin weight
+    # than the global (3) so it WINS tin settlements — a global tin=5 would let
+    # smith take them via the tie-break order instead.
+    "artisans": {"tin": 5},
 }
 
 def resource_score(building, resource):

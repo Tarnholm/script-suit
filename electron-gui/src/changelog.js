@@ -7,6 +7,13 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.4",
+    date: "2026-05-23",
+    items: [
+      { type: "change", text: "**Heavy-industry weights now read correctly.** coal=5, glass=3, amber=3, elephants=3 are the real values (previously masked by old defaults). `tin` stays 3 globally with an artisans-only override of 5 so **artisans** — not smith — wins tin settlements. No change to actual placements." },
+    ],
+  },
+  {
     version: "0.16.3",
     date: "2026-05-23",
     items: [
