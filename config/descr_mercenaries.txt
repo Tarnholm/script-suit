@@ -1,0 +1,1092 @@
+;-------------------------------------------------------------
+pool achaea
+regions Korinthia Achaia Sikyonia Hesperos_Achaia
+unit merc southern illyrian spearmen, exp 1 cost 4457 replenish 0.116 - 0.231 max 1 initial 1 restrict achaea
+unit merc greek thorakitai, exp 3 cost 4864 replenish 0.029 - 0.057 max 1 initial 0 restrict achaea
+unit merc achaian peltast, exp 0 cost 3151 replenish 0.164 - 0.327 max 2 initial 1
+unit merc achaian slingers, exp 0 cost 3291 replenish 0.157 - 0.313 max 2 initial 1
+unit merc cretan archers, exp 3 cost 3767 replenish 0.137 - 0.274 max 1 initial 1 restrict achaea
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.147 - 0.294 max 2 initial 1
+unit merc thracian noble cavalry, exp 4 cost 5432 replenish 0.095 - 0.19  max 1 initial 1 restrict achaea
+
+pool acragas_merc_center
+regions Akragas
+unit merc peloponnesian hoplites, exp 3 cost 5072 replenish 0.102 - 0.203 max 1 initial 1 restrict acragas
+
+pool aegean
+regions Arktonnesos Propontis Troias Mysia Kianos_Kolpos Chalkedonia Pityoussa Ano_Troias Thessalia Magnesia Malis-Ainis Thessaliotis Pelasgiotis Histiaiotis Perrhaibia Rhodos Kaikia Emathia Leukas Kephallenia Zakynthos Mygdonia Chalkidike Orestis-Elimeia Lynkestis-Eordaia Notia_Bottiaia Bottiaia Sithonia Elimeia Lyttos Telmessis Lykia Lakonia Messenia Kythera Kydoniatis Minoa Lesbos Samos Chios Methymnia Ionia Nea_Ionia Latmikos_Kolpos Mykale Mimas Lakonikos_Kolpos Gortynia Euboia Histiaia Dirphysia Kerkyra Chaonia Molossia Ano_Chaonia Thesprotia Hellas Athamania Elis Kos Notios_Rhodos Hierapytnia Polyrhen Itania Latia Rithymna Apteraia Arkadia-Krete Korinthia Pytho Opountia_Lokris Phokis-Doris Idrias Halikarnassia Dorian_Chersonesos Karia Kalbia Marsyas Lelegia Boiotia Poimandris Thebai Notia_Bithynia Bithynia Peiraieus Megaris Attike Arkadia Mantineia Pisatis Tegeatis Troizen Triphylia Olygirtos Argolis Ambrakikos_Kolpos Ozolia_Lokris Aitolia Acheloos Akarnania Amphilochia Adramyttenos_Kolpos Phrykonis Kyklades Delos Kalliste Paros Skyros Achaia Sikyonia Hesperos_Achaia Edonis Hebros Hellenike_Bistonia Briantike-Korpilike Datos Bosporos Kardia Thraikie_Propontis Bisanthike Samothrake Thasos Kainia
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.332 - 0.663 max 2 initial 1
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.321 - 0.641 max 2 initial 1
+unit merc greek peltasts, exp 0 cost 3303 replenish 0.39  - 0.78  max 2 initial 1
+unit merc cretan archers, exp 2 cost 3532 replenish 0.182 - 0.365 max 1 initial 0
+
+pool aegean_islands
+regions Kyklades Delos Kalliste Paros Skyros
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.1   - 0.2   max 1 initial 1
+unit merc athenian hoplites, exp 0 cost 3885 replenish 0.066 - 0.133 max 1 initial 0
+unit merc kretan hoplites, exp 2 cost 4293 replenish 0.06  - 0.12  max 1 initial 1
+unit merc perioikoi hoplites, exp 2 cost 4293 replenish 0.036 - 0.072 max 1 initial 1
+unit merc karian heavy infantry, exp 2 cost 4679 replenish 0.083 - 0.165 max 1 initial 1
+unit merc peloponnesian hoplites, exp 2 cost 4755 replenish 0.033 - 0.065 max 1 initial 1
+unit merc ionian epibatai, exp 2 cost 3483 replenish 0.044 - 0.089 max 1 initial 0
+unit merc rhodian slingers, exp 2 cost 3502 replenish 0.044 - 0.088 max 1 initial 1
+
+pool africa
+regions Deire Sabaike_Aithiopia Oponis Aualitaia Aromaton_Akroterion Qart-Khadasht Adrumet Xupon Xatiq Aspis Tunesia Xupon_Zaxyir Thapsos Lepqi_Zaxyirt Rushikade Tabarakaxan Garamantia Phazania Garamantia_Orientalis Ay-Khol Shigan Masaesylia_Septentrionalis Gaetulia_Septentrionalis Qart Salda Numidia_Occidentalis Nicivia-Suburburia Ikosim Tolotaia Tabudia Mauretania Ting Liksho Rush_Adir Mauretania_Orientalis Shaxalat Baniuria Autololia Nectiberia Daratite_Gaetulia Kirthan Massylia_Occidentalis Bebaxal Aurasia Musulamia Maqoma Tobgaxag Vagensia Ubusia Zama_Meizon Massylia_Septentrionalis Altiburosh Giria Nigiria_Septentrionalis Lepqi_Adir Maxya-Ausea Takapes Woyxat Machlya Bracheion Zouchis Syrtis
+unit merc numidian archers, exp 0 cost 3105 replenish 0.166 - 0.332 max 2 initial 1
+unit merc libyan skirmishers, exp 0 cost 3086 replenish 0.167 - 0.334 max 2 initial 1
+unit merc numidian javelinmen, exp 2 cost 3451 replenish 0.149 - 0.299 max 1 initial 1
+unit merc numidian cavalry, exp 0 cost 2959 replenish 0.174 - 0.348 max 2 initial 1
+unit merc towered forest elephants, exp 2 cost 3804 replenish 0.135 - 0.271 max 1 initial 1
+
+pool aiolis
+regions Adramyttenos_Kolpos Phrykonis
+unit merc boiotian hoplites, exp 2 cost 4293 replenish 0.06  - 0.12  max 1 initial 1
+unit merc phalangites, exp 3 cost 4694 replenish 0.11  - 0.22  max 1 initial 0 restrict hellenistic_rebels, greeks, egypt, cyrene, taras, antigonid, achaea, boeotia, epirus, pergamon, pontus, sparta, megalopolis, lysiad, seleucid, seleucid_rebels, seleucid_rebels2, ptolemaic, ptolemaic_rebels
+unit merc mysian archers, exp 0 cost 3109 replenish 0.083 - 0.166 max 1 initial 0
+unit merc rhodian slingers, exp 2 cost 3502 replenish 0.074 - 0.147 max 1 initial 0
+
+pool aitolia_akarnania
+regions Ozolia_Lokris Aitolia Acheloos Akarnania Amphilochia
+unit merc aitolian thureophoroi, exp 0 cost 3788 replenish 0.068 - 0.136 max 1 initial 0
+unit merc akarnanian hoplites, exp 0 cost 3513 replenish 0.147 - 0.293 max 2 initial 1
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.047 - 0.093 max 1 initial 0
+unit merc aitolian peltasts, exp 0 cost 3376 replenish 0.153 - 0.305 max 2 initial 1
+unit merc aitolian slingers, exp 0 cost 3262 replenish 0.158 - 0.316 max 2 initial 1
+unit merc akarnanian slingers, exp 0 cost 3299 replenish 0.156 - 0.312 max 2 initial 1
+unit merc aitolian cavalry, exp 3 cost 4332 replenish 0.119 - 0.238 max 2 initial 1
+
+pool alexandria_merc_center
+regions Gynaikopolites_Nomos
+unit merc galatian warbands, exp 1 cost 3620 replenish 0.071 - 0.142 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc bithynian thureophoroi, exp 1 cost 3885 replenish 0.029 - 0.057 max 1 initial 0 restrict ptolemaic, ptolemaic_rebels
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.065 - 0.131 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc lycian drepanophoroi, exp 1 cost 4003 replenish 0.064 - 0.129 max 1 initial 0 restrict ptolemaic, ptolemaic_rebels
+unit merc pamphylian hoplites, exp 1 cost 4275 replenish 0.06  - 0.121 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc pisidian thureophoroi, exp 1 cost 4032 replenish 0.028 - 0.056 max 1 initial 0 restrict ptolemaic, ptolemaic_rebels
+unit merc karian light infantry, exp 1 cost 4116 replenish 0.063 - 0.125 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc thracian infantry, exp 3 cost 4396 replenish 0.059 - 0.117 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc phalangites, exp 3 cost 4694 replenish 0.055 - 0.11  max 1 initial 0 restrict ptolemaic, ptolemaic_rebels
+unit merc karian heavy infantry, exp 3 cost 4991 replenish 0.052 - 0.103 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc trallian infantry, exp 4 cost 5193 replenish 0.05  - 0.099 max 1 initial 0 restrict ptolemaic, ptolemaic_rebels
+unit merc lycian archers, exp 1 cost 3468 replenish 0.074 - 0.149 max 1 initial 0 restrict ptolemaic, ptolemaic_rebels
+unit merc thracian skirmisher cavalry, exp 1 cost 3087 replenish 0.083 - 0.167 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+
+pool alps_rhaetia_noricum
+regions Plavia Catalia Estionia Breunia Rucinatia Isarcia-Brixenetia Cosuanetia_Septentrionalis Vennonia-Caluconia Catenatia Cammunia-Venostia Noricum Ambidravia-Ambilicia Alaunia Noricum_Occidentale Carnia Anartia_Septentrionalis Salassia Salassia_Meridionalis Brigantia-Alpes Lepontia
+unit merc celtic spearmen, exp 0 cost 3394 replenish 0.152 - 0.304 max 2 initial 1
+unit merc celtic swordsmen, exp 0 cost 3688 replenish 0.14  - 0.279 max 2 initial 1
+unit merc bellovacian infantry, exp 0 cost 3829 replenish 0.135 - 0.269 max 2 initial 1
+unit merc scordiscian infantry, exp 2 cost 3977 replenish 0.13  - 0.259 max 2 initial 1
+unit merc galatian naked spearmen, exp 3 cost 5184 replenish 0.099 - 0.199 max 1 initial 1
+unit merc celtic skirmishers, exp 0 cost 3021 replenish 0.171 - 0.341 max 2 initial 1
+unit merc gallic light cavalry, exp 1 cost 3294 replenish 0.156 - 0.313 max 2 initial 1
+unit merc treverian noble cavalry, exp 2 cost 3522 replenish 0.146 - 0.293 max 1 initial 1
+
+pool amaseia_merc_center
+regions Pontos
+unit merc cilician spearmen, exp 1 cost 3995 replenish 0.084 - 0.168 max 2 initial 1 restrict pontus
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.085 - 0.17  max 2 initial 1 restrict pontus
+unit merc cilician pirates, exp 1 cost 4372 replenish 0.077 - 0.153 max 2 initial 1 restrict pontus
+unit merc thracian infantry, exp 3 cost 4396 replenish 0.076 - 0.152 max 2 initial 1 restrict pontus
+unit merc cilician renowned pirates, exp 3 cost 5040 replenish 0.029 - 0.057 max 2 initial 0 restrict pontus
+unit merc armenian noble archers, exp 3 cost 3603 replenish 0.093 - 0.186 max 1 initial 1 restrict pontus
+unit merc cretan archers, exp 3 cost 3767 replenish 0.089 - 0.178 max 2 initial 0 restrict pontus
+unit merc thracian skirmisher cavalry, exp 1 cost 3087 replenish 0.108 - 0.217 max 2 initial 0 restrict pontus
+unit merc scythian horse archers, exp 2 cost 4915 replenish 0.068 - 0.136 max 1 initial 0 restrict pontus
+unit merc mardian horse archers, exp 2 cost 4789 replenish 0.07  - 0.14  max 1 initial 0 restrict pontus
+unit merc treverian noble cavalry, exp 3 cost 3757 replenish 0.089 - 0.178 max 2 initial 1 restrict pontus
+unit merc iberian noble cavalry, exp 4 cost 6981 replenish 0.048 - 0.096 max 1 initial 0 restrict pontus
+
+pool ambrakia_merc_center
+regions Ambrakikos_Kolpos
+unit merc akarnanian hoplites, exp 1 cost 3747 replenish 0.103 - 0.206 max 2 initial 1 restrict epirus
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.098 - 0.196 max 2 initial 1 restrict epirus
+unit merc phalangites, exp 3 cost 4694 replenish 0.082 - 0.165 max 2 initial 2 restrict epirus
+unit merc aitolian peltasts, exp 1 cost 3601 replenish 0.107 - 0.215 max 1 initial 1 restrict epirus
+unit merc akarnanian slingers, exp 1 cost 3519 replenish 0.11  - 0.22  max 2 initial 1 restrict epirus
+unit merc athamanian peltasts, exp 3 cost 4041 replenish 0.096 - 0.191 max 1 initial 1 restrict epirus
+unit merc tarentine cavalry, exp 2 cost 3738 replenish 0.103 - 0.207 max 2 initial 2 restrict epirus
+unit merc aitolian cavalry, exp 4 cost 4621 replenish 0.084 - 0.167 max 1 initial 1 restrict epirus
+unit merc thessalian lancers, exp 4 cost 4699 replenish 0.082 - 0.164 max 1 initial 1 restrict epirus
+
+pool ankon
+regions Ankon_Petra
+unit merc euzonoi, exp 0 cost 4008 replenish 0.129 - 0.257 max 2 initial 1
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.133 - 0.265 max 2 initial 1
+unit merc scordiscian infantry, exp 2 cost 3977 replenish 0.13  - 0.259 max 2 initial 1
+unit merc treverian noble cavalry, exp 2 cost 3522 replenish 0.146 - 0.293 max 1 initial 1
+
+pool ankyra_merc_center
+regions Nea_Tektosagia
+unit merc mysian archers, exp 1 cost 3316 replenish 0.155 - 0.311 max 2 initial 1 restrict galatians
+unit merc pisidian javelinmen, exp 1 cost 3551 replenish 0.145 - 0.29  max 1 initial 1 restrict galatians
+unit merc agrianian archers, exp 3 cost 3730 replenish 0.138 - 0.276 max 1 initial 1 restrict galatians
+unit merc paionian cavalry, exp 3 cost 3946 replenish 0.131 - 0.261 max 1 initial 1 restrict galatians
+
+pool antioch_merc_center
+regions Syria
+unit merc cilician pirates, exp 1 cost 4372 replenish 0.088 - 0.177 max 2 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc thracian infantry, exp 3 cost 4396 replenish 0.088 - 0.176 max 2 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc galatian thorakitai, exp 4 cost 5475 replenish 0.071 - 0.141 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc sardinian archers, exp 3 cost 2632 replenish 0.147 - 0.294 max 1 initial 0 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc indian elephants, exp 4 cost 4008 replenish 0.084 - 0.167 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc galatian noble cavalry, exp 4 cost 4887 replenish 0.079 - 0.158 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+
+pool arabia_eudaimon
+regions Sabaia Kattabaneia Homeritis Anatolike_Homeritis Nashaq Mapharitis Hesperos_Adramitia Mese_Elisaria Marda Ssirwakh Eudaimon_Arabia Yathil Haribut Nassan Manahiytim Elisaria Rhathenaia
+unit merc arabian archers, exp 2 cost 3402 replenish 0.151 - 0.303 max 2 initial 1
+
+pool argolis
+regions Argolis
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.067 - 0.134 max 1 initial 0
+unit merc peloponnesian hoplites, exp 2 cost 4755 replenish 0.081 - 0.163 max 1 initial 0
+unit merc rhodian slingers, exp 2 cost 3502 replenish 0.074 - 0.147 max 1 initial 1
+
+pool arkadia
+regions Elis Arkadia Mantineia Pisatis Tegeatis Troizen Triphylia Olygirtos
+unit merc achaian hoplites, exp 2 cost 4097 replenish 0.082 - 0.163 max 1 initial 0
+unit merc peloponnesian hoplites, exp 2 cost 4755 replenish 0.108 - 0.217 max 2 initial 1
+unit merc arcadian peltast, exp 0 cost 3262 replenish 0.158 - 0.316 max 2 initial 1
+unit merc cretan archers, exp 2 cost 3532 replenish 0.073 - 0.146 max 1 initial 0
+
+pool athens_merc_center
+regions Attike
+unit merc karian light infantry, exp 1 cost 4116 replenish 0.125 - 0.25  max 2 initial 1 restrict athens
+unit merc pisidian thureophoroi, exp 1 cost 4032 replenish 0.028 - 0.056 max 1 initial 0 restrict athens
+unit merc thracian infantry, exp 3 cost 4396 replenish 0.117 - 0.234 max 2 initial 1 restrict athens
+unit merc pisidian javelinmen, exp 1 cost 3551 replenish 0.145 - 0.29  max 1 initial 1 restrict athens
+
+pool attica
+regions Peiraieus Megaris Attike
+unit merc athenian hoplites, exp 0 cost 3885 replenish 0.166 - 0.332 max 2 initial 1
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.1   - 0.2   max 2 initial 1
+unit merc thracian peltasts, exp 0 cost 3156 replenish 0.163 - 0.326 max 1 initial 1
+unit merc thracian peltasts reform, exp 2 cost 3506 replenish 0.11  - 0.22  max 1 initial 0
+unit merc thracian skirmisher cavalry, exp 0 cost 2894 replenish 0.111 - 0.223 max 1 initial 0
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.147 - 0.294 max 2 initial 1
+unit merc xystophoroi, exp 2 cost 3935 replenish 0.131 - 0.262 max 1 initial 0
+
+pool bactria
+regions Paropamisadai Gandaritis Hesperos_Assakenia Gouraia Kapisene Anatolike_Assakenia Assakenia Aspasia Anatolike_Baktriane Sogdiane Iaxartes Darapsia Mardyenia Kyreschata Anatolike_Sogdiane Oxos Boreia_Baktriane Oxeiane Ano_Baktriane Anatolike_Chorasmene
+unit merc asian light spearmen, exp 0 cost 3370 replenish 0.153 - 0.306 max 2 initial 1
+unit merc asian slingers, exp 0 cost 3089 replenish 0.167 - 0.334 max 2 initial 1
+unit merc asian skirmishers, exp 0 cost 3081 replenish 0.167 - 0.334 max 2 initial 1
+unit merc persian foot archers, exp 0 cost 3308 replenish 0.156 - 0.311 max 2 initial 1
+unit merc paphlagonian cavalry, exp 1 cost 3472 replenish 0.148 - 0.297 max 2 initial 1
+unit merc indian elephants, exp 3 cost 3757 replenish 0.137 - 0.274 max 1 initial 1
+
+pool baktra_zariaspa_merc_center
+regions Baktriane
+unit merc illyrian cavalry, exp 1 cost 3030 replenish 0.17  - 0.34  max 2 initial 1 restrict bactria
+unit merc dahaean horse archers, exp 2 cost 4810 replenish 0.107 - 0.214 max 2 initial 1 restrict bactria
+unit merc roxolanian lancers, exp 3 cost 6100 replenish 0.084 - 0.169 max 1 initial 1 restrict bactria
+unit merc indian elephants, exp 4 cost 4008 replenish 0.084 - 0.167 max 1 initial 1 restrict bactria
+unit merc kushan cataphracts, exp 4 cost 6513 replenish 0.079 - 0.158 max 1 initial 0 restrict bactria
+
+pool balto-slavic
+regions Venedia Aestia
+unit merc venedic woodsmen, exp 0 cost 3376 replenish 0.076 - 0.153 max 1 initial 0
+unit merc aestian clubmen, exp 0 cost 3376 replenish 0.076 - 0.153 max 1 initial 0
+
+pool bithynia
+regions Hellenike_Mariandynia Hypios Notia_Bithynia Bithynia
+unit merc bithynian thureophoroi, exp 0 cost 3642 replenish 0.029 - 0.058 max 1 initial 0
+unit merc herakleiote hoplites, exp 0 cost 3885 replenish 0.126 - 0.252 max 1 initial 0
+
+unit merc thracian peltasts, exp 0 cost 3156 replenish 0.163 - 0.326 max 2 initial 1
+unit merc bithynian hippakontistai, exp 0 cost 2892 replenish 0.178 - 0.356 max 1 initial 1
+
+pool boeotia
+regions Boiotia Poimandris Thebai
+unit merc boiotian thureophoroi, exp 0 cost 4024 replenish 0.128 - 0.256 max 2 initial 1
+unit merc karian light infantry, exp 1 cost 4116 replenish 0.125 - 0.25  max 2 initial 1 restrict boeotia
+unit merc pisidian thureophoroi, exp 1 cost 4032 replenish 0.028 - 0.056 max 1 initial 0 restrict boeotia
+unit merc boiotian hoplites, exp 2 cost 4293 replenish 0.12  - 0.24  max 2 initial 1
+unit merc karian heavy infantry, exp 3 cost 4991 replenish 0.103 - 0.206 max 1 initial 1 restrict boeotia
+unit merc pisidian javelinmen, exp 1 cost 3551 replenish 0.145 - 0.29  max 1 initial 1 restrict boeotia
+unit merc pamphylian heavy javelinmen, exp 3 cost 3833 replenish 0.134 - 0.269 max 1 initial 1 restrict boeotia
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.147 - 0.294 max 2 initial 1
+unit merc xystophoroi, exp 2 cost 3935 replenish 0.131 - 0.262 max 1 initial 1
+
+pool britannia_hibernia
+regions Brigantia_Meridionalis Cornovia Corieltauvia_Centralis Corieltauvia Cornovia_Meridionalis Eblania Ivernia_Orientalis Ivernia_Occidentalis Magnatia Ivernia_Septentrionalis Monaodea Otadinia Selgovaea Brigantia Ituna_Aestuarium Caledonia Otadinia_Occidentalis Orcades Damnonia Taexalia Lugia-Decantaea Hebudes Dumna Boderia_Aestuarium Vacomagia Trinobantia Dumnonia_Meridionalis Reginia_Septentrionalis Ecenia Catuvellaunia Cantiacia Dobunnia Durotrigia Dumnonia Reginia Durotrigia_Occidentalis Durotrigia_Septentrionalis Durotrigia_Centralis Dumnonia_Septentrionalis Catuvellaunia_Occidentalis Cantiacia_Orientalis Demetaea Siluria Ordovicia Deceanglia Siluria_Occidentalis Stuccia Siluria_Orientalis Ordovicia_Meridionalis Mona
+unit merc brittonic spearmen, exp 0 cost 3394 replenish 0.152 - 0.304 max 2 initial 1
+unit merc brittonic swordsmen, exp 0 cost 3688 replenish 0.14  - 0.279 max 2 initial 1
+unit merc caledonian swordsman, exp 0 cost 3937 replenish 0.131 - 0.262 max 2 initial 1
+unit merc brittonic skirmishers, exp 0 cost 3158 replenish 0.163 - 0.326 max 2 initial 1
+
+pool byzantium_merc_center
+regions Bosporos
+unit merc thracian noble cavalry, exp 4 cost 5432 replenish 0.119 - 0.237 max 2 initial 1 restrict byzantium
+
+pool cappadocia
+regions Kappadokia Tyanitis Melitene Kataonia Kamisene Morimene-Chammanene Garsaouritis Kappadokike_Kilikia Saraouene-Laouiniasene
+unit merc cappadocian archers, exp 0 cost 3178 replenish 0.162 - 0.324 max 2 initial 2
+unit merc cappadocian javelinmen, exp 0 cost 3239 replenish 0.159 - 0.318 max 2 initial 2
+unit merc cappadocian light cavalry, exp 0 cost 3046 replenish 0.169 - 0.338 max 2 initial 1
+unit merc cappadocian skirmisher cavalry, exp 0 cost 2850 replenish 0.181 - 0.362 max 2 initial 1
+unit merc cappadocian cavalry, exp 1 cost 3753 replenish 0.137 - 0.275 max 2 initial 1
+
+pool caria
+regions Idrias Halikarnassia Dorian_Chersonesos Karia Kalbia Marsyas Lelegia
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.134 - 0.267 max 2 initial 1
+unit merc peloponnesian hoplites, exp 2 cost 4755 replenish 0.076 - 0.152 max 2 initial 0
+unit merc karian heavy infantry, exp 2 cost 4679 replenish 0.11  - 0.22  max 1 initial 1
+unit merc rhodian slingers, exp 2 cost 3502 replenish 0.11  - 0.221 max 1 initial 1
+unit merc thureophoroi cavalry, exp 1 cost 3461 replenish 0.149 - 0.298 max 1 initial 0
+
+pool caucasus
+regions Mikra_Armenia Syspiritis Egritike Iberia Albania Megale_Armenia Basoropeda Kaspiane-Ouitia Koraxia Skythenia Phasis Ano_Araxes Megas_Pityous Notia_Kolchis Chorzene Gogarene Sakasene Kambysene-Gogarene Lazia Kolchis Zygia-Achaia Heniochia-Kerketaia Kerketaia Moschia Soanaia Taochia Chalybia Ouitia Gelaia Pedias_Atropatene Tracheia_Atropatene Legaia-Gelaia Sanaraia Achaia-Kolchis
+unit merc caucasian hillmen, exp 0 cost 3607 replenish 0.143 - 0.286 max 2 initial 1
+unit merc caucasian slingers, exp 0 cost 3652 replenish 0.141 - 0.282 max 2 initial 1
+unit merc armenian horse archers, exp 1 cost 4509 replenish 0.114 - 0.229 max 2 initial 1
+unit merc armenian cavalry, exp 2 cost 4847 replenish 0.106 - 0.213 max 1 initial 1
+unit merc iberian noble cavalry, exp 3 cost 6545 replenish 0.079 - 0.157 max 1 initial 1
+unit merc iberian cataphracts, exp 3 cost 5983 replenish 0.086 - 0.172 max 1 initial 1
+
+pool central_greece
+regions Pytho Opountia_Lokris Phokis-Doris
+unit merc peloponnesian hoplites, exp 2 cost 4755 replenish 0.043 - 0.087 max 1 initial 0
+unit merc aitolian peltasts, exp 0 cost 3376 replenish 0.153 - 0.305 max 2 initial 1
+unit merc athamanian peltasts, exp 2 cost 3788 replenish 0.116 - 0.231 max 1 initial 0
+unit merc perrhaibian cavalry, exp 1 cost 3480 replenish 0.126 - 0.252 max 1 initial 0
+
+pool chatti
+regions Usipetia_Vetus Vangionia_Vetus Ubia_Vetus Nemetia_Vetus Mattiaca Tencteria_Vetus Chattia Canninefatia_Vetus Marvingia_Vetus
+unit merc chattian freemen, exp 0 cost 3659 replenish 0.127 - 0.253 max 2 initial 1
+
+pool cisalpine_gaul
+regions Genuatia-Tigullia Apuania Statiellia-Vagiennia Ingaunia Bagiennia Dectuninia Oxybia Boia Insubria Cenomania Taurinia Insubria_Meridionalis Athesia Boia_Occidentalis Cenomania_Meridionalis Orobia Segusinia
+unit merc celtic spearmen, exp 0 cost 3394 replenish 0.152 - 0.304 max 2 initial 1
+unit merc celtic swordsmen, exp 0 cost 3688 replenish 0.14  - 0.279 max 2 initial 1
+unit merc bellovacian infantry, exp 0 cost 3829 replenish 0.135 - 0.269 max 2 initial 1
+unit merc scordiscian infantry, exp 2 cost 3977 replenish 0.13  - 0.259 max 2 initial 1
+unit merc galatian naked spearmen, exp 3 cost 5184 replenish 0.099 - 0.199 max 1 initial 1
+unit merc celtic skirmishers, exp 0 cost 3021 replenish 0.171 - 0.341 max 2 initial 1
+unit merc gallic light cavalry, exp 1 cost 3294 replenish 0.156 - 0.313 max 2 initial 1
+unit merc treverian noble cavalry, exp 2 cost 3522 replenish 0.146 - 0.293 max 1 initial 1
+
+pool commagene
+regions Dolicheia Nikephoreia Bambyke Zeugma-Euphrates Palaia_Zeugma Sophene Kommagene Gordyene Kato_Kommagene
+unit merc armenian horse archers, exp 1 cost 4509 replenish 0.143 - 0.286 max 3 initial 1
+
+pool corinth_merc_center
+regions Korinthia
+unit merc karian light infantry, exp 1 cost 4116 replenish 0.125 - 0.25  max 2 initial 1 restrict antigonid
+unit merc karian heavy infantry, exp 3 cost 4991 replenish 0.103 - 0.206 max 1 initial 1 restrict antigonid
+unit merc aitolian peltasts, exp 1 cost 3601 replenish 0.143 - 0.286 max 1 initial 1 restrict antigonid
+
+pool crete
+regions Lyttos Kydoniatis Minoa Gortynia Hierapytnia Polyrhen Itania Latia Rithymna Apteraia Arkadia-Krete
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.134 - 0.267 max 2 initial 2
+unit merc lycian drepanophoroi, exp 0 cost 3753 replenish 0.069 - 0.137 max 1 initial 0
+unit merc gortynian thureophoroi, exp 0 cost 4138 replenish 0.093 - 0.187 max 1 initial 0
+unit merc kretan hoplites, exp 2 cost 4293 replenish 0.15  - 0.3   max 2 initial 1
+unit merc karian heavy infantry, exp 2 cost 4679 replenish 0.069 - 0.138 max 2 initial 0
+unit merc peloponnesian hoplites, exp 2 cost 4755 replenish 0.07  - 0.141 max 1 initial 1
+unit merc cretan slingers, exp 0 cost 3470 replenish 0.148 - 0.297 max 2 initial 2
+unit merc pamphylian slingers, exp 0 cost 3464 replenish 0.112 - 0.223 max 1 initial 0
+unit merc lyttian erastai, exp 0 cost 3459 replenish 0.074 - 0.149 max 1 initial 0
+unit merc knossian erastai, exp 0 cost 3459 replenish 0.074 - 0.149 max 1 initial 0
+unit merc gortynian erastai, exp 0 cost 3459 replenish 0.074 - 0.149 max 1 initial 0
+unit merc cretan archers, exp 2 cost 3532 replenish 0.137 - 0.273 max 3 initial 2
+unit merc knossian hippeis late, exp 3 cost 4560 replenish 0.028 - 0.056 max 1 initial 0
+
+pool cyprus
+regions Paphia Salamina Amathousia Aipeia
+unit merc cilician pirates, exp 0 cost 4099 replenish 0.094 - 0.189 max 2 initial 0
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.099 - 0.199 max 1 initial 1
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.051 - 0.103 max 2 initial 0
+unit merc cretan archers, exp 2 cost 3532 replenish 0.044 - 0.088 max 1 initial 1
+unit merc cypriot tarentine cavalry, exp 1 cost 2912 replenish 0.177 - 0.354 max 2 initial 2
+
+pool dacia
+regions Carpiania_Meridionalis Carsia Arpia Tyragetia Coisstobocia Carpiania Carpiania_Occidentalis Sargetiaea Buridavensia_Orientalis Buridavensia Albocensia Dacia Caucoensia_Septentrionalis Britolagia Predavensia Teuriscia Sensia Napocaea Cotensia Piephigia Ansamenia Biephia_Orientalis Albocensia_Orientalis Cotensia_Septentrionalis Biephia Hesperos_Getaia Tyle Ratiariai Triballia Getaia Skaia Krobyzia
+unit merc bastarnian infantry, exp 0 cost 3553 replenish 0.073 - 0.145 max 2 initial 0
+unit merc getic light infantry, exp 0 cost 3750 replenish 0.172 - 0.343 max 2 initial 2
+unit merc scordiscian infantry, exp 2 cost 3977 replenish 0.121 - 0.243 max 2 initial 1
+unit merc bastarnian swordsmen, exp 2 cost 3931 replenish 0.066 - 0.131 max 2 initial 0
+unit merc getic archers, exp 0 cost 3413 replenish 0.189 - 0.377 max 2 initial 2
+unit merc dacian skirmisher cavalry, exp 1 cost 3299 replenish 0.195 - 0.39  max 2 initial 1
+unit merc dacian horse archers, exp 2 cost 4884 replenish 0.132 - 0.264 max 2 initial 1
+unit merc treverian noble cavalry, exp 2 cost 3522 replenish 0.137 - 0.274 max 2 initial 1
+
+pool dalmatia
+regions Epetia-Salonitis Delmatia Daorsia Liburnonesoi Issa Ditionia Mania Melaina_Korkyra Tragouria
+unit merc pannonian warband, exp 0 cost 4460 replenish 0.075 - 0.15  max 2 initial 0
+unit merc northern illyrian spearmen, exp 0 cost 4131 replenish 0.081 - 0.162 max 2 initial 0
+unit merc liburnian pirates, exp 0 cost 4231 replenish 0.079 - 0.158 max 2 initial 0
+unit merc issaian hoplites, exp 0 cost 3653 replenish 0.092 - 0.183 max 1 initial 0
+unit merc dalmatian footmen, exp 2 cost 4574 replenish 0.113 - 0.225 max 2 initial 2
+unit merc issaian heavy infantry, exp 2 cost 5014 replenish 0.051 - 0.103 max 1 initial 0
+unit merc pannonian cavalry, exp 0 cost 2716 replenish 0.142 - 0.285 max 1 initial 0
+
+pool damastion_merc_center
+regions Dyestesia
+unit merc dardanian spearmen, exp 0 cost 4194 replenish 0.123 - 0.246 max 2 initial 1
+unit merc thracian infantry, exp 3 cost 4396 replenish 0.117 - 0.234 max 2 initial 1 restrict dardania
+unit merc thracian peltasts, exp 1 cost 3367 replenish 0.153 - 0.306 max 2 initial 1 restrict dardania
+unit merc dardanian light cavalry, exp 0 cost 2716 replenish 0.19  - 0.379 max 2 initial 1
+unit merc paionian cavalry, exp 3 cost 3946 replenish 0.131 - 0.261 max 2 initial 1 restrict dardania
+
+pool dekapolis
+regions Rabat_Xaman Gadaris Trachonitis Damashq
+unit merc euzonoi, exp 0 cost 4008 replenish 0.08  - 0.161 max 2 initial 0
+unit merc macedonian hoplites, exp 0 cost 3850 replenish 0.05  - 0.1   max 2 initial 1
+unit merc phalangites, exp 3 cost 4694 replenish 0.069 - 0.137 max 2 initial 1 restrict hellenistic_rebels, greeks, egypt, cyrene, taras, antigonid, achaea, boeotia, epirus, pergamon, pontus, sparta, megalopolis, lysiad, seleucid, seleucid_rebels, seleucid_rebels2, ptolemaic, ptolemaic_rebels
+
+pool dorian_pentapolis
+regions Rhodos Kos Notios_Rhodos
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.1   - 0.2   max 1 initial 1
+unit merc lycian marines, exp 0 cost 4015 replenish 0.051 - 0.103 max 2 initial 1
+unit merc rhodian hoplites, exp 2 cost 4293 replenish 0.09  - 0.18  max 1 initial 1
+unit merc karian heavy infantry, exp 2 cost 4679 replenish 0.055 - 0.11  max 2 initial 0
+unit merc peloponnesian hoplites, exp 2 cost 4755 replenish 0.081 - 0.163 max 2 initial 1
+unit merc thracian peltasts, exp 0 cost 3156 replenish 0.122 - 0.245 max 2 initial 1
+unit merc rhodian slingers, exp 2 cost 3502 replenish 0.11  - 0.221 max 1 initial 1
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.11  - 0.22  max 1 initial 0
+
+pool east_steppes
+regions Nisaia Chorasmene Tsatsene Talatsia Sakaia Anatolike_Amyrgia Parnia Massagetaia Sakaraulia Anatolike_Skythia Boreia_Chorasmene Paria Xandia-Paria Attasia Apasiakaia Thyssagetaia-Iyrkaia Iyrkaia Issedonia Argippaia
+unit merc scythian archers, exp 2 cost 3510 replenish 0.147 - 0.294 max 2 initial 1
+unit merc dahaean horse archers, exp 1 cost 4509 replenish 0.114 - 0.229 max 2 initial 1
+unit merc saka horse archers, exp 1 cost 4774 replenish 0.108 - 0.216 max 2 initial 1
+unit merc roxolanian lancers, exp 2 cost 5719 replenish 0.09  - 0.18  max 1 initial 1
+unit merc dahaean noble cavalry, exp 3 cost 6955 replenish 0.074 - 0.148 max 1 initial 1
+unit merc sogdian heavy horse archers, exp 3 cost 5798 replenish 0.089 - 0.178 max 1 initial 1
+
+pool eastern_balkans
+regions Ambronia Coisstobocia_Transmontana Anartophractia Biessia Eraviscia_Ultima Anartia Eraviscia_Orientalis
+unit merc getic light infantry, exp 0 cost 3750 replenish 0.137 - 0.275 max 2 initial 1
+unit merc getic archers, exp 0 cost 3413 replenish 0.151 - 0.302 max 2 initial 1
+unit merc dacian skirmisher cavalry, exp 1 cost 3299 replenish 0.156 - 0.312 max 2 initial 1
+unit merc dacian horse archers, exp 2 cost 4884 replenish 0.105 - 0.211 max 2 initial 1
+
+pool egypt
+regions Ombites_Nomos Gynaikopolites_Nomos Boreia_Trogodytike Arabike_Aigyptos Erythra_Thalassa Pelousiake Heroon_Kolpos Memphites-Letopolites_Nomoi Arsinoites-Aphroditopolites_Nomoi Oxyrhynchites-Herakleopolites_Nomoi Menelaites-Prosopites_Nomoi Hermopolites-Kynopolites_Nomoi Tanites-Sethroites_Nomoi Saites-Xoites_Nomoi Heroopolites-Heliopolites_Nomoi Boubastites-Arabia_Nomoi Moeris_Limen Sebennytes-Bousirites_Nomoi Thinites-Diospolites_Mikros_Nomoi Peri_Thebas-Pathyrites_Nomos Apollonopolites-Latopolites_Nomoi Lykopolites-Hypselites_Nomoi Prote_Oasis Koptites-Tentyrites_Nomoi Panopolites-Antaiopolites_Nomoi Nasamonia Hesperos_Aigyptos Euesperides Barke Ammonia Hesperos_Kyrenaike Katabathmos
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.05  - 0.1   max 2 initial 1
+unit merc lycian infantry, exp 0 cost 3951 replenish 0.049 - 0.098 max 1 initial 0
+unit merc libyan skirmishers, exp 0 cost 3086 replenish 0.063 - 0.125 max 1 initial 0
+unit merc machimoi archers, exp 0 cost 3243 replenish 0.119 - 0.238 max 2 initial 1
+unit merc cretan archers, exp 2 cost 3532 replenish 0.055 - 0.109 max 1 initial 1
+unit merc machimoi cavalry, exp 0 cost 3011 replenish 0.064 - 0.128 max 1 initial 0
+
+pool ekbatana_merc_center
+regions Media
+unit merc persian takabara, exp 1 cost 4141 replenish 0.124 - 0.249 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc persian sparabara, exp 1 cost 4245 replenish 0.121 - 0.243 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc sogdian mounted javelineers, exp 1 cost 4046 replenish 0.127 - 0.255 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc hyrkanian foot archers, exp 3 cost 3571 replenish 0.144 - 0.289 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc palmyran cataphracts, exp 4 cost 5649 replenish 0.091 - 0.182 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+
+pool elis_merc_center
+regions Elis
+unit merc karian light infantry, exp 1 cost 4116 replenish 0.156 - 0.313 max 2 initial 1 restrict elis
+unit merc elian hoplites, exp 2 cost 4784 replenish 0.135 - 0.269 max 1 initial 1
+
+pool emporion
+regions Emporitia
+unit merc euzonoi, exp 0 cost 4008 replenish 0.129 - 0.257 max 2 initial 1
+unit merc emporionite hoplites, exp 0 cost 3885 replenish 0.133 - 0.265 max 2 initial 1
+unit merc caetrati swordsmen, exp 0 cost 3731 replenish 0.138 - 0.276 max 2 initial 1
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.128 - 0.257 max 2 initial 1
+unit merc balearic slingers, exp 2 cost 3410 replenish 0.151 - 0.302 max 1 initial 1
+unit merc thureophoroi cavalry, exp 1 cost 3461 replenish 0.149 - 0.298 max 2 initial 1
+
+pool epeiros
+regions Kerkyra Chaonia Molossia Ano_Chaonia Thesprotia Hellas Athamania Ambrakikos_Kolpos
+unit merc southern illyrian axemen, exp 0 cost 4325 replenish 0.071 - 0.143 max 1 initial 1
+unit merc southern illyrian spearmen, exp 0 cost 4178 replenish 0.074 - 0.148 max 1 initial 1
+unit merc phalangites, exp 2 cost 4401 replenish 0.105 - 0.211 max 1 initial 0
+unit merc athamanian peltasts, exp 2 cost 3788 replenish 0.156 - 0.313 max 2 initial 1
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.132 - 0.265 max 2 initial 1
+
+pool ethiopia
+regions Axoumitis Yikha Ano_Aithiopia Adaboulia Aithiopia Megabaria Noubaia Blemmyia Epi_Theron Adouli Triakontaschoinos Aidaia Notios_Dodekaschoinos Malaotis Mosyllia Azania Anatolike_Mosyllia
+unit merc nubian spearmen, exp 0 cost 3376 replenish 0.153 - 0.305 max 2 initial 1
+
+pool euboia
+regions Euboia Histiaia Dirphysia
+unit merc athenian hoplites, exp 0 cost 3885 replenish 0.08  - 0.159 max 1 initial 1
+unit merc phalangites, exp 3 cost 4694 replenish 0.066 - 0.132 max 1 initial 1 restrict hellenistic_rebels, greeks, egypt, cyrene, taras, antigonid, achaea, boeotia, epirus, pergamon, pontus, sparta, megalopolis, lysiad, seleucid, seleucid_rebels, seleucid_rebels2, ptolemaic, ptolemaic_rebels
+unit merc peloponnesian hoplites, exp 2 cost 4755 replenish 0.033 - 0.065 max 1 initial 0
+unit merc thracian peltasts, exp 0 cost 3156 replenish 0.147 - 0.294 max 1 initial 0
+unit merc sicel peltophoroi, exp 0 cost 3117 replenish 0.05  - 0.099 max 1 initial 0
+unit merc ionian epibatai, exp 2 cost 3483 replenish 0.044 - 0.089 max 1 initial 1
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.044 - 0.088 max 1 initial 1
+unit merc thureophoroi cavalry, exp 1 cost 3461 replenish 0.045 - 0.089 max 2 initial 0
+
+pool euxine_coast
+regions Aigyssia Trogodytaia Halmyris Antheia Odessia Mesambria Thynia Kallatia Tomea Terizia
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.128 - 0.257 max 2 initial 1
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.133 - 0.265 max 2 initial 1
+unit merc greek peltasts, exp 0 cost 3303 replenish 0.156 - 0.312 max 2 initial 1
+
+pool galatia
+regions Tektosagia Anatolike_Tolistobogia Tolistobogia Kappadoxia Nea_Tektosagia
+unit merc galatian warbands, exp 0 cost 3394 replenish 0.152 - 0.304 max 2 initial 2
+unit merc phrygian spearmen, exp 0 cost 3352 replenish 0.154 - 0.307 max 2 initial 0
+unit merc galatian swordsmen, exp 0 cost 3688 replenish 0.14  - 0.279 max 2 initial 2
+unit merc galatian thorakitai, exp 3 cost 5133 replenish 0.075 - 0.151 max 1 initial 0
+unit merc galatian skirmishers, exp 0 cost 3021 replenish 0.171 - 0.341 max 2 initial 2
+unit merc phrygian slingers, exp 0 cost 3093 replenish 0.167 - 0.333 max 2 initial 0
+unit merc galatian noble cavalry, exp 3 cost 4582 replenish 0.084 - 0.169 max 1 initial 0
+
+pool gallic_greeks
+regions Hellenike_Dekiataia Segobrigia Hellenike_Arekomikia
+unit merc euzonoi, exp 0 cost 4008 replenish 0.129 - 0.257 max 2 initial 1
+unit merc massaliote hoplites, exp 0 cost 3885 replenish 0.133 - 0.265 max 2 initial 1
+unit merc salluvian swordsmen, exp 2 cost 4575 replenish 0.113 - 0.225 max 1 initial 1
+unit merc massaliote archer, exp 2 cost 3393 replenish 0.152 - 0.304 max 1 initial 1
+unit merc massaliote epibatai, exp 2 cost 3482 replenish 0.148 - 0.296 max 2 initial 1
+unit merc gallic light cavalry, exp 1 cost 3294 replenish 0.156 - 0.313 max 2 initial 1
+unit merc treverian noble cavalry, exp 2 cost 3522 replenish 0.146 - 0.293 max 1 initial 1
+
+pool gauls
+regions Nitiobrogia Cadurcia Durania Elusatia Iluronensia Vasatia Auscia-Gatia Andosinia-Aerenosia Sotiatia Tarbellia-Ptiania Ambiana Treveria Senonia Remia Eburonia Nervia Suessionia Bellovacia Atrebatia Menapia Viromandua Veliocassia Meldia Parisia Petrocoria Eburonia_Orientalis Levacia Pictonia Osismia Diablintia Carnutia Venetia-Aremorica Venellia Cenomania-Eburovicia Eburovicia Namnetia Santonia Redonia Coriosolitia Esuvia Lexovia Andecavia Aestuarium_Ligeris Uxisame Santonia_Meridionalis Arvernia Biturigia Lemovicia Lingonia Aeduia_Centralis Vellavia Gabalia-Rutenia Turonia Mandubia-Blannovia Vellavia-Eleutetia Arvernia_Septentrionalis Aeduia Sequania Leucia Arecomicia Rutenia Tectosagia Elysicia Salluvia Vocontia_Orientalis Tricastinia-Helvia Segusiavia-Ambivaretia Tectosagia_Occidentalis Ceutronia Vocontia Bodionticia Treveria_Orientalis Sequania_Meridionalis Mediomatricia Allobrogia Caturigia-Bodionticia Lemannus_Inferior Sedunia-Uberia Sequania_Meridionalis Sapaudia
+unit merc celtic spearmen, exp 0 cost 3394 replenish 0.152 - 0.304 max 2 initial 1
+unit merc celtic swordsmen, exp 0 cost 3688 replenish 0.14  - 0.279 max 2 initial 1
+unit merc bellovacian infantry, exp 0 cost 3829 replenish 0.135 - 0.269 max 2 initial 1
+unit merc scordiscian infantry, exp 2 cost 3977 replenish 0.13  - 0.259 max 2 initial 1
+unit merc galatian naked spearmen, exp 3 cost 5184 replenish 0.099 - 0.199 max 1 initial 1
+unit merc celtic skirmishers, exp 0 cost 3021 replenish 0.171 - 0.341 max 2 initial 1
+unit merc gallic light cavalry, exp 1 cost 3294 replenish 0.156 - 0.313 max 2 initial 1
+unit merc treverian noble cavalry, exp 2 cost 3522 replenish 0.146 - 0.293 max 1 initial 1
+
+pool germania
+regions Finnia Avarinia Rugia Insula_Osiorum
+unit merc freemen, exp 0 cost 3870 replenish 0.133 - 0.266 max 2 initial 1
+unit merc bastarnian infantry, exp 0 cost 3553 replenish 0.145 - 0.29  max 2 initial 1
+unit merc chaucian fardimen, exp 0 cost 3853 replenish 0.134 - 0.267 max 2 initial 1
+unit merc sugambrian wolf warriors, exp 2 cost 4377 replenish 0.118 - 0.235 max 2 initial 1
+unit merc gautic freemen, exp 2 cost 4138 replenish 0.125 - 0.249 max 2 initial 1
+unit merc bastarnian swordsmen, exp 2 cost 3931 replenish 0.131 - 0.262 max 1 initial 1
+unit merc outsider skirmisher rabble, exp 0 cost 3094 replenish 0.167 - 0.333 max 2 initial 1
+unit merc freemen cavalry, exp 2 cost 3974 replenish 0.13  - 0.259 max 1 initial 1
+
+pool gerrha
+regions Gerrhaia Tylos Katharrheia Ikaros Chattenia Aboukaia-Leanitaia Paralia_Chaldaia Notia_Charakene Omanitis Libanophoria Notia_Omanitis
+unit merc arabian archers, exp 2 cost 3402 replenish 0.076 - 0.151 max 2 initial 0
+
+pool getic_coast
+regions Tyrasia
+unit merc euzonoi, exp 0 cost 4008 replenish 0.129 - 0.257 max 2 initial 1
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.133 - 0.265 max 2 initial 1
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.128 - 0.257 max 2 initial 1
+unit merc getic archers, exp 0 cost 3413 replenish 0.151 - 0.302 max 2 initial 1
+unit merc thureophoroi cavalry, exp 1 cost 3461 replenish 0.149 - 0.298 max 2 initial 1
+unit merc dacian horse archers, exp 2 cost 4884 replenish 0.105 - 0.211 max 2 initial 1
+
+pool gortyn_merc_center
+regions Gortynia
+unit merc illyrian spearmen, exp 4 cost 6388 replenish 0.06  - 0.121 max 1 initial 0 restrict gortyn
+unit merc achaian slingers, exp 1 cost 3511 replenish 0.147 - 0.293 max 1 initial 0 restrict gortyn
+unit merc achaian peltast, exp 1 cost 3361 replenish 0.153 - 0.307 max 1 initial 1 restrict gortyn
+unit merc illyrian cavalry, exp 1 cost 3030 replenish 0.17  - 0.34  max 1 initial 1 restrict gortyn
+
+pool gothic
+regions Burgundia Varinia Sidonia_Occidentalis Bastarnia_Vetus Sciria Sidonia_Vetus Gutia Hillevionia Insula_Gutarum Gutia_Orientalis
+unit merc freemen, exp 0 cost 3870 replenish 0.08  - 0.16  max 1 initial 0
+unit merc gautic freemen, exp 2 cost 4138 replenish 0.1   - 0.199 max 2 initial 1
+unit merc freemen cavalry, exp 2 cost 3974 replenish 0.078 - 0.156 max 1 initial 0
+
+pool gytheion_merc_center
+regions Lakonikos_Kolpos
+unit merc greek hoplites, exp 1 cost 4144 replenish 0.186 - 0.373 max 2 initial 1 restrict sparta
+unit merc kretan hoplites, exp 3 cost 4579 replenish 0.141 - 0.281 max 1 initial 0 restrict sparta
+unit merc peloponnesian hoplites, exp 3 cost 5072 replenish 0.102 - 0.203 max 1 initial 1 restrict sparta
+unit merc cretan archers, exp 3 cost 3767 replenish 0.137 - 0.274 max 1 initial 1 restrict sparta
+unit merc aspidophoroi1, exp 3 cost 4320 replenish 0.029 - 0.057 max 1 initial 0 restrict sparta
+
+pool hadhramaut
+regions Ssabwat Omana_Kolpos Smyrnophoros Dioskoridou_Nesos Raybun Adramitia Anatolike_Chatramonitaia Sachalites_Kolpos
+unit merc arabian archers, exp 2 cost 3402 replenish 0.151 - 0.303 max 1 initial 1
+
+pool halikarnassos_merc_center
+regions Halikarnassia
+unit merc syracusan hoplites, exp 1 cost 4205 replenish 0.092 - 0.184 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc peloponnesian hoplites, exp 3 cost 5072 replenish 0.076 - 0.152 max 1 initial 0 restrict ptolemaic, ptolemaic_rebels
+unit merc aitolian peltasts, exp 1 cost 3601 replenish 0.107 - 0.215 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc cretan archers, exp 3 cost 3767 replenish 0.103 - 0.205 max 1 initial 0 restrict ptolemaic, ptolemaic_rebels
+unit merc perrhaibian cavalry, exp 2 cost 3712 replenish 0.104 - 0.208 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+
+pool hejaz
+regions Lechienia Yathrib Nagran Thamoudaia Kassanitis Notia_Lechienia Qarnawu Rhaabenia-Masania Boreia_Minaia
+unit merc arabian archers, exp 2 cost 3402 replenish 0.114 - 0.227 max 2 initial 1
+
+pool hellenic_steppes
+regions Mikra_Chersonesos Phanagoreion Tanaitis Sindike Karkinitis Stenopos Korokondamitis
+unit merc euzonoi, exp 0 cost 4008 replenish 0.129 - 0.257 max 2 initial 1
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.133 - 0.265 max 2 initial 1
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.128 - 0.257 max 2 initial 1
+unit merc scythian archers, exp 2 cost 3510 replenish 0.147 - 0.294 max 2 initial 1
+unit merc thureophoroi cavalry, exp 1 cost 3461 replenish 0.149 - 0.298 max 2 initial 1
+unit merc scythian horse archers, exp 1 cost 4608 replenish 0.112 - 0.224 max 2 initial 1
+
+pool herakleia_merc_center
+regions Hellenike_Mariandynia
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.131 - 0.262 max 2 initial 1 restrict heraclea_pontica
+unit merc treverian noble cavalry, exp 3 cost 3757 replenish 0.137 - 0.274 max 2 initial 1 restrict heraclea_pontica
+
+pool hermiones
+regions Chattia Canninefatia_Vetus Marvingia_Vetus Teuriohaemum Volcaea Marcomannia_Vetus Hermunduria Quadia_Vetus Fosia Variscia Danubia Boihaemum_Meridionale Noricum_Septentrionale Boihaemum Racataea-Racatriaea Hercynia Boihaemum_Septentrionale Boihaemum_Orientale Racatriaea Marsignia Osia Cotinia Volcaea_Orientalis Boihaemum_Occidentale Eraviscia_Septentrionalis Semnonia Cheruscia
+unit merc freemen, exp 0 cost 3870 replenish 0.146 - 0.293 max 2 initial 1
+unit merc freemen cavalry, exp 2 cost 3974 replenish 0.143 - 0.285 max 2 initial 1
+unit merc suebian freemen cavalry, exp 2 cost 3424 replenish 0.166 - 0.331 max 2 initial 1
+
+pool iberia
+regions Plentuisia Asturia Luggonesia Camaricia Artabria Tagia Conia Turdulorum_Oppida Bracarensia_Septentrionalis Lusitania_Centralis Bracarensia Bardilia Turdulia_Veterum Bibalia Celticia_Maritima Artabria_Orientalis Baeturia_Turdulorum_Orientalis Baeturia_Celticorum Baeturia_Turdulorum Carpetania Carpetania_Montana Carpetania_Orientalis Ergavicia Arevacia Ercavicia Turboletia Bellia Arevacia_Centralis Bellia_Orientalis Arevacia_Septentrionalis Lusonia_Septentrionalis Arevacia_Durica Pelendonia Arevacia_Meridionalis Lusonia Celtiberia_Ultima Tittia Turmodigia Autrigonia Caristia Beronia Ay-Bushum Mastienia Agadir Bastulia Bastulia_Occidentalis Bastetania_Maritima Baliares Lusitania Celticia Seania Celticia_Meridionalis Suessetania Ilercavonia Vasconia Cessetania Ilergetia_Orientalis Sedetania Laietania Bergistania Sordonia Ausetania Lacetania Ausetania_Meridionalis Ilergetia Saguntia Kelinia Oretania_Orientalis Bastetania Oretania Oretania_Meridionalis Contestania Edetania Edetania_Meridionalis Contestania_Orientalis Bastetania_Occidentalis Contestania_Maritima Massalike_Kontestania Oretania_Ultima Turdetania_Occidentalis Turdetania_Septentrionalis Turdetania_Montana Turdetania_Centralis Turdetania_Meridionalis Turdetania_Orientalis Ilditurgi Hasta Onuba Aestuarium_Baeticum Helmantike Vaccaea Vettonia Vaccaea_Meridionalis Vettonia_Meridionalis Vaccaea_Occidentalis Vaccaea_Durica Vettonia_Occidentalis
+unit merc falarica infantry, exp 0 cost 3667 replenish 0.14  - 0.281 max 2 initial 1
+unit merc caetrati swordsmen, exp 0 cost 3731 replenish 0.138 - 0.276 max 2 initial 1
+unit merc iberian heavy swordsmen, exp 2 cost 3804 replenish 0.135 - 0.271 max 2 initial 1
+unit merc iberian skirmishers, exp 2 cost 3413 replenish 0.151 - 0.302 max 1 initial 1
+unit merc balearic slingers, exp 2 cost 3410 replenish 0.151 - 0.302 max 1 initial 1
+unit merc cantabrian cavalry, exp 0 cost 2793 replenish 0.184 - 0.369 max 2 initial 1
+unit merc caetrati cavalry, exp 1 cost 3401 replenish 0.151 - 0.303 max 2 initial 1
+unit merc iberian heavy cavalry, exp 2 cost 3692 replenish 0.14  - 0.279 max 1 initial 1
+
+pool iberian_greeks
+regions Contestania_Orientalis Massalike_Kontestania
+unit merc euzonoi, exp 0 cost 4008 replenish 0.129 - 0.257 max 2 initial 1
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.133 - 0.265 max 2 initial 1
+unit merc caetrati swordsmen, exp 0 cost 3731 replenish 0.138 - 0.276 max 2 initial 1
+unit merc iberian heavy swordsmen, exp 2 cost 3804 replenish 0.135 - 0.271 max 2 initial 1
+unit merc balearic slingers, exp 2 cost 3410 replenish 0.151 - 0.302 max 1 initial 1
+unit merc caetrati cavalry, exp 1 cost 3401 replenish 0.151 - 0.303 max 2 initial 1
+
+pool illyrians
+regions Histria_Septentrionalis Histria Labeataia Ardiaia Boreios_Labeataia Epidauria Dassaretia Parthinia Byllionia-Amantia Taulantia Penestia Kaouia Gylakeia Epidamnia Autariataia Azalia Andizetia-Azalia Breucia Savia Daesitiatia Maezaeia Skordiskia Sirmia Boreia_Skordiskia Hesperos_Skordiskia Dardania Naissitania Iapodia Sinus_Liburnicus Apsorus Liburnia_Septentrionalis Liburnia_Orientalis Illyria Liburnia Dyestesia Epetia-Salonitis Delmatia Daorsia Liburnonesoi Issa Ditionia Mania Melaina_Korkyra Tragouria
+unit merc southern illyrian spearmen, exp 0 cost 4178 replenish 0.154 - 0.308 max 2 initial 1
+unit merc southern illyrian axemen, exp 0 cost 4325 replenish 0.149 - 0.298 max 2 initial 1
+unit merc illyrian warband, exp 2 cost 3559 replenish 0.181 - 0.362 max 2 initial 1
+unit merc illyrian thureophoroi cavalry, exp 1 cost 3194 replenish 0.202 - 0.403 max 1 initial 0
+
+pool india
+regions Indos Kaspeiraia Agalassia Mallia Abastania Daitichaia Anichaia Arsa Sibia Pandoouia Hydaspes Sopeitheia Glausaia Audoumbaria Adraistaia Kathaia Sydrakaia Kounindia The_Road_to_Palibothra Patalene Oreitaia Samboia Sogdia-Indos Chatriaia Mousikania Portikania Syrastrene Prasiake Abiria Arbia Notia_Oreitaia The_Road_to_Methora
+unit merc asian light spearmen, exp 0 cost 3370 replenish 0.153 - 0.306 max 2 initial 1
+unit merc asian slingers, exp 0 cost 3089 replenish 0.167 - 0.334 max 2 initial 1
+unit merc asian skirmishers, exp 0 cost 3081 replenish 0.167 - 0.334 max 2 initial 1
+unit merc persian foot archers, exp 0 cost 3308 replenish 0.156 - 0.311 max 2 initial 1
+unit merc paphlagonian cavalry, exp 1 cost 3472 replenish 0.148 - 0.297 max 2 initial 1
+unit merc indian elephants, exp 3 cost 3757 replenish 0.137 - 0.274 max 1 initial 1
+
+pool inguaeones
+regions Menapia_Orientalis Frisia Chamavia Fundusia Avionia Eudosia Cimbria Nuithonia Teutonia Chaucia_Minor Langobardia Chaucia_Maior
+unit merc freemen, exp 0 cost 3870 replenish 0.073 - 0.146 max 1 initial 0
+unit merc chaucian fardimen, exp 0 cost 3853 replenish 0.087 - 0.174 max 2 initial 1
+unit merc freemen cavalry, exp 2 cost 3974 replenish 0.071 - 0.143 max 1 initial 0
+
+pool ionia
+regions Paionia Maidia Denthelentike Sintike-Odomantike Erigonia Axios Dardania Naissitania Dyestesia Lesbos Samos Chios Methymnia Ionia Nea_Ionia Latmikos_Kolpos Mykale Mimas
+unit merc prienian hoplites, exp 0 cost 3885 replenish 0.099 - 0.199 max 1 initial 1
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.1   - 0.2   max 2 initial 1
+unit merc milesian hoplites, exp 2 cost 4334 replenish 0.119 - 0.238 max 1 initial 1
+unit merc karian heavy infantry, exp 2 cost 4679 replenish 0.083 - 0.165 max 1 initial 1
+unit merc lydian akontistai, exp 0 cost 3310 replenish 0.156 - 0.311 max 1 initial 1
+unit merc ionian epibatai, exp 2 cost 3483 replenish 0.148 - 0.296 max 1 initial 1
+unit merc thureophoroi cavalry, exp 1 cost 3461 replenish 0.149 - 0.298 max 2 initial 1
+unit merc xystophoroi, exp 2 cost 3935 replenish 0.131 - 0.262 max 1 initial 1
+
+pool istuaeones
+regions Usipetia_Vetus Vangionia_Vetus Ubia_Vetus Nemetia_Vetus Mattiaca Tencteria_Vetus Tigurinia-Tougenia Caeracatia-Triboccia Volcaea_Occidentalis Sugambria Helvetia_Vetus Abnobaea Rauracia-Latobrigia Bructeria_Maior
+unit merc freemen, exp 0 cost 3870 replenish 0.133 - 0.266 max 2 initial 1
+unit merc sugambrian wolf warriors, exp 2 cost 4377 replenish 0.112 - 0.224 max 2 initial 1
+unit merc freemen cavalry, exp 2 cost 3974 replenish 0.123 - 0.246 max 2 initial 1
+
+pool italy
+regions Campania Samnium Pentria Roma Paelignia-Marsica Faliscia Frentania Latium Latium_Novum Apulia Calabria Daunia Kanysion Lucania Bruttium Poseidonia Chonia Picenum Umbria Ager_Gallicus Sassinia Sabinia-Aequia Etruria Etruria_Occidentalis Velzna Etruria_Meridionalis Etruria_Septentrionalis
+
+
+
+
+pool kabyle_merc_center
+regions Kabylia
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.098 - 0.196 max 2 initial 1 restrict odrysians, asti, cabyle
+unit merc galato-thracian warband, exp 1 cost 4213 replenish 0.092 - 0.183 max 2 initial 1 restrict odrysians, asti, cabyle
+unit merc greek hoplites, exp 1 cost 4144 replenish 0.093 - 0.186 max 2 initial 1 restrict odrysians, asti, cabyle
+unit merc dii swordsmen, exp 3 cost 5138 replenish 0.075 - 0.15  max 1 initial 1 restrict odrysians, asti, cabyle
+unit merc dacian horse archers, exp 3 cost 5210 replenish 0.074 - 0.148 max 2 initial 1 restrict odrysians, asti, cabyle
+unit merc galatian noble cavalry, exp 4 cost 4887 replenish 0.079 - 0.158 max 1 initial 0 restrict odrysians, asti, cabyle
+
+pool kilikia_pedias
+regions Kilikia Mallotis Mese_Kilikia Issikos_Kolpos Pyramos
+unit merc cilician pirates, exp 0 cost 4099 replenish 0.126 - 0.251 max 2 initial 0
+unit merc cilician spearmen, exp 0 cost 3745 replenish 0.138 - 0.275 max 2 initial 1
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.099 - 0.199 max 1 initial 1
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.096 - 0.192 max 1 initial 1
+unit merc phalangites, exp 3 cost 4694 replenish 0.055 - 0.11  max 1 initial 1 restrict hellenistic_rebels, greeks, egypt, cyrene, taras, antigonid, achaea, boeotia, epirus, pergamon, pontus, sparta, megalopolis, lysiad, seleucid, seleucid_rebels, seleucid_rebels2, ptolemaic, ptolemaic_rebels
+unit merc cilician renowned pirates, exp 2 cost 4725 replenish 0.031 - 0.061 max 1 initial 0
+unit merc cilician cavalry, exp 2 cost 3526 replenish 0.146 - 0.292 max 1 initial 0
+
+pool kilikia_tracheia
+regions Hesperos_Tracheiotis Tracheiotis Anatolike_Tracheiotis
+unit merc cilician brigands, exp 0 cost 3723 replenish 0.138 - 0.277 max 2 initial 1
+unit merc cilician thureophoroi, exp 2 cost 4215 replenish 0.031 - 0.061 max 1 initial 0
+unit merc cilician archers, exp 0 cost 3405 replenish 0.151 - 0.303 max 2 initial 1
+unit merc thracian peltasts, exp 0 cost 3156 replenish 0.065 - 0.131 max 1 initial 1
+
+pool knossos_merc_center
+regions Minoa
+unit merc aitolian thureophoroi, exp 1 cost 4041 replenish 0.127 - 0.255 max 1 initial 1 restrict knossos
+unit merc aitolian slingers, exp 1 cost 3479 replenish 0.148 - 0.296 max 1 initial 1 restrict knossos
+
+pool korakesion_merc_center
+regions Hesperos_Tracheiotis
+unit merc cretan archers, exp 3 cost 3767 replenish 0.137 - 0.274 max 2 initial 1 restrict cilicians
+
+pool kush
+regions Medwi Pedeme Napa Sirtibis Notia_Meroitis Aborepi Notia_Euonymitaia Euonymitaia
+unit merc nubian spearmen, exp 0 cost 3376 replenish 0.153 - 0.305 max 2 initial 1
+unit merc nubian cavalry, exp 0 cost 3418 replenish 0.098 - 0.196 max 1 initial 1
+
+pool kydonia_merc_center
+regions Kydoniatis
+unit merc mysian cavalry, exp 4 cost 4716 replenish 0.109 - 0.218 max 1 initial 1 restrict kydonia
+
+pool kyrene_merc_center
+regions Kyrenaike
+unit merc greek thorakitai, exp 3 cost 4864 replenish 0.029 - 0.057 max 1 initial 0 restrict cyrene
+unit merc cretan archers, exp 3 cost 3767 replenish 0.171 - 0.342 max 2 initial 1 restrict cyrene
+
+pool laconia
+regions Lakonia Messenia Kythera Lakonikos_Kolpos
+unit merc spartan euzonoi, exp 0 cost 3848 replenish 0.067 - 0.134 max 1 initial 0
+unit merc perioikoi hoplites, exp 2 cost 4293 replenish 0.12  - 0.24  max 2 initial 1
+unit merc peloponnesian hoplites, exp 2 cost 4755 replenish 0.043 - 0.087 max 1 initial 0
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.11  - 0.22  max 1 initial 0
+unit merc xystophoroi, exp 2 cost 3935 replenish 0.131 - 0.262 max 1 initial 1
+
+pool lissos_merc_center
+regions Illyria
+unit merc scordiscian infantry, exp 3 cost 4242 replenish 0.121 - 0.243 max 2 initial 1 restrict illyrian_kingdom, ardiaei, labeatae
+
+pool lycaonia_isauria
+regions Lykaonia Isauria Anatolike_Phrygia
+unit merc isaurian marauders, exp 0 cost 3764 replenish 0.164 - 0.329 max 2 initial 2
+
+pool lycia
+regions Kibyratis Phaselia Arinna Tlawa Tsenmure Telmessis Lykia
+unit merc lycian infantry, exp 0 cost 3951 replenish 0.13  - 0.261 max 2 initial 1
+unit merc lycian drepanophoroi, exp 0 cost 3753 replenish 0.137 - 0.275 max 2 initial 1
+unit merc lycian marines, exp 0 cost 4015 replenish 0.128 - 0.257 max 2 initial 1
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.08  - 0.16  max 1 initial 0
+unit merc lycian archers, exp 0 cost 3251 replenish 0.158 - 0.317 max 2 initial 1
+
+pool lydia
+regions Lydia Pelopeia Euantheia
+unit merc karian heavy infantry, exp 2 cost 4679 replenish 0.066 - 0.132 max 1 initial 1
+unit merc agrianian infantry, exp 2 cost 3579 replenish 0.086 - 0.173 max 1 initial 0
+unit merc lydian akontistai, exp 0 cost 3310 replenish 0.156 - 0.311 max 2 initial 1
+unit merc rhodian slingers, exp 2 cost 3502 replenish 0.088 - 0.177 max 1 initial 1
+unit merc lydian hippakontistai, exp 1 cost 3281 replenish 0.157 - 0.314 max 2 initial 1
+
+pool lyktos_merc_center
+regions Lyttos
+unit merc illyrian spearmen, exp 4 cost 6388 replenish 0.081 - 0.161 max 1 initial 0 restrict lyttos
+unit merc achaian slingers, exp 1 cost 3511 replenish 0.147 - 0.293 max 2 initial 0 restrict lyttos
+unit merc achaian peltast, exp 1 cost 3361 replenish 0.153 - 0.307 max 2 initial 1 restrict lyttos
+unit merc illyrian cavalry, exp 1 cost 3030 replenish 0.17  - 0.34  max 2 initial 1 restrict lyttos
+
+pool macedon
+regions Emathia Mygdonia Chalkidike Orestis-Elimeia Lynkestis-Eordaia Notia_Bottiaia Bottiaia Sithonia Elimeia
+unit merc macedonian hoplites, exp 0 cost 3850 replenish 0.167 - 0.335 max 2 initial 1
+unit merc phalangites, exp 3 cost 4694 replenish 0.103 - 0.206 max 2 initial 1 restrict hellenistic_rebels, greeks, egypt, cyrene, taras, antigonid, achaea, boeotia, epirus, pergamon, pontus, sparta, megalopolis, lysiad, seleucid, seleucid_rebels, seleucid_rebels2, ptolemaic, ptolemaic_rebels
+unit merc thracian infantry, exp 2 cost 4122 replenish 0.078 - 0.156 max 1 initial 0
+unit merc agrianian infantry, exp 2 cost 3579 replenish 0.09  - 0.18  max 2 initial 0
+unit merc trallian infantry, exp 3 cost 4868 replenish 0.066 - 0.132 max 1 initial 0
+unit merc thracian peltasts reform, exp 2 cost 3506 replenish 0.138 - 0.276 max 2 initial 1
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.092 - 0.184 max 1 initial 1
+unit merc paionian cavalry, exp 2 cost 3699 replenish 0.104 - 0.209 max 1 initial 0
+unit merc thracian noble cavalry, exp 3 cost 5092 replenish 0.063 - 0.126 max 1 initial 0
+
+pool magna_graecia
+regions Parthenope Taras Metapontion Rhegion Lokroi_Epizephyrioi Thourioi
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.133 - 0.265 max 2 initial 1
+unit merc greek peltasts, exp 0 cost 3303 replenish 0.156 - 0.312 max 2 initial 1
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.147 - 0.294 max 2 initial 1
+
+pool mazaka_merc_center
+regions Kappadokia
+unit merc galatian warbands, exp 1 cost 3620 replenish 0.142 - 0.285 max 2 initial 1 restrict cappadocia
+unit merc xystophoroi, exp 3 cost 4198 replenish 0.123 - 0.245 max 1 initial 1 restrict cappadocia
+
+pool mesopotamia
+regions Arbelitis Assyria Ninawa Kharranu Anthemousia Mesos_Tigris Anatolike_Osrhoene Tingene Apolloniatis-Mesopotamia Upija Maskas Eremikos_Euphrates Artakene Chaldaia Orchoe Charakene Babylonia Sittakene Nippour Barsip Boreia_Sittakene Hesperos_Sittakene Elymais Sousiane Kossaia
+unit merc persian sparabara, exp 0 cost 3980 replenish 0.129 - 0.259 max 2 initial 1
+unit merc persian takabara, exp 0 cost 3883 replenish 0.133 - 0.265 max 2 initial 1
+unit merc babylonian horse archers, exp 3 cost 5962 replenish 0.086 - 0.173 max 1 initial 1
+unit merc persian noble cavalry, exp 3 cost 6102 replenish 0.084 - 0.169 max 1 initial 1
+unit merc indian elephants, exp 3 cost 3757 replenish 0.137 - 0.274 max 1 initial 1
+
+pool nabataea
+regions Hesperos_Arabia Ailanitos_Kolpos Raqemo Banizomeneia Skenitaia Madabitis
+unit merc arabian archers, exp 2 cost 3402 replenish 0.076 - 0.151 max 1 initial 1
+
+pool naupaktos_merc_center
+regions Ozolia_Lokris
+unit merc dardanian spearmen, exp 1 cost 4474 replenish 0.115 - 0.23  max 1 initial 1 restrict aetolia
+unit merc thracian infantry, exp 3 cost 4396 replenish 0.117 - 0.234 max 1 initial 1 restrict aetolia
+unit merc cretan archers, exp 3 cost 3767 replenish 0.137 - 0.274 max 1 initial 1 restrict aetolia
+unit merc thracian skirmisher cavalry, exp 1 cost 3087 replenish 0.167 - 0.334 max 1 initial 0 restrict aetolia
+unit merc tarentine cavalry, exp 2 cost 3738 replenish 0.138 - 0.276 max 1 initial 1 restrict aetolia
+
+pool nikaia_merc_center
+regions Notia_Bithynia
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.131 - 0.262 max 2 initial 1 restrict bithynia
+unit merc dacian horse archers, exp 3 cost 5210 replenish 0.099 - 0.198 max 1 initial 1 restrict bithynia
+
+pool nomadic_steppes
+regions Melanchlainia Sirakene Aorsia Pandaia Ano_Aorsia Olondaia Isondaia Rhoxolania Sauromataia Gelonia Boudinia-Gelonia Iazygia Basilike_Sauromataia Nomadike_Skythia Borysthenes Hesperos_Georgike_Skythia Alazonia Kallippidia-Alazonia Hylaia Gerrhoia Basilike_Skythia Oudaia Neuria Agathyrsia Androphagia Iaxamataia Megale_Chersonesos Taurike Maiotis Aspourgiania Kriou_Metopon Anatolike_Chersonesos
+unit merc scythian archers, exp 2 cost 3510 replenish 0.147 - 0.294 max 2 initial 1
+unit merc scythian noble archers, exp 3 cost 5908 replenish 0.087 - 0.174 max 1 initial 1
+unit merc sarmatian horse archers, exp 1 cost 4559 replenish 0.113 - 0.226 max 2 initial 1
+unit merc scythian horse archers, exp 1 cost 4608 replenish 0.112 - 0.224 max 2 initial 1
+unit merc alanic horse archers, exp 2 cost 5192 replenish 0.099 - 0.198 max 2 initial 1
+unit merc scythian royal cavalry, exp 3 cost 5045 replenish 0.102 - 0.204 max 1 initial 1
+unit merc scythian heavy cavalry, exp 3 cost 6477 replenish 0.08  - 0.159 max 1 initial 1
+
+pool nordic
+regions Daucionia Chaedinia Favonaea-Firaesia
+unit merc freemen, exp 0 cost 3870 replenish 0.06  - 0.12  max 1 initial 0
+unit merc freemen cavalry, exp 2 cost 3974 replenish 0.058 - 0.117 max 1 initial 0
+
+pool north_illyria
+regions Iapodia Sinus_Liburnicus Apsorus Liburnia_Septentrionalis Liburnia_Orientalis Liburnia
+unit merc northern illyrian spearmen, exp 0 cost 4131 replenish 0.125 - 0.249 max 2 initial 1
+unit merc pannonian warband, exp 0 cost 4460 replenish 0.116 - 0.231 max 2 initial 1
+unit merc liburnian pirates, exp 0 cost 4231 replenish 0.122 - 0.244 max 2 initial 1
+unit merc iapodian swordsmen, exp 2 cost 4752 replenish 0.081 - 0.163 max 2 initial 0
+unit merc pannonian cavalry, exp 0 cost 2716 replenish 0.095 - 0.19  max 1 initial 0
+
+pool odysseus_islands
+regions Leukas Kephallenia Zakynthos
+unit merc southern illyrian spearmen, exp 0 cost 4178 replenish 0.043 - 0.086 max 1 initial 0
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.047 - 0.093 max 1 initial 0
+unit merc peloponnesian hoplites, exp 2 cost 4755 replenish 0.038 - 0.076 max 1 initial 0
+unit merc aitolian peltasts, exp 0 cost 3376 replenish 0.053 - 0.107 max 1 initial 0
+unit merc aitolian slingers, exp 0 cost 3262 replenish 0.079 - 0.158 max 1 initial 1
+unit merc thracian peltasts, exp 0 cost 3156 replenish 0.082 - 0.163 max 1 initial 1
+unit merc rhodian slingers, exp 2 cost 3502 replenish 0.074 - 0.147 max 1 initial 0
+
+pool olbia_merc_center
+regions Olbiana
+unit merc athenian hoplites, exp 1 cost 4144 replenish 0.124 - 0.249 max 2 initial 1 restrict olbia
+
+pool paionia
+regions Paionia Maidia Denthelentike Sintike-Odomantike Erigonia Axios Dardania Naissitania Dyestesia
+unit merc dardanian spearmen, exp 0 cost 4194 replenish 0.111 - 0.221 max 2 initial 1
+unit merc autariatai swordsmen, exp 0 cost 4123 replenish 0.05  - 0.1   max 2 initial 1
+unit merc agrianian infantry, exp 2 cost 3579 replenish 0.144 - 0.288 max 2 initial 2
+unit merc dardanian light cavalry, exp 0 cost 2716 replenish 0.142 - 0.285 max 1 initial 0
+unit merc paionian cavalry, exp 2 cost 3699 replenish 0.139 - 0.279 max 2 initial 1
+
+pool palestine
+regions Ioudaia Gazaia Ake Paralia Shamerayin Idoumaia Ashqalon Ashdud Boreia_Palaistine GaulanitisB
+unit merc judaean spearmen, exp 0 cost 4082 replenish 0.189 - 0.379 max 2 initial 1
+
+pool pamphylia
+regions Pamphylia Hesperos_Pamphylia Estwediys
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.128 - 0.257 max 2 initial 1
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.133 - 0.265 max 2 initial 1
+unit merc phalangites, exp 3 cost 4694 replenish 0.11  - 0.22  max 2 initial 1 restrict hellenistic_rebels, greeks, egypt, cyrene, taras, antigonid, achaea, boeotia, epirus, pergamon, pontus, sparta, megalopolis, lysiad, seleucid, seleucid_rebels, seleucid_rebels2, ptolemaic, ptolemaic_rebels
+unit merc pisidian javelinmen, exp 0 cost 3329 replenish 0.116 - 0.232 max 1 initial 1
+unit merc pamphylian heavy javelinmen, exp 2 cost 3594 replenish 0.143 - 0.287 max 1 initial 1
+unit merc thureophoroi cavalry, exp 1 cost 3461 replenish 0.052 - 0.104 max 1 initial 0
+unit merc xystophoroi, exp 2 cost 3935 replenish 0.131 - 0.262 max 1 initial 1
+
+pool pannonia
+regions Autariataia Azalia Andizetia-Azalia Breucia Savia Daesitiatia Maezaeia Skordiskia Sirmia Boreia_Skordiskia Hesperos_Skordiskia
+unit merc bellovacian infantry, exp 0 cost 3829 replenish 0.135 - 0.269 max 2 initial 1
+unit merc autariatai swordsmen, exp 0 cost 4123 replenish 0.062 - 0.125 max 2 initial 1
+unit merc scordiscian infantry, exp 2 cost 3977 replenish 0.13  - 0.259 max 2 initial 1
+unit merc autariatai nobles, exp 3 cost 5198 replenish 0.05  - 0.099 max 1 initial 0
+unit merc celtic skirmishers, exp 0 cost 3021 replenish 0.171 - 0.341 max 2 initial 1
+unit merc pannonian cavalry, exp 0 cost 2716 replenish 0.19  - 0.379 max 2 initial 2
+unit merc gallic light cavalry, exp 1 cost 3294 replenish 0.156 - 0.313 max 1 initial 1
+unit merc treverian noble cavalry, exp 2 cost 3522 replenish 0.11  - 0.219 max 1 initial 0
+
+pool pantikapaion_merc_center
+regions Kimmerikos_Bosporos
+unit merc scythian axemen, exp 1 cost 4020 replenish 0.083 - 0.167 max 2 initial 1 restrict bosporan
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.085 - 0.17  max 2 initial 1 restrict bosporan
+unit merc peloponnesian hoplites, exp 3 cost 5072 replenish 0.066 - 0.132 max 1 initial 0 restrict bosporan
+unit merc arcadian peltast, exp 1 cost 3479 replenish 0.096 - 0.193 max 1 initial 1 restrict bosporan
+unit merc thracian peltasts, exp 1 cost 3367 replenish 0.099 - 0.199 max 2 initial 1 restrict bosporan
+unit merc scythian noble archers, exp 4 cost 6301 replenish 0.053 - 0.106 max 1 initial 1 restrict bosporan
+unit merc paphlagonian light cavalry, exp 1 cost 3249 replenish 0.103 - 0.206 max 1 initial 1 restrict bosporan
+unit merc sarmatian horse archers, exp 2 cost 4863 replenish 0.069 - 0.138 max 2 initial 1 restrict bosporan
+unit merc scythian royal cavalry, exp 4 cost 5381 replenish 0.062 - 0.124 max 1 initial 1 restrict bosporan
+
+pool paphlagonia_interior
+regions Paphlagonia Kimiatene
+unit merc paphlagonian light infantry, exp 0 cost 4077 replenish 0.126 - 0.253 max 2 initial 1
+unit merc paphlagonian javelinmen, exp 0 cost 3239 replenish 0.159 - 0.318 max 2 initial 2
+unit merc mariandynian javelinmen, exp 0 cost 3239 replenish 0.119 - 0.239 max 1 initial 0
+unit merc paphlagonian light cavalry, exp 0 cost 3046 replenish 0.127 - 0.254 max 1 initial 0
+
+pool paphlagonia_main
+regions Sinopeia Salone Saramene Amastris Kaukonia Gadilonitis Pontos
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.096 - 0.192 max 1 initial 0
+unit merc paphlagonian javelinmen, exp 0 cost 3239 replenish 0.159 - 0.318 max 2 initial 2
+unit merc greek peltasts, exp 0 cost 3303 replenish 0.101 - 0.203 max 1 initial 1
+unit merc sinopian archers, exp 2 cost 3368 replenish 0.099 - 0.199 max 1 initial 0
+unit merc paphlagonian light cavalry, exp 0 cost 3046 replenish 0.127 - 0.254 max 1 initial 1
+unit merc xystophoroi, exp 2 cost 3935 replenish 0.085 - 0.17  max 1 initial 1
+
+pool pella_merc_center
+regions Emathia
+unit merc bastarnian infantry, exp 1 cost 3790 replenish 0.136 - 0.272 max 1 initial 0 restrict antigonid
+unit merc bithynian thureophoroi, exp 1 cost 3885 replenish 0.029 - 0.057 max 1 initial 0 restrict antigonid
+unit merc autariatai swordsmen, exp 1 cost 4398 replenish 0.117 - 0.234 max 1 initial 0 restrict antigonid
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.131 - 0.262 max 1 initial 1 restrict antigonid
+unit merc penestae axemen, exp 1 cost 4560 replenish 0.113 - 0.226 max 1 initial 0 restrict antigonid
+unit merc southern illyrian spearmen, exp 1 cost 4457 replenish 0.116 - 0.231 max 1 initial 0 restrict antigonid
+unit merc illyrian spearmen, exp 4 cost 6388 replenish 0.081 - 0.161 max 1 initial 0 restrict antigonid
+unit merc galatian skirmishers, exp 1 cost 3223 replenish 0.16  - 0.32  max 1 initial 1 restrict antigonid
+unit merc mysian javelineers, exp 1 cost 3180 replenish 0.162 - 0.324 max 1 initial 0 restrict antigonid
+unit merc rhodian slingers, exp 3 cost 3735 replenish 0.138 - 0.276 max 1 initial 0 restrict antigonid
+unit merc cretan archers, exp 3 cost 3767 replenish 0.137 - 0.274 max 1 initial 0 restrict antigonid
+unit merc illyrian cavalry, exp 1 cost 3030 replenish 0.17  - 0.34  max 1 initial 0 restrict antigonid
+unit merc treverian noble cavalry, exp 3 cost 3757 replenish 0.137 - 0.274 max 1 initial 0 restrict antigonid
+unit merc thessalian lancers, exp 4 cost 4699 replenish 0.11  - 0.219 max 1 initial 1 restrict antigonid
+
+pool pergamon_merc_center
+regions Kaikia
+unit merc karian light infantry, exp 1 cost 4116 replenish 0.125 - 0.25  max 1 initial 0 restrict pergamon
+unit merc southern illyrian axemen, exp 1 cost 4614 replenish 0.112 - 0.223 max 1 initial 1 restrict pergamon
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.131 - 0.262 max 1 initial 0 restrict pergamon
+unit merc thracian infantry, exp 3 cost 4396 replenish 0.117 - 0.234 max 1 initial 0 restrict pergamon
+unit merc masdyenian infantry, exp 3 cost 4668 replenish 0.11  - 0.221 max 1 initial 0 restrict pergamon
+unit merc trallian infantry, exp 4 cost 5193 replenish 0.099 - 0.198 max 1 initial 1 restrict pergamon
+unit merc pisidian javelinmen, exp 1 cost 3551 replenish 0.145 - 0.29  max 1 initial 0 restrict pergamon
+unit merc achaian peltast, exp 1 cost 3361 replenish 0.153 - 0.307 max 1 initial 0 restrict pergamon
+unit merc rhodian slingers, exp 3 cost 3735 replenish 0.138 - 0.276 max 1 initial 1 restrict pergamon
+unit merc cretan archers, exp 3 cost 3767 replenish 0.137 - 0.274 max 1 initial 0 restrict pergamon
+unit merc galatian noble cavalry, exp 4 cost 4887 replenish 0.105 - 0.211 max 1 initial 0 restrict pergamon
+unit merc knossian hippeis late, exp 4 cost 4864 replenish 0.029 - 0.057 max 1 initial 0 restrict pergamon
+unit merc gortynian hippeis late, exp 4 cost 4864 replenish 0.029 - 0.057 max 1 initial 0 restrict pergamon
+
+pool persia
+regions Media Eoritia Gedrosia Arachosia Rhagiane Persia Paraitakene Choarene Pasargadaia Sigrianike Hyrkania Boreia_Hyrkania Parthia Karmania Margiane Ariane Anaouon Hesperos_Ariane Komisene Apauarktikene Sagartia Anariakaia Ouxiana Kyrtia
+unit merc persian sparabara, exp 0 cost 3980 replenish 0.129 - 0.259 max 2 initial 1
+unit merc persian takabara, exp 0 cost 3883 replenish 0.133 - 0.265 max 2 initial 1
+unit merc median spearmen, exp 0 cost 3951 replenish 0.13  - 0.261 max 2 initial 1
+unit merc sogdian mounted javelineers, exp 0 cost 3794 replenish 0.136 - 0.272 max 2 initial 1
+unit merc arian spearmen archers, exp 2 cost 3636 replenish 0.142 - 0.283 max 1 initial 1
+unit merc hyrkanian foot archers, exp 2 cost 3348 replenish 0.154 - 0.308 max 1 initial 1
+unit merc hyrkanian horsemen, exp 0 cost 3741 replenish 0.138 - 0.275 max 2 initial 1
+unit merc mardian horse archers, exp 1 cost 4490 replenish 0.115 - 0.229 max 2 initial 1
+unit merc persian noble cavalry, exp 3 cost 6102 replenish 0.084 - 0.169 max 1 initial 1
+unit merc indian elephants, exp 3 cost 3757 replenish 0.137 - 0.274 max 1 initial 1
+unit merc palmyran cataphracts, exp 3 cost 5296 replenish 0.097 - 0.195 max 1 initial 1
+
+pool peucini
+regions Carpiania_Meridionalis Carsia Arpia Tyragetia Coisstobocia Carpiania Carpiania_Occidentalis
+unit merc freemen, exp 0 cost 3870 replenish 0.067 - 0.133 max 1 initial 0
+unit merc freemen cavalry, exp 2 cost 3974 replenish 0.065 - 0.13  max 1 initial 0
+
+pool phoenicia
+regions Zidun Arwad Zur Gebal Beruta Arka
+unit merc pisidian javelinmen, exp 0 cost 3329 replenish 0.116 - 0.232 max 2 initial 1
+unit merc perrhaibian cavalry, exp 1 cost 3480 replenish 0.059 - 0.118 max 1 initial 1
+
+pool phrygia
+regions Dorylaia Pessinountis Megale_Phrygia Synnadia Aizanitis
+unit merc phrygian spearmen, exp 0 cost 3352 replenish 0.154 - 0.307 max 2 initial 2
+unit merc phalangites, exp 3 cost 4694 replenish 0.11  - 0.22  max 1 initial 1 restrict hellenistic_rebels, greeks, egypt, cyrene, taras, antigonid, achaea, boeotia, epirus, pergamon, pontus, sparta, megalopolis, lysiad, seleucid, seleucid_rebels, seleucid_rebels2, ptolemaic, ptolemaic_rebels
+unit merc phrygian javelinmen, exp 0 cost 3239 replenish 0.159 - 0.318 max 2 initial 1
+unit merc phrygian slingers, exp 0 cost 3093 replenish 0.167 - 0.333 max 2 initial 1
+unit merc phrygian cavalry, exp 1 cost 3024 replenish 0.128 - 0.256 max 1 initial 1
+unit merc xystophoroi, exp 2 cost 3935 replenish 0.065 - 0.131 max 1 initial 0
+
+pool pisidia
+regions Etennia-Kotennia Pisidia Paroreia_Phrygia Milyas Eurymedoneia Petnelissos Paroreia_Pisidia
+unit merc pisidian thureophoroi, exp 0 cost 3780 replenish 0.03  - 0.06  max 1 initial 0
+unit merc galatian swordsmen, exp 0 cost 3688 replenish 0.14  - 0.279 max 2 initial 1
+unit merc etennian hoplites, exp 0 cost 4061 replenish 0.051 - 0.101 max 1 initial 1
+unit merc pisidian javelinmen, exp 0 cost 3329 replenish 0.155 - 0.31  max 2 initial 1
+
+pool pontos
+regions Hellenike_Makronia Hellenike_Mossynoikia Themiskyra_Pedion Hellenike_Tibarenia Makronia Drilaia Mossynoikia Tibarenia Chaldaia-Pontos Hieratikos_Pontos Zelitis Phanaroia
+unit merc cappadocian light infantry, exp 0 cost 4077 replenish 0.126 - 0.253 max 2 initial 1
+unit merc athenian hoplites, exp 0 cost 3885 replenish 0.053 - 0.106 max 1 initial 1
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.051 - 0.103 max 1 initial 0
+unit merc cappadocian archers, exp 0 cost 3178 replenish 0.162 - 0.324 max 2 initial 2
+unit merc greek peltasts, exp 0 cost 3303 replenish 0.117 - 0.234 max 1 initial 0
+unit merc cappadocian skirmisher cavalry, exp 0 cost 2850 replenish 0.181 - 0.362 max 2 initial 1
+unit merc thureophoroi cavalry, exp 1 cost 3461 replenish 0.06  - 0.119 max 1 initial 0
+
+pool przeworsk
+regions Buria Manimia-Haria Helisia Naharvalia Didunia Sibinia Haria Helveconia-Helisia Burgundia Varinia Sidonia_Occidentalis Bastarnia_Vetus Sciria Sidonia_Vetus
+unit merc freemen, exp 0 cost 3870 replenish 0.087 - 0.173 max 1 initial 0
+unit merc harian night fighters, exp 3 cost 3463 replenish 0.097 - 0.193 max 2 initial 1
+unit merc freemen cavalry, exp 2 cost 3974 replenish 0.084 - 0.169 max 1 initial 0
+
+pool przeworsk_expeditionary_zone
+regions Albocensia Dacia Predavensia Teuriscia Napocaea Ansamenia Biephia Avarinia Ambronia Anartia_Septentrionalis Eraviscia Tauriscia Pelsia_Meridionalis Pelsia_Occidentalis Tauriscia_Orientalis Coisstobocia_Transmontana Anartophractia Biessia Eraviscia_Ultima Anartia Eraviscia_Orientalis Azalia Andizetia-Azalia Breucia Skordiskia Sirmia Boreia_Skordiskia Hesperos_Skordiskia Agathyrsia
+unit merc freemen, exp 0 cost 3870 replenish 0.253 - 0.506 max 1 initial 1
+
+pool rhodes_merc_center
+regions Rhodos
+unit merc karian light infantry, exp 1 cost 4116 replenish 0.125 - 0.25  max 2 initial 0 restrict rhodes
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.131 - 0.262 max 2 initial 1 restrict rhodes
+unit merc lycian marines, exp 1 cost 4283 replenish 0.12  - 0.241 max 2 initial 0 restrict rhodes
+unit merc achaian thureophoroi, exp 1 cost 4284 replenish 0.029 - 0.058 max 1 initial 0 restrict rhodes
+unit merc rhodian hoplites, exp 2 cost 4293 replenish 0.12  - 0.24  max 2 initial 0
+unit merc rhodian slingers, exp 2 cost 3502 replenish 0.147 - 0.294 max 2 initial 0
+unit merc cretan archers, exp 3 cost 3767 replenish 0.137 - 0.274 max 1 initial 0 restrict rhodes
+
+pool rhodope
+regions Eumolpia Brenaia Bessike Diotike Koilaletia Paionia Maidia Denthelentike Sintike-Odomantike Edonis Hebros Hellenike_Bistonia Briantike-Korpilike Datos
+unit merc dii swordsmen, exp 2 cost 4817 replenish 0.107 - 0.214 max 2 initial 0
+unit merc trallian infantry, exp 3 cost 4868 replenish 0.106 - 0.212 max 2 initial 1
+
+pool sabaean_africa
+regions Deire Sabaike_Aithiopia Oponis Aualitaia Aromaton_Akroterion
+unit merc nubian spearmen, exp 0 cost 3376 replenish 0.114 - 0.229 max 1 initial 1
+unit merc arabian archers, exp 2 cost 3402 replenish 0.151 - 0.303 max 2 initial 0
+
+pool sardinia_corsica
+regions Kyrnos Corsica Karaly Olbiana-Sardinia Qart-Khadasht_biShardana Balaria Iliensia Sulky
+unit merc sardinian archers, exp 2 cost 2468 replenish 0.209 - 0.418 max 1 initial 1
+
+
+
+pool sardis_merc_center
+regions Lydia
+unit merc greek hoplites, exp 1 cost 4144 replenish 0.093 - 0.186 max 2 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc thureophoroi, exp 1 cost 4284 replenish 0.09  - 0.18  max 2 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc karian light infantry, exp 1 cost 4116 replenish 0.075 - 0.15  max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc mysian javelineers, exp 1 cost 3180 replenish 0.081 - 0.162 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc pisidian javelinmen, exp 1 cost 3551 replenish 0.073 - 0.145 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc cretan slingers, exp 1 cost 3701 replenish 0.07  - 0.139 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc mysian archers, exp 1 cost 3316 replenish 0.078 - 0.155 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc pamphylian heavy javelinmen, exp 3 cost 3833 replenish 0.067 - 0.134 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc cretan archers, exp 3 cost 3767 replenish 0.068 - 0.137 max 1 initial 0 restrict seleucid, seleucid_rebels, seleucid_rebels2
+
+pool seleucia_merc_center
+regions Mesopotamia
+unit merc cilician pirates, exp 1 cost 4372 replenish 0.118 - 0.236 max 2 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc galatian swordsmen, exp 1 cost 3934 replenish 0.098 - 0.196 max 2 initial 0 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc thracian infantry, exp 3 cost 4396 replenish 0.088 - 0.176 max 2 initial 0 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc galatian thorakitai, exp 4 cost 5475 replenish 0.071 - 0.141 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc agrianian archers, exp 3 cost 3730 replenish 0.138 - 0.276 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc sardinian archers, exp 3 cost 2632 replenish 0.196 - 0.391 max 1 initial 1 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc indian elephants, exp 4 cost 4008 replenish 0.084 - 0.167 max 1 initial 0 restrict seleucid, seleucid_rebels, seleucid_rebels2
+unit merc galatian noble cavalry, exp 4 cost 4887 replenish 0.079 - 0.158 max 1 initial 0 restrict seleucid, seleucid_rebels, seleucid_rebels2
+
+pool seleukis
+regions Kyrrhestike Apamene Pieria-Syria Leuke_Akte Khalab Syria
+unit merc euzonoi, exp 0 cost 4008 replenish 0.096 - 0.193 max 1 initial 0
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.064 - 0.128 max 1 initial 0
+unit merc galatian swordsmen, exp 0 cost 3688 replenish 0.105 - 0.21  max 2 initial 1
+unit merc phalangites, exp 3 cost 4694 replenish 0.11  - 0.22  max 2 initial 2 restrict hellenistic_rebels, greeks, egypt, cyrene, taras, antigonid, achaea, boeotia, epirus, pergamon, pontus, sparta, megalopolis, lysiad, seleucid, seleucid_rebels, seleucid_rebels2, ptolemaic, ptolemaic_rebels
+unit merc karian heavy infantry, exp 2 cost 4679 replenish 0.041 - 0.083 max 1 initial 1
+unit merc agrianian archers, exp 2 cost 3497 replenish 0.046 - 0.092 max 1 initial 1
+unit merc thureophoroi cavalry, exp 1 cost 3461 replenish 0.047 - 0.093 max 1 initial 0
+
+pool sicily
+regions Mamertina Epikrateia Ziz Xouthia Sikelia Hipparia Tyndaritis Anatolike_Sikelia Elymia Sikania
+unit merc sicel thureophoroi, exp 0 cost 4069 replenish 0.127 - 0.253 max 2 initial 1
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.133 - 0.265 max 2 initial 1
+unit merc sicel peltophoroi, exp 0 cost 3117 replenish 0.165 - 0.331 max 2 initial 2
+unit merc cretan archers, exp 2 cost 3532 replenish 0.073 - 0.146 max 2 initial 1
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.147 - 0.294 max 2 initial 1
+
+pool sidon_merc_center
+regions Zidun
+unit merc lycian infantry, exp 1 cost 4215 replenish 0.092 - 0.183 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc lycian marines, exp 1 cost 4283 replenish 0.09  - 0.18  max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc etennian hoplites, exp 1 cost 4332 replenish 0.089 - 0.178 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc cilician spearmen, exp 1 cost 3995 replenish 0.097 - 0.193 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc pamphylian slingers, exp 1 cost 3695 replenish 0.105 - 0.209 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc pisidian javelinmen, exp 1 cost 3551 replenish 0.109 - 0.218 max 1 initial 0 restrict ptolemaic, ptolemaic_rebels
+unit merc pamphylian heavy javelinmen, exp 3 cost 3833 replenish 0.101 - 0.202 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+unit merc cappadocian cavalry, exp 2 cost 4003 replenish 0.097 - 0.193 max 1 initial 1 restrict ptolemaic, ptolemaic_rebels
+
+pool sinope_merc_center
+regions Sinopeia
+unit merc thracian infantry, exp 3 cost 4396 replenish 0.117 - 0.234 max 2 initial 1 restrict sinope
+
+pool south_illyria
+regions Labeataia Ardiaia Boreios_Labeataia Epidauria Dassaretia Parthinia Byllionia-Amantia Taulantia Penestia Kaouia Gylakeia Epidamnia Illyria
+unit merc thureophoroi, exp 0 cost 4016 replenish 0.064 - 0.128 max 2 initial 0
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.08  - 0.159 max 2 initial 1
+unit merc illyrian spearmen, exp 3 cost 5989 replenish 0.077 - 0.155 max 1 initial 0
+unit merc greek peltasts, exp 0 cost 3303 replenish 0.094 - 0.187 max 2 initial 1
+unit merc illyrian cavalry, exp 0 cost 2840 replenish 0.181 - 0.363 max 2 initial 1
+
+pool stratonikeia_merc_center
+regions Idrias
+unit merc achaian hoplites, exp 3 cost 4370 replenish 0.118 - 0.236 max 2 initial 1 restrict chrysaoria
+unit merc cretan archers, exp 3 cost 3767 replenish 0.137 - 0.274 max 1 initial 1 restrict chrysaoria
+
+pool syracuse_merc_center
+regions Trinakria
+unit merc scordiscian infantry, exp 3 cost 4242 replenish 0.121 - 0.243 max 1 initial 1 restrict syracuse
+unit merc peloponnesian hoplites, exp 3 cost 5072 replenish 0.102 - 0.203 max 1 initial 1 restrict syracuse
+unit merc thracian peltasts, exp 1 cost 3367 replenish 0.153 - 0.306 max 1 initial 1 restrict syracuse
+unit merc cretan archers, exp 3 cost 3767 replenish 0.137 - 0.274 max 1 initial 1 restrict syracuse
+unit merc scythian horse archers, exp 2 cost 4915 replenish 0.105 - 0.21  max 1 initial 0 restrict syracuse
+
+pool syria
+regions Abilene Aouranitis Massyas_Pedion Massyas Zabadaia Emesene Palmyrene Anatolike_Chalybonitis Hesperos_Osrhoene Rhambaia Osrhoene Mygdonia-Syria
+unit merc greek hoplites, exp 0 cost 3885 replenish 0.099 - 0.199 max 1 initial 1
+unit merc arabian archers, exp 2 cost 3402 replenish 0.083 - 0.167 max 1 initial 1
+unit merc syrian archers, exp 2 cost 3359 replenish 0.153 - 0.307 max 2 initial 2
+
+pool tarim_basin
+regions Kasiane Achasa Chaurania Ottorochora Gusan Agni Tsendzot Kamuk Bariy
+unit merc saka horse archers, exp 1 cost 4774 replenish 0.108 - 0.216 max 2 initial 1
+unit merc roxolanian lancers, exp 2 cost 5719 replenish 0.09  - 0.18  max 1 initial 1
+unit merc kushan cataphracts, exp 3 cost 6106 replenish 0.084 - 0.169 max 1 initial 1
+
+pool terra_incognita
+regions Terra_Incognita Eremos
+unit merc nubian spearmen, exp 0 cost 3376 replenish 0.153 - 0.305 max 2 initial 1
+unit merc nubian cavalry, exp 0 cost 3418 replenish 0.151 - 0.301 max 2 initial 1
+
+pool thessaly
+regions Thessalia Magnesia Malis-Ainis Thessaliotis Pelasgiotis Histiaiotis Perrhaibia
+unit merc phalangites, exp 3 cost 4694 replenish 0.055 - 0.11  max 1 initial 0 restrict hellenistic_rebels, greeks, egypt, cyrene, taras, antigonid, achaea, boeotia, epirus, pergamon, pontus, sparta, megalopolis, lysiad, seleucid, seleucid_rebels, seleucid_rebels2, ptolemaic, ptolemaic_rebels
+unit merc thessalian peltast, exp 0 cost 3240 replenish 0.159 - 0.318 max 2 initial 1
+unit merc perrhaibian cavalry, exp 1 cost 3480 replenish 0.111 - 0.222 max 2 initial 2
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.073 - 0.147 max 1 initial 1
+unit merc thessalian lancers, exp 3 cost 4405 replenish 0.088 - 0.175 max 2 initial 1
+
+pool thrace
+regions Eumolpia Brenaia Bessike Diotike Koilaletia Paionia Maidia Denthelentike Sintike-Odomantike Erigonia Axios Kabylia Aigyssia Trogodytaia Halmyris Antheia Odessia Mesambria Thynia Kallatia Tomea Terizia Carpiania_Meridionalis Carsia Arpia Tyragetia Coisstobocia Carpiania Carpiania_Occidentalis Sargetiaea Buridavensia_Orientalis Buridavensia Albocensia Dacia Caucoensia_Septentrionalis Britolagia Predavensia Teuriscia Sensia Napocaea Cotensia Piephigia Ansamenia Biephia_Orientalis Albocensia_Orientalis Cotensia_Septentrionalis Biephia Hesperos_Getaia Tyle Ratiariai Triballia Getaia Skaia Krobyzia Treria-Tilataia Astia Pyrogeria Kyrmianaia-Nipsaia Odrysia Edonis Hebros Hellenike_Bistonia Briantike-Korpilike Datos Bosporos Kardia Thraikie_Propontis Bisanthike Samothrake Thasos Kainia
+unit merc bellovacian infantry, exp 0 cost 3829 replenish 0.151 - 0.303 max 2 initial 1
+unit merc thracian infantry, exp 2 cost 4122 replenish 0.141 - 0.281 max 1 initial 0
+unit merc celtic skirmishers, exp 0 cost 3021 replenish 0.128 - 0.256 max 2 initial 1
+unit merc thracian peltasts, exp 0 cost 3156 replenish 0.245 - 0.49  max 2 initial 1
+unit merc thracian skirmisher cavalry, exp 0 cost 2894 replenish 0.267 - 0.534 max 2 initial 1
+unit merc gallic light cavalry, exp 1 cost 3294 replenish 0.098 - 0.196 max 1 initial 0
+
+pool troad_mysia
+regions Arktonnesos Propontis Troias Mysia Kianos_Kolpos Chalkedonia Pityoussa Ano_Troias Kaikia
+unit merc galatian warbands, exp 0 cost 3394 replenish 0.114 - 0.228 max 1 initial 1
+unit merc karian light infantry, exp 0 cost 3858 replenish 0.053 - 0.107 max 1 initial 0
+unit merc mysian javelineers, exp 0 cost 2981 replenish 0.173 - 0.346 max 2 initial 1
+unit merc mysian archers, exp 0 cost 3109 replenish 0.124 - 0.249 max 1 initial 1
+unit merc thracian peltasts, exp 0 cost 3156 replenish 0.082 - 0.163 max 1 initial 0
+unit merc rhodian slingers, exp 2 cost 3502 replenish 0.051 - 0.103 max 1 initial 0
+unit merc tarentine cavalry, exp 1 cost 3505 replenish 0.147 - 0.294 max 2 initial 2
+unit merc mysian cavalry, exp 3 cost 4421 replenish 0.058 - 0.117 max 1 initial 1
+unit merc thracian noble cavalry, exp 3 cost 5092 replenish 0.051 - 0.101 max 1 initial 0
+
+pool venetia
+regions Venetia Venetia_Orientalis Venetia_Transplaviana Histria_Septentrionalis Histria
+unit merc histri swordsmen, exp 2 cost 4579 replenish 0.113 - 0.225 max 2 initial 1
+
+pool western_balkans
+regions Eraviscia Tauriscia Tauriscia_Meridionalis Pelsia_Meridionalis Pelsia_Occidentalis Tauriscia_Occidentalis Tauriscia_Orientalis Latobicia
+unit merc celtic spearmen, exp 0 cost 3394 replenish 0.152 - 0.304 max 2 initial 1
+unit merc celtic swordsmen, exp 0 cost 3688 replenish 0.14  - 0.279 max 2 initial 1
+unit merc bellovacian infantry, exp 0 cost 3829 replenish 0.135 - 0.269 max 2 initial 1
+unit merc scordiscian infantry, exp 2 cost 3977 replenish 0.13  - 0.259 max 2 initial 1
+unit merc galatian naked spearmen, exp 3 cost 5184 replenish 0.099 - 0.199 max 1 initial 1
+unit merc celtic skirmishers, exp 0 cost 3021 replenish 0.171 - 0.341 max 2 initial 1
+unit merc gallic light cavalry, exp 1 cost 3294 replenish 0.156 - 0.313 max 2 initial 1
+unit merc treverian noble cavalry, exp 2 cost 3522 replenish 0.146 - 0.293 max 1 initial 1

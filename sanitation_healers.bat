@@ -1,0 +1,2 @@
+python sanitation_healers.py descr_strat.txt
+pause

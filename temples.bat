@@ -1,0 +1,2 @@
+python temples.py
+pause

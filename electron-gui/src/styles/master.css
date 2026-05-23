@@ -1,0 +1,718 @@
+/* ── Master tab ──────────────────────────────────────────────────────── */
+
+#tab-master .pipeline-layout {
+  display: flex;
+  height: 100%;
+}
+
+.master-tree-section {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.master-summary-section {
+  border-top: 1px solid var(--border-subtle, #2c2c2e);
+  padding: 8px 14px;
+}
+
+.master-summary {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-tertiary, #8e8e93);
+}
+
+.master-status {
+  font-size: 11px;
+  color: var(--text-tertiary, #8e8e93);
+  padding-right: 8px;
+}
+
+/* Tree containers */
+.master-tree {
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+.mt-group {
+  margin-bottom: 4px;
+}
+
+.mt-group-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.mt-group-header:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.mt-chevron {
+  display: inline-block;
+  width: 10px;
+  font-size: 9px;
+  text-align: center;
+  color: var(--text-tertiary, #8e8e93);
+  transition: transform 120ms ease;
+}
+.mt-group.expanded > .mt-group-header .mt-chevron {
+  transform: rotate(90deg);
+}
+
+.mt-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mt-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-primary, #f5f5f7);
+}
+
+.mt-count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary, #8e8e93);
+  flex-shrink: 0;
+}
+
+.mt-children {
+  display: none;
+  padding-left: 18px;
+}
+.mt-group.expanded > .mt-children {
+  display: block;
+}
+
+/* Chain row */
+.mt-chain {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  margin: 1px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.mt-chain:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.mt-chain-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-primary, #f5f5f7);
+}
+
+/* Level row (deepest) */
+.mt-level {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px 2px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.mt-level:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.mt-level-name {
+  flex: 1;
+  font-size: 11.5px;
+  color: var(--text-secondary, #aeaeb2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mt-level-min {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary, #8e8e93);
+  flex-shrink: 0;
+}
+
+/* Native checkboxes restyled to feel native */
+.mt-check {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--border, #444);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  background: transparent;
+}
+.mt-check:checked {
+  background: var(--accent, #0a84ff);
+  border-color: var(--accent, #0a84ff);
+}
+.mt-check:checked::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  width: 3px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+.mt-check.indeterminate {
+  background: var(--accent, #0a84ff);
+  border-color: var(--accent, #0a84ff);
+}
+.mt-check.indeterminate::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  width: 7px;
+  height: 1.5px;
+  background: white;
+}
+
+/* Stats / drop badges on tree rows */
+.mt-stat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary, #8e8e93);
+  flex-shrink: 0;
+  letter-spacing: 0.2px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.mt-drop {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #ff453a;
+  flex-shrink: 0;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: rgba(255, 69, 58, 0.12);
+}
+.mt-drop.zero { display: none; }
+
+/* When a row is "blocked" (allowed=false) dim its name */
+.mt-chain.blocked .mt-chain-name,
+.mt-level.blocked .mt-level-name {
+  color: var(--text-tertiary, #8e8e93);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Preset dropdown */
+.master-preset {
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+/* Empty state */
+.master-empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-tertiary, #8e8e93);
+}
+.master-empty-icon {
+  font-size: 28px;
+  opacity: 0.4;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+.master-empty-text {
+  font-size: 12px;
+  color: var(--text-secondary, #aeaeb2);
+  margin-bottom: 4px;
+}
+.master-empty-sub {
+  font-size: 11px;
+}
+
+/* Summary section: structured rows */
+.master-summary-section {
+  border-top: 1px solid var(--border-subtle, #2c2c2e);
+  padding: 10px 14px;
+}
+.master-summary-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 2px 0;
+}
+.master-summary-label {
+  font-size: 10px;
+  color: var(--text-tertiary, #8e8e93);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.master-summary-value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary, #aeaeb2);
+}
+.master-summary-value.drop { color: #ff453a; }
+
+/* Main pane wrappers */
+.master-pane {
+  display: none;
+  flex: 1;
+  overflow: auto;
+  flex-direction: column;
+  min-height: 0;
+}
+.master-pane.active { display: flex; }
+
+#master-pane-steps {
+  padding: 16px 20px;
+  gap: 14px;
+}
+#master-pane-output {
+  padding: 12px 16px;
+  background: var(--bg-content, #1e1e1e);
+}
+#master-pane-output pre {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: var(--text-secondary, #aeaeb2);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Progress bar (overall) */
+.master-progress-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.master-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.master-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent, #0a84ff), var(--accent-hover, #409cff));
+  border-radius: 2px;
+  transition: width 240ms ease;
+}
+
+/* Per-step cards (mirror pipeline tab) */
+.master-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.master-step-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--bg-elevated, #2a2a2c);
+  border: 1px solid var(--border-subtle, #2c2c2e);
+  transition: border-color 200ms ease, background 200ms ease;
+}
+.master-step-card.running {
+  border-color: var(--accent, #0a84ff);
+  background: rgba(10, 132, 255, 0.06);
+}
+.master-step-card.done {
+  border-color: rgba(48, 209, 88, 0.3);
+}
+.master-step-card.error {
+  border-color: rgba(255, 69, 58, 0.4);
+  background: rgba(255, 69, 58, 0.04);
+}
+.master-step-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-content, #1e1e1e);
+  font-size: 10px;
+  color: var(--text-tertiary, #8e8e93);
+  flex-shrink: 0;
+}
+.master-step-card.running .master-step-icon {
+  color: var(--accent, #0a84ff);
+  animation: master-spin 1s linear infinite;
+}
+.master-step-card.done .master-step-icon {
+  background: rgba(48, 209, 88, 0.15);
+  color: #30d158;
+}
+.master-step-card.error .master-step-icon {
+  background: rgba(255, 69, 58, 0.15);
+  color: #ff453a;
+}
+@keyframes master-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.master-step-name {
+  flex: 1;
+  font-size: 12px;
+  color: var(--text-primary, #f5f5f7);
+}
+.master-step-detail {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-tertiary, #8e8e93);
+}
+
+/* Result cards (after run) */
+.master-result-row {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.master-result-card {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--bg-elevated, #2a2a2c);
+  border: 1px solid var(--border-subtle, #2c2c2e);
+}
+.master-result-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary, #8e8e93);
+  margin-bottom: 4px;
+}
+.master-result-value {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary, #f5f5f7);
+}
+.master-result-value.drop { color: #ff453a; }
+
+/* Drop detail (per-chain breakdown after run) */
+.master-drop-detail {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+.master-drop-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-top: 2px;
+}
+.master-drop-detail-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+.master-drop-detail-name {
+  font-size: 11.5px;
+  color: var(--text-secondary, #aeaeb2);
+}
+.master-drop-detail-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #ff453a;
+}
+
+/* Animations on toggle */
+.mt-check {
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.mt-chain, .mt-level, .mt-group-header {
+  transition: background 100ms ease;
+}
+
+/* ── Icon-grid layout (replaces tree by default) ─────────────────────── */
+
+.mg-section {
+  margin: 6px 0 12px;
+}
+.mg-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.mg-section-header:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+}
+.mg-section-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.mg-section-name {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary, #aeaeb2);
+  flex: 1;
+}
+.mg-section-count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary, #8e8e93);
+}
+.mg-section-toggle {
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary, #8e8e93);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.mg-section-toggle:hover {
+  color: var(--text-primary, #f5f5f7);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mg-grid {
+  display: grid;
+  /* At least 3 columns; min(33.333% - 6px, 110px) chooses the smaller of
+     "1/3 of the row" or 110px, so narrow sidebars still fit 3-up while wider
+     sidebars cap tile width and add columns. */
+  grid-template-columns: repeat(auto-fill, minmax(min(calc((100% - 12px) / 3), 110px), 1fr));
+  gap: 6px;
+  padding: 4px 8px 8px;
+}
+
+.mg-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 4px 8px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  background: var(--bg-elevated, #2a2a2c);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 100ms ease, border-color 120ms ease, background 120ms ease, opacity 150ms ease;
+  overflow: hidden;
+}
+.mg-tile:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+.mg-tile.allowed {
+  border-color: rgba(48, 209, 88, 0.35);
+  background: rgba(48, 209, 88, 0.04);
+}
+.mg-tile.blocked {
+  opacity: 0.45;
+  filter: grayscale(0.95);
+}
+.mg-tile.blocked:hover {
+  opacity: 0.7;
+}
+
+.mg-tile-icon {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--bg-content, #1e1e1e);
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.mg-tile-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+}
+.mg-tile-icon.placeholder {
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  color: var(--text-tertiary, #8e8e93);
+  font-size: 18px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.mg-tile-name {
+  font-size: 10px;
+  color: var(--text-secondary, #aeaeb2);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1.2;
+}
+.mg-tile.allowed .mg-tile-name {
+  color: var(--text-primary, #f5f5f7);
+}
+
+/* Per-tile stat badges, tucked into corners */
+.mg-tile-usage {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--text-secondary, #aeaeb2);
+  pointer-events: none;
+}
+.mg-tile-usage.zero { display: none; }
+
+.mg-tile-drop {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(255, 69, 58, 0.85);
+  color: white;
+  pointer-events: none;
+}
+.mg-tile-drop.zero { display: none; }
+
+/* Hide old tree CSS when grid is in use; tree may still be used as fallback */
+.master-tree.grid-mode { padding-bottom: 16px; }
+
+/* ── List view (compact rows) ───────────────────────────────────────── */
+
+.ml-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 12px;
+  transition: background 100ms ease;
+}
+.ml-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.ml-row.blocked .ml-name {
+  color: var(--text-tertiary, #8e8e93);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(255, 255, 255, 0.15);
+}
+.ml-check {
+  /* same look as .mt-check */
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--border, #444);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  background: transparent;
+}
+.ml-check:checked {
+  background: var(--accent, #0a84ff);
+  border-color: var(--accent, #0a84ff);
+}
+.ml-check:checked::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  width: 3px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+.ml-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ml-name {
+  flex: 1;
+  color: var(--text-primary, #f5f5f7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ml-stat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary, #8e8e93);
+  flex-shrink: 0;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.ml-drop {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #ff453a;
+  flex-shrink: 0;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: rgba(255, 69, 58, 0.12);
+}
+.ml-drop.zero { display: none; }
+
+/* View toggle (segmented control already styled) — just spacing */
+.master-view-toggle {
+  margin-left: 8px;
+}
+
+/* Collapsible sections (used by both grid and list views) */
+.mg-section.collapsed > .ml-section-body,
+.mg-section.collapsed > .mg-grid {
+  display: none;
+}
+.mg-section-chevron {
+  display: inline-block;
+  width: 12px;
+  text-align: center;
+  font-size: 9px;
+  color: var(--text-tertiary, #8e8e93);
+  transition: transform 120ms ease;
+  transform: rotate(90deg);
+  flex-shrink: 0;
+}
+.mg-section.collapsed > .mg-section-header .mg-section-chevron {
+  transform: rotate(0deg);
+}

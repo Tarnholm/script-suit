@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple's Settlement Processor Suite</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/pipeline.css">
+  <link rel="stylesheet" href="styles/editor.css">
+  <link rel="stylesheet" href="styles/compare.css">
+  <link rel="stylesheet" href="styles/master.css">
+</head>
+<body>
+  <!-- macOS-style Titlebar -->
+  <header id="titlebar">
+    <div class="titlebar-drag"></div>
+    <div class="titlebar-center">
+      <!-- Segmented Control -->
+      <div class="segmented-control">
+        <button class="segment active" data-tab="pipeline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Pipeline
+        </button>
+        <button class="segment" data-tab="editor">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Editor
+        </button>
+        <button class="segment" data-tab="compare">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+          Compare
+        </button>
+        <button class="segment" data-tab="master">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Master
+        </button>
+      </div>
+    </div>
+    <div class="titlebar-right">
+      <span id="project-path" class="path-badge"></span>
+    </div>
+  </header>
+
+  <!-- Tab Panels -->
+  <main id="content">
+
+    <!-- PIPELINE TAB -->
+    <section id="tab-pipeline" class="tab-panel active">
+      <div class="pipeline-layout">
+        <!-- Sidebar -->
+        <div class="mac-sidebar" id="pipeline-sidebar">
+          <!-- Mod Source -->
+          <div class="sidebar-header">
+            <span class="sidebar-title">Source</span>
+          </div>
+          <div class="sidebar-section mod-source-section">
+            <button id="btn-choose-mod" class="mod-source-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span id="mod-source-label">Select mod folder...</span>
+            </button>
+            <div id="campaign-row" class="campaign-row" style="display:none">
+              <select id="campaign-select" class="mac-select campaign-select"></select>
+              <button id="btn-load-files" class="toolbar-btn primary small">Import</button>
+            </div>
+            <div id="import-status" class="import-status"></div>
+          </div>
+
+          <!-- Steps -->
+          <div class="sidebar-header">
+            <span class="sidebar-title">Steps</span>
+            <div class="sidebar-header-actions">
+              <button class="sidebar-link-btn" id="btn-select-all" title="Select all">All</button>
+              <button class="sidebar-link-btn" id="btn-select-none" title="Deselect all">None</button>
+            </div>
+          </div>
+          <div class="sidebar-section" id="pipeline-steps"></div>
+        </div>
+
+        <!-- Main area -->
+        <div class="pipeline-main">
+          <!-- Toolbar -->
+          <div class="mac-toolbar">
+            <div class="toolbar-group">
+              <button id="btn-run-all" class="toolbar-btn primary">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Run All
+              </button>
+              <button id="btn-run-selected" class="toolbar-btn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Run Selected
+              </button>
+              <button id="btn-save-to-mod" class="toolbar-btn" disabled>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Save to Mod
+              </button>
+            </div>
+            <div class="toolbar-spacer"></div>
+            <div class="toolbar-group">
+              <!-- Console sub-segments -->
+              <div class="segmented-control small">
+                <button class="segment active" data-console="output">Output</button>
+                <button class="segment" data-console="changelog">Changelog</button>
+              </div>
+              <button id="btn-clear-console" class="toolbar-btn ghost">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Console panels -->
+          <div id="console-output" class="console-panel active">
+            <pre id="console-text"></pre>
+          </div>
+          <div id="console-changelog" class="console-panel">
+            <pre id="changelog-text"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONFIG EDITOR TAB -->
+    <section id="tab-editor" class="tab-panel">
+      <div class="editor-layout">
+        <!-- Sidebar -->
+        <div class="mac-sidebar editor-sidebar">
+          <div class="sidebar-header">
+            <span class="sidebar-title">Scripts</span>
+          </div>
+          <div class="sidebar-section">
+            <div id="script-file-list" class="source-list"></div>
+          </div>
+
+          <div class="sidebar-header">
+            <span class="sidebar-title">Config Files</span>
+          </div>
+          <div class="sidebar-section">
+            <div id="config-file-list" class="source-list"></div>
+          </div>
+
+          <div class="sidebar-header">
+            <span class="sidebar-title">Buildings</span>
+          </div>
+          <div class="sidebar-section">
+            <div class="search-field-wrap">
+              <svg class="search-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="building-search" class="search-field" placeholder="Filter">
+            </div>
+            <div id="building-tree" class="source-list building-tree"></div>
+          </div>
+
+          <div class="sidebar-header">
+            <span class="sidebar-title">Rule Profiles</span>
+          </div>
+          <div class="sidebar-section">
+            <div class="profile-controls">
+              <input type="text" id="profile-name-input" class="search-field" placeholder="Profile name">
+              <button id="btn-save-profile" class="toolbar-btn small primary">Save</button>
+            </div>
+            <div id="profile-list" class="source-list"></div>
+          </div>
+        </div>
+
+        <!-- Editor main -->
+        <div class="editor-main">
+          <div class="mac-toolbar">
+            <span id="editor-filename" class="editor-filename">No file open</span>
+            <div class="toolbar-spacer"></div>
+            <div class="toolbar-group">
+              <div class="segmented-control small" id="editor-mode-toggle" style="display:none">
+                <button class="segment active" data-mode="simple">Simple</button>
+                <button class="segment" data-mode="code">Code</button>
+              </div>
+            </div>
+            <div class="toolbar-group">
+              <button id="btn-save-file" class="toolbar-btn primary small" disabled>Save</button>
+              <button id="btn-save-as" class="toolbar-btn small" disabled>Save As</button>
+              <button id="btn-revert" class="toolbar-btn ghost small" disabled>Revert</button>
+            </div>
+          </div>
+          <div id="simple-editor" class="simple-editor"></div>
+          <div id="monaco-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MASTER TAB -->
+    <section id="tab-master" class="tab-panel">
+      <div class="pipeline-layout">
+        <!-- Sidebar: per-building allowlist -->
+        <div class="mac-sidebar" id="master-sidebar">
+          <div class="sidebar-header">
+            <span class="sidebar-title">Allowlist</span>
+            <div class="sidebar-header-actions">
+              <div class="segmented-control small master-view-toggle" id="master-view-toggle">
+                <button class="segment active" data-view="grid" title="Grid view">▦</button>
+                <button class="segment" data-view="list" title="List view">≡</button>
+              </div>
+              <button class="sidebar-link-btn" id="btn-master-all" title="Allow all">All</button>
+              <button class="sidebar-link-btn" id="btn-master-none" title="Allow none">None</button>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <select id="master-preset" class="mac-select master-preset">
+              <option value="">— Presets —</option>
+              <option value="all">Allow everything</option>
+              <option value="none">Block everything</option>
+              <option value="no_military">Disable military</option>
+              <option value="no_health">Disable health/sanitation</option>
+              <option value="economy_only">Economy only (drop temples + military)</option>
+              <option value="essentials_only">Essentials only (governance + roads)</option>
+            </select>
+            <div class="search-field-wrap">
+              <svg class="search-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="master-search" class="search-field" placeholder="Filter buildings...">
+            </div>
+          </div>
+
+          <div class="sidebar-section master-tree-section">
+            <div id="master-tree" class="master-tree">
+              <div class="master-empty">
+                <div class="master-empty-icon">⌬</div>
+                <div class="master-empty-text">Loading building data...</div>
+                <div class="master-empty-sub">Make sure a mod is imported first.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-section master-summary-section">
+            <div class="master-summary-row">
+              <span class="master-summary-label">Allowed</span>
+              <span id="master-summary-allowed" class="master-summary-value">— / —</span>
+            </div>
+            <div class="master-summary-row" id="master-summary-drop-row" style="display:none">
+              <span class="master-summary-label">Will drop</span>
+              <span id="master-summary-drop" class="master-summary-value drop">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-main">
+          <div class="mac-toolbar">
+            <div class="toolbar-group">
+              <button id="btn-run-master" class="toolbar-btn primary">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Run Master
+              </button>
+              <button id="btn-master-save-mod" class="toolbar-btn" disabled>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Save to Mod
+              </button>
+            </div>
+            <div class="toolbar-spacer"></div>
+            <div class="toolbar-group">
+              <div class="segmented-control small" id="master-pane-toggle">
+                <button class="segment active" data-pane="steps">Steps</button>
+                <button class="segment" data-pane="output">Output</button>
+              </div>
+              <button id="btn-master-clear" class="toolbar-btn ghost" title="Clear">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Pane: per-step progress cards -->
+          <div class="master-pane active" id="master-pane-steps">
+            <div class="master-progress-bar-wrap">
+              <div class="master-progress-bar"><div id="master-progress-fill" class="master-progress-fill"></div></div>
+              <span id="master-status" class="master-status">Ready</span>
+            </div>
+            <div id="master-step-list" class="master-step-list"></div>
+            <div class="master-result-row" id="master-result-row" style="display:none">
+              <div class="master-result-card">
+                <div class="master-result-label">Buildings kept</div>
+                <div class="master-result-value" id="master-result-kept">—</div>
+              </div>
+              <div class="master-result-card">
+                <div class="master-result-label">Buildings dropped</div>
+                <div class="master-result-value drop" id="master-result-dropped">—</div>
+              </div>
+            </div>
+            <div id="master-drop-detail" class="master-drop-detail"></div>
+          </div>
+
+          <!-- Pane: raw stdout -->
+          <div class="master-pane" id="master-pane-output">
+            <pre id="master-console"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARE TAB -->
+    <section id="tab-compare" class="tab-panel">
+      <div class="compare-layout">
+        <!-- Config bar -->
+        <div class="compare-config">
+          <div class="compare-header">
+            <h3>Compare Rule Changes</h3>
+            <p>Run the pipeline with two different script profiles and compare building assignments.</p>
+          </div>
+          <div class="compare-row">
+            <div class="compare-selector">
+              <label>Profile A</label>
+              <select id="compare-profile-a" class="mac-select">
+                <option value="__current__">Current Config</option>
+              </select>
+            </div>
+            <span class="compare-vs">vs</span>
+            <div class="compare-selector">
+              <label>Profile B</label>
+              <select id="compare-profile-b" class="mac-select">
+                <option value="__current__">Current Config</option>
+              </select>
+            </div>
+            <button id="btn-run-compare" class="toolbar-btn primary">Run Comparison</button>
+          </div>
+          <div class="compare-steps">
+            <div id="compare-step-checks" class="chip-row"></div>
+          </div>
+          <div id="compare-status" class="compare-status"></div>
+        </div>
+
+        <!-- Results -->
+        <div class="compare-results" id="compare-results">
+          <div class="compare-empty">
+            <p>Run a comparison to see results here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Submod Dialog Overlay -->
+  <div id="submod-overlay" class="dialog-overlay">
+    <div class="dialog-panel">
+      <div class="dialog-header">
+        <h3>Missing Files — Submod?</h3>
+        <p>Some files weren't found in the selected mod. If this is a submod, select the parent mod or base game to fill in the missing files.</p>
+      </div>
+
+      <div class="dialog-body">
+        <div class="dialog-section-label">Missing files:</div>
+        <div id="submod-missing-list" class="submod-file-list"></div>
+
+        <div class="dialog-section-label" style="margin-top:12px">Parent mod / base game:</div>
+        <div class="submod-parent-row">
+          <button id="btn-submod-browse" class="toolbar-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            Browse...
+          </button>
+          <span id="submod-parent-info" class="submod-parent-name"></span>
+        </div>
+
+        <div id="submod-status" class="submod-status"></div>
+      </div>
+
+      <div class="dialog-footer">
+        <button id="btn-submod-skip" class="toolbar-btn">Skip</button>
+        <button id="btn-submod-fill" class="toolbar-btn primary" disabled>Import Missing Files</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="tga.js"></script>
+  <script src="updater-ui.js"></script>
+  <script src="renderer.js" type="module"></script>
+</body>
+</html>

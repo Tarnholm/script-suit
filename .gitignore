@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.bak.*
+
+# Node / Electron
+node_modules/
+electron-gui/node_modules/
+
+# Build output (electron-builder writes to ../dist relative to electron-gui = suite/dist)
+dist/
+
+# Generated pipeline output
+processed_output/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Local tooling
+.claude/settings.local.json
+electron-gui/.gui_prefs.json

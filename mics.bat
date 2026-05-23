@@ -1,0 +1,2 @@
+python mics.py
+pause

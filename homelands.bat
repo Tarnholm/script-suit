@@ -1,0 +1,2 @@
+python homelands.py
+pause

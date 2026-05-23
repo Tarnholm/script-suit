@@ -1,0 +1,293 @@
+/* ══════════════════════════════════════
+   Compare Tab — macOS style
+   ══════════════════════════════════════ */
+
+.compare-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--bg-content);
+}
+
+/* ── Config Panel ── */
+
+.compare-config {
+  padding: 16px 20px;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.compare-header h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.compare-header p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.compare-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.compare-selector {
+  flex: 1;
+}
+
+.compare-selector label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
+}
+
+.compare-vs {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  padding-bottom: 7px;
+}
+
+.compare-steps {
+  margin-bottom: 4px;
+}
+
+.compare-steps > label {
+  display: none; /* chips are self-explanatory */
+}
+
+/* ── Chip Row ── */
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 100px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.12s ease;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-inset);
+  color: var(--text-secondary);
+}
+
+.chip:hover {
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+.chip.checked {
+  background: rgba(10, 132, 255, 0.18);
+  border-color: rgba(10, 132, 255, 0.35);
+  color: var(--text-accent);
+}
+
+.chip input[type="checkbox"] {
+  display: none;
+}
+
+.chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.compare-status {
+  font-size: 12px;
+  color: var(--text-secondary);
+  min-height: 18px;
+  margin-top: 6px;
+}
+
+/* ── Results ── */
+
+.compare-results {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 20px;
+}
+
+.compare-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-tertiary);
+  font-size: 13px;
+}
+
+/* ══════════════════════════════════════
+   Diff View — macOS style
+   ══════════════════════════════════════ */
+
+.diff-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Summary Cards ── */
+
+.diff-summary {
+  display: flex;
+  gap: 8px;
+}
+
+.diff-stat {
+  flex: 1;
+  text-align: center;
+  padding: 14px 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.diff-stat .stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  font-feature-settings: 'tnum';
+  letter-spacing: -0.5px;
+}
+
+.diff-stat .stat-label {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.diff-stat.added .stat-value { color: var(--green); }
+.diff-stat.removed .stat-value { color: var(--red); }
+.diff-stat.changed .stat-value { color: var(--orange); }
+.diff-stat.same .stat-value { color: var(--text-tertiary); }
+
+/* ── Diff Section (collapsible) ── */
+
+.diff-step-section {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.diff-step-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.1s;
+}
+
+.diff-step-header:hover {
+  background: var(--bg-hover);
+}
+
+.diff-step-name {
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.diff-step-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.diff-step-badge.identical {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-tertiary);
+}
+
+.diff-step-badge.different {
+  background: rgba(255, 159, 10, 0.15);
+  color: var(--orange);
+}
+
+.diff-step-body {
+  display: none;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.diff-step-body.open {
+  display: block;
+}
+
+/* ── Side by Side Panes ── */
+
+.diff-side-by-side {
+  display: flex;
+}
+
+.diff-pane {
+  flex: 1;
+  overflow: auto;
+  max-height: 480px;
+}
+
+.diff-pane + .diff-pane {
+  border-left: 1px solid var(--border-subtle);
+}
+
+.diff-pane-header {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-inset);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.diff-pane pre {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.55;
+  padding: 8px 12px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.diff-line-added {
+  background: rgba(50, 215, 75, 0.08);
+  color: var(--green);
+}
+
+.diff-line-removed {
+  background: rgba(255, 69, 58, 0.08);
+  color: var(--red);
+}
+
+.diff-line-changed {
+  background: rgba(255, 159, 10, 0.06);
+  color: var(--orange);
+}

@@ -1,0 +1,403 @@
+achaea
+hold_regions Aigion Megalopolis Corinth Argos Elis Sparta Orchomenos Thermon Chalkis Ambrakia Athens Larissa
+take_regions 12
+
+aedui
+hold_regions Cabillonum Vesontio Agedincum Andemantunnum Vienna Nemetum Genava Avaricum Samarobriva Devona
+take_regions 10
+
+aetolia
+hold_regions Thermon Orchomenos Ambrakia Phoinike Apollonia-Epeiros Lissos Argos_Orestikon Pella Larissa Chalkis Athens Corinth Argos Aigion Elis Megalopolis Skodra Amphipolis Thessalonike Bessapara Bylazora
+take_regions 21
+
+allobroges
+hold_regions Vienna Genava Cabillonum Vesontio Nemetum Oscela Taurasia Mediolanum Segustero Massalia
+take_regions 10
+
+anartes
+hold_regions Castrum_Anartorum Eburodunum-Boihaemum Furgisatis Dacidava Asanca Lupfurdum Aquincum Luppia Leucaristus Susudata Noreia Poetovio
+take_regions 12
+
+antigonid
+hold_regions Pella Thessalonike Amphipolis Argos_Orestikon Larissa Thermon Orchomenos Corinth Chalkis Aigion Ambrakia Phoinike Argos Megalopolis Sparta Lissos Bylazora Bessapara Odryssa Lysimachia Byzantium Kios Abydos Naxos Mytilene Halikarnassos Pergamon Sardis Ephesos Nikomedia Brundisium Apollonia-Pontos Antioch Alexandria
+take_regions 33
+
+ardiaei
+hold_regions Rhizon Idassa Epetion-Salona Nesactium Skodra Lissos Delmium Segestica Sirmium Kapedounon Singidunum Naissos Bylazora Apollonia-Epeiros Phoinike Argos_Orestikon Ambrakia Larissa Thermon Amphipolis Thessalonike Pella Orchomenos Chalkis Athens Corinth Aigion Elis Megalopolis Argos Sparta
+take_regions 31
+
+arevaci
+hold_regions Numantia Segeda Pallantia Hermandica Lancia Pompelo Aracillum Atanagrum Arse Castulo Carmo Ebora Oxthraca Toletum
+take_regions 14
+
+armenia
+hold_regions Armavir Karkathiokerta Thospia Nymphaios Kamakh Gazaka Arbela Ekbatana Sareisa Edessa Antiocheia-Mygdonia Kyrrhos Tarsos Arados Antioch Damascus Apameia-Syria Sidon Palmyra
+take_regions 19
+
+arverni
+hold_regions Nemetum Cabillonum Avaricum Vienna Agedincum Andemantunnum Uxellodunum Sotium Genava Tolosa Segustero Massalia
+take_regions 12
+
+athens
+hold_regions Athens Chalkis Orchomenos Corinth Argos Sparta Larissa Amphipolis Thessalonike Pella Ambrakia Phoinike Apollonia-Epeiros Brundisium Naxos Mytilene Rhodes Halikarnassos Pergamon Sardis Ephesos Abydos Lysimachia Byzantium Nikomedia Paphos Salamis Patara Side
+take_regions 29
+
+atropatene
+hold_regions Gazaka Ekbatana Sareisa Arbela Europos-Rhagai Gabai Persepolis Babylon Uruk Seleucia Alexandreia-Charax Alexandreia-Karmania Thospia Arsarata
+take_regions 14
+
+axum
+hold_regions Auxoume Megabaron_Kome Meroe Mikra_Primis Napata Berenike-Deires Tenoupsis Marib Saue Sapphar Sabbata Tamna Sabbatha Ekbatana
+take_regions 14
+
+bactria
+hold_regions Baktra-Zariaspa Baktra_Basileion Marakanda Antiocheia-Margiane Antiocheia-Skythia Hekatompylos Zadrakarta Europos-Rhagai Gabai Trybaktra Parnon_Taphai Massageton_Taphai Chorasmia Ekbatana Persepolis Alexandreia-Prophthasia Alexandreia-Ariane Alexandreia-Karmania Alexandreia-Kaukasia Alexandreia-Arachosia Taxila Sangala Alexandreia-Indos Patala Poura
+take_regions 25
+
+bastarnae
+hold_regions Argidava Piroboridaua Napoca Sarmizegetusa Carsidava Istrie Sarbakon Kallatis Tyras Olbia
+take_regions 10
+
+belgae
+hold_regions Samarobriva Bagacum Durocortorum Menapium Eburonium Sugambrium Treverium Arctaunum Castrum_Cantiacorum Catuvellaunium Camelodunum Durotrigium
+take_regions 12
+
+bessi
+hold_regions Bessapara Philippopolis Serdica Naissos Bylazora Odryssa Ratiaria Helis Tylis Oescus Apollonia-Pontos Pella Thessalonike Amphipolis Lysimachia Byzantium Argidava Istrie Kallatis Sarmizegetusa Piroboridaua Napoca
+take_regions 21
+
+bithynia
+hold_regions Nikomedia Kios Lysimachia Byzantium Abydos Pessinous Ankyra Gangra Herakleia-Pontos Sinope Amaseia Amisos Taouion Komana-Pontos Pergamon Sardis Ephesos Apameia-Kelainai Odryssa Apollonia-Pontos Philippopolis
+take_regions 21
+
+boeotia
+hold_regions Orchomenos Chalkis Athens Corinth Aigion Megalopolis Argos Sparta Thermon Larissa Ambrakia Phoinike Argos_Orestikon Mytilene Pergamon Pella
+take_regions 16
+
+boii
+hold_regions Eburodunum-Boihaemum Furgisatis Devona Cabillonum Vesontio Asanca Lupfurdum Rucinatium Leucaristus Menosgada
+take_regions 10
+
+bosporan
+hold_regions Pantikapaion Phanagoreia Azara Chersonesos Skythike_Neapolis Dioskourias Seraka Tanais
+take_regions 8
+
+brigantes
+hold_regions Oppidum_Brigantum Castrum_Caledoniorum Otadinium Ratostabius Castrum_Ordovicum Oppidum_Dumnoniorum Magnata Castrum_Cantiacorum Catuvellaunium Vorgium Durotrigium Camelodunum Eblana Ivernis
+take_regions 14
+
+byzantium
+hold_regions Byzantium Nikomedia Lysimachia Odryssa Apollonia-Pontos Tylis Kallatis Istrie Helis Tyras Abydos Pergamon Thessalonike Amphipolis Pella Athens Sparta Naxos Ephesos Halikarnassos Pessinous Mazaka Rhodes Trapezous Rome
+take_regions 25
+
+caledonii
+hold_regions Castrum_Caledoniorum Oppidum_Brigantum Otadinium Ratostabius Castrum_Ordovicum Oppidum_Dumnoniorum Magnata Castrum_Cantiacorum Catuvellaunium Vorgium Durotrigium Camelodunum Eblana Ivernis
+take_regions 14
+
+cantabri
+hold_regions Aracillum Bracarium Lancia Pallantia Pompelo Hermandica Segeda Numantia Portus_Artabrorum Sotium
+take_regions 10
+
+cantiaci
+hold_regions Castrum_Cantiacorum Catuvellaunium Camelodunum Oppidum_Dumnoniorum Durotrigium Magnata Castrum_Ordovicum Ratostabius Vorgium Oppidum_Brigantum Otadinium Castrum_Caledoniorum Eblana Ivernis
+take_regions 14
+
+cappadocia
+hold_regions Mazaka Taouion Komana-Pontos Amaseia Gangra Amisos Sinope Ankyra Pessinous Apameia-Kelainai Sagalassos Ikonion Isaura Tarsos Melita Patara Side Kyrrhos Nymphaios Karkathiokerta Kamakh Armavir Trapezous Salamis
+take_regions 24
+
+carmo
+hold_regions Carmo Gades Basti Castulo Malaca Ebora Hermandica Oxthraca Olisipo Toletum
+take_regions 10
+
+carthage
+hold_regions Carthage Utica Hadrumetum Hippo Leptis Tacape Iol Tingi Vala Tingartia Auzia Cirta Theveste Capsa Tabudium Cidamus Garama Volubilis Siga Lilybaeum Panormos Caralis Uselis Ebusus Aleria Agrigentum Enna Syracuse Messana Malaca Gades Ilici Arse Kesse Emporion Basti Carmo Ebora Oxthraca Olisipo Venicum Narbo Nemausus Massalia Consentia Rhegium Grumentum Ingaunum Stalia Arretium Capua Rome
+take_regions 53
+
+chatti
+hold_regions Luppia Ascalingium Sugambrium Treverium Eburonium Menapium Fabiranum Frisium Arctaunum Bagacum Samarobriva Durocortorum Menosgada Andemantunnum Agedincum Avaricum Suindinum Limonum Uxellodunum Vorgium
+take_regions 20
+
+cherusci
+hold_regions Ascalingium Luppia Sugambrium Treverium Eburonium Frisium Fabiranum Avionium Cimbrium Lupfurdum Furgisatis Marionis Menosgada Scurgum Eburodunum-Boihaemum Leucaristus Susudata Arctaunum
+take_regions 18
+
+cimbri
+hold_regions Eburodunum-Boihaemum Vesontio Vienna Noreia Isarcium-Brixentium Brixia Stalia Mediolanum Segustero Massalia
+take_regions 10
+
+cisalpine_boii
+hold_regions Bononia Mediolanum Brixia Isarcium-Brixentium Stalia Oscela Taurasia Ingaunum Patavium Arretium Iguvium
+take_regions 11
+
+cyrene
+hold_regions Kyrene Berenike-Kyrenaike Paraitonion Alexandria Memphis Pelusion Tanis Hermou_Polis Thebes Elephantine-Syene Myos_Hormos Ptolemais-Hermeiou Philadelpheia Gaza Jerusalem Sidon Tyre Arados Apameia-Syria Damascus Paphos Salamis
+take_regions 22
+
+dardania
+hold_regions Naissos Kapedounon Singidunum Serdica Ratiaria Oescus Bessapara Bylazora Rhizon Skodra Lissos Apollonia-Epeiros Phoinike Ambrakia Argos_Orestikon Larissa Pella Thessalonike Amphipolis Lysimachia Philippopolis Odryssa
+take_regions 22
+
+delmatae
+hold_regions Delmium Idassa Nesactium Epetion-Salona Rhizon Kapedounon Skodra Segestica Noreia Poetovio Sirmium Singidunum Ratiaria Naissos Oescus Serdica Bylazora Lissos Apollonia-Epeiros Patavium
+take_regions 20
+
+dummies
+hold_regions Eddopolis
+take_regions 49
+
+edeta
+hold_regions Arse Atanagrum Kesse Ilici Basti Castulo Carmo Segeda
+take_regions 8
+
+epirus
+hold_regions Phoinike Ambrakia Apollonia-Epeiros Lissos Skodra Naissos Bylazora Bessapara Serdica Argos_Orestikon Thessalonike Pella Amphipolis Lysimachia Philippopolis Odryssa Byzantium Larissa Thermon Orchomenos Athens Corinth Megalopolis Sparta Elis Brundisium Tarentum Grumentum Venusia Bovianum Consentia Rhegium Messana Enna Lilybaeum Panormos Agrigentum Syracuse Capua Iguvium Arretium Corfinium Bononia Rome
+take_regions 48
+
+galatians
+hold_regions Ankyra Sardis Mazaka Taouion Apameia-Kelainai Pergamon Sinope Nikomedia Byzantium Patara
+take_regions 10
+
+gallaeci
+hold_regions Portus_Artabrorum Bracarium Olisipo Ebora Oxthraca Lancia Aracillum Pompelo Sotium
+take_regions 9
+
+garamantes
+hold_regions Garama Cidamus Capsa Theveste Tabudium Cirta Tacape Leptis Augila Berenike-Kyrenaike
+take_regions 10
+
+gauts
+hold_regions Gautum Finnium Aestium Venedium Leucaristus Sarbakon Scurgum Olbia Tyras Istrie Amadoka Piroboridaua Skython_Taphai Carsidava
+take_regions 14
+
+gerrha
+hold_regions Gerrha Kathara Omana Kryptos_Limen Poura Alexandreia-Charax Uruk Babylon Susa Seleucia Persepolis Alexandreia-Karmania
+take_regions 12
+
+getae
+hold_regions Piroboridaua Argidava Castrum_Anartorum Dacidava Carsidava Napoca Sarmizegetusa Bessapara Philippopolis Serdica Singidunum Ratiaria Helis Oescus Odryssa Arcobadara Tylis Kallatis Olbia Istrie Kios Byzantium Apollonia-Pontos Tyras
+take_regions 24
+
+hadhramaut
+hold_regions Sabbatha Tamna Sapphar Saue Marib Karna Iathrippa Egra Omana Kathara Kryptos_Limen Gerrha Mosyllon Alexandreia-Charax
+take_regions 14
+
+helvetii
+hold_regions Devona Genava Vesontio Cabillonum Andemantunnum Isarcium-Brixentium Uxellodunum Oscela Limonum Noreia
+take_regions 10
+
+heraclea_pontica
+hold_regions Herakleia-Pontos Nikomedia Kios Gangra Amaseia Sinope Amisos Ankyra Taouion Komana-Pontos Kamakh Trapezous Dioskourias Sarapana Phanagoreia Azara Pantikapaion Skythike_Neapolis Chersonesos Amadoka Tyras Olbia Istrie Kallatis Apollonia-Pontos Odryssa Byzantium
+take_regions 27
+
+iberians
+hold_regions Harmozike-Seusamora Dioskourias Sarapana Chabala Trapezous Armavir Arsarata Kamakh Thospia
+take_regions 9
+
+ilergetes
+hold_regions Atanagrum Kesse Emporion Pompelo Segeda Numantia Narbo Tolosa
+take_regions 8
+
+illyrian_kingdom
+hold_regions Rhizon Idassa Epetion-Salona Nesactium Skodra Lissos Delmium Segestica Sirmium Kapedounon Singidunum Naissos Bylazora Apollonia-Epeiros Phoinike Argos_Orestikon Ambrakia Larissa Thermon Amphipolis Thessalonike Pella Orchomenos Chalkis Athens Corinth Aigion Elis Megalopolis Argos Sparta
+take_regions 31
+
+ingauni
+hold_regions Ingaunum Stalia Taurasia Arretium Massalia Segustero Emporion Nemausus Narbo Venicum
+take_regions 10
+
+insubres
+hold_regions Mediolanum Brixia Stalia Isarcium-Brixentium Oscela Taurasia Patavium Noreia Bononia Rucinatium
+take_regions 10
+
+iverni
+hold_regions Ivernis Eblana Magnata Castrum_Ordovicum Ratostabius Oppidum_Dumnoniorum Otadinium Vorgium Portus_Artabrorum Castrum_Caledoniorum Lancia Bracarium Aracillum Sotium Pompelo Limonum
+take_regions 16
+
+knossos
+hold_regions Knosos Kydonia Naxos Rhodes Halikarnassos Patara Ephesos Chalkis Athens Corinth Argos Sparta Megalopolis Thessalonike Larissa Lysimachia
+take_regions 16
+
+kush
+hold_regions Meroe Napata Mikra_Primis Tachompso-Pselkis Tenoupsis Megabaron_Kome Elephantine-Syene Thebes
+take_regions 8
+
+liburni
+hold_regions Idassa Nesactium Epetion-Salona Delmium Rhizon Kapedounon Skodra Lissos Apollonia-Epeiros Phoinike Ambrakia Thermon Brundisium Tarentum Venusia Bovianum Corfinium Asculum Iguvium Patavium Bononia Rhegium Consentia
+take_regions 23
+
+lugii
+hold_regions Leucaristus Venedium Aestium Marionis Asanca Castrum_Anartorum Eburodunum-Boihaemum Lupfurdum Dacidava Scurgum Noreia Aquincum Poetovio Segestica Sirmium Singidunum Arcobadara Susudata
+take_regions 18
+
+lusitani
+hold_regions Oxthraca Portus_Artabrorum Bracarium Ebora Olisipo Carmo Gades Basti Castulo Malaca Hermandica Tingi Toletum Volubilis
+take_regions 14
+
+masaesyli
+hold_regions Siga Auzia Iol Vala Tingartia Cirta Volubilis Thugga Hippo Utica Hadrumetum Leptis Tacape Tingi Tabudium Capsa Theveste Cidamus Garama Carthage
+take_regions 20
+
+massalia
+hold_regions Massalia Segustero Ingaunum Stalia Nemausus Narbo Emporion Kesse Arse Venicum Aleria Arretium Ebusus
+take_regions 13
+
+massylii
+hold_regions Cirta Thugga Hippo Utica Hadrumetum Leptis Tacape Siga Capsa Tabudium Theveste Cidamus Garama Volubilis Auzia Iol Vala Tingartia Tingi Carthage
+take_regions 20
+
+mauri
+hold_regions Volubilis Tingartia Tingi Siga Vala Iol Auzia Malaca Gades Carmo
+take_regions 10
+
+megalopolis
+hold_regions Megalopolis Aigion Corinth Argos Elis Sparta Orchomenos Athens Chalkis Thermon Larissa Ambrakia
+take_regions 12
+
+mauryan
+hold_regions Taxila Patala Sangala Poura Alexandreia-Indos Alexandreia-Kaukasia Alexandreia-Arachosia Alexandreia-Karmania Alexandreia-Ariane Alexandreia-Prophthasia Antiocheia-Margiane Baktra_Basileion Baktra-Zariaspa Auxoume
+take_regions 14
+
+musulamii
+hold_regions Theveste Tabudium Capsa Cidamus Garama Vala Iol Auzia Cirta Leptis Hippo Utica Hadrumetum Tacape Tingi Tingartia Siga Thugga Volubilis Carthage
+take_regions 20
+
+nabataea
+hold_regions Petra Bostra Philadelpheia Jerusalem Gaza Sidon Tyre Damascus Palmyra Egra Iathrippa Karna Marib Saue Myos_Hormos Pelusion
+take_regions 16
+
+odrysians
+hold_regions Odryssa Philippopolis Helis Tylis Apollonia-Pontos Argidava Serdica Kallatis Istrie Ratiaria Oescus Naissos Bessapara Bylazora Argos_Orestikon Pella Thessalonike Amphipolis Lysimachia Byzantium Abydos Kios Nikomedia
+take_regions 23
+
+olbia
+hold_regions Olbia Tyras Amadoka Sarbakon Istrie Piroboridaua Kallatis Skythike_Neapolis Chersonesos Pantikapaion Tanais Phanagoreia Azara Dioskourias Abydos Kios Pergamon Herakleia-Pontos Nikomedia Gangra Sinope Amaseia Amisos
+take_regions 23
+
+osismii
+hold_regions Vorgium Suindinum Limonum Oppidum_Dumnoniorum Uxellodunum Avaricum Samarobriva Menapium Sotium Agedincum
+take_regions 10
+
+paeonia
+hold_regions Bylazora Pella Thessalonike Amphipolis Bessapara Serdica Naissos Philippopolis Lysimachia Odryssa Byzantium Abydos Pergamon Lissos Skodra Argos_Orestikon Apollonia-Epeiros Phoinike Ambrakia Larissa Thermon Orchomenos
+take_regions 22
+
+parni
+hold_regions Parnon_Taphai Hekatompylos Nisa Zadrakarta Europos-Rhagai Ekbatana Gabai Gazaka Sareisa Arbela Babylon Susa Uruk Seleucia Antiocheia-Margiane Antiocheia-Mygdonia Doura-Europos Edessa Persepolis Poura Alexandreia-Charax Alexandreia-Karmania Alexandreia-Prophthasia Alexandreia-Ariane Baktra-Zariaspa Alexandreia-Arachosia Armavir Arsarata Thospia Harmozike-Seusamora
+take_regions 30
+
+pergamon
+hold_regions Pergamon Sardis Ephesos Halikarnassos Kios Abydos Herakleia-Pontos Gangra Nikomedia Pessinous Apameia-Kelainai Sagalassos Ankyra Taouion Mazaka Ikonion Isaura Tarsos Patara Side Nymphaios Komana-Pontos Melita Naxos Chalkis
+take_regions 25
+
+pontus
+hold_regions Amaseia Komana-Pontos Gangra Amisos Herakleia-Pontos Nikomedia Kios Taouion Kamakh Trapezous Harmozike-Seusamora Sarapana Dioskourias Phanagoreia Azara Pantikapaion Chersonesos Skythike_Neapolis Pergamon Sardis Ephesos Apameia-Kelainai Pessinous Halikarnassos Patara Sagalassos Side Rhodes Ikonion Isaura Mazaka Ankyra Tarsos Nymphaios Kyrrhos Karkathiokerta Armavir Thospia Sareisa Gazaka Athens Thessalonike Chalkis Orchomenos
+take_regions 43
+
+ptolemaic
+hold_regions Alexandria Memphis Pelusion Tanis Hermou_Polis Thebes Elephantine-Syene Tachompso-Pselkis Ptolemais-Hermeiou Ptolemais-Theron Berenike-Deires Myos_Hormos Mikra_Primis Philadelpheia Gaza Jerusalem Sidon Tyre Paphos Salamis Kydonia Knosos Paraitonion Kyrene Berenike-Kyrenaike Side Halikarnassos Mytilene Patara Rhodes Arados Apameia-Syria Damascus Antioch Kyrrhos Palmyra Edessa Tarsos Isaura Kios Abydos Apollonia-Pontos Kallatis Lysimachia Naxos Ephesos Amphipolis Thessalonike Argos_Orestikon Pella Larissa Athens
+take_regions 53
+
+rhodes
+hold_regions Rhodes Patara Halikarnassos Naxos Kydonia Knosos Side Ephesos Sardis Isaura Tarsos Sagalassos Apameia-Kelainai Pessinous Abydos Argos
+take_regions 16
+
+roman_rebels_1
+hold_regions Tarentum Brundisium Venusia Bovianum Phoinike Lissos Apollonia-Epeiros Skodra Rhizon Epetion-Salona Idassa Delmium Kapedounon Naissos Bylazora Ambrakia Argos_Orestikon Larissa Pella Thessalonike Amphipolis Bessapara Lysimachia Byzantium Odryssa Philippopolis Thermon Orchomenos Chalkis Megalopolis Aigion Elis Corinth Argos Sparta Athens
+take_regions 36
+
+roman_rebels_2
+hold_regions Capua Consentia Grumentum Rhegium Messana Panormos Lilybaeum Agrigentum Enna Syracuse Caralis Uselis Aleria Venicum Ebusus Malaca Carthage Hadrumetum Leptis Hippo Tacape Utica Tingi Iol Volubilis Vala Emporion Kesse Arse Basti Ilici
+take_regions 32
+
+roman_senate
+hold_regions Rome
+take_regions 49
+
+romans_julii
+hold_regions Arretium Iguvium Corfinium Asculum Stalia Ingaunum Taurasia Brixia Mediolanum Bononia Oscela Patavium Isarcium-Brixentium Massalia Segustero Vienna Cabillonum Genava Devona Rucinatium Nemausus Narbo Tolosa Sotium Uxellodunum Limonum Nemetum Avaricum Agedincum Suindinum Andemantunnum Vesontio Menapium Bagacum Eburonium Treverium Durocortorum Samarobriva Vorgium
+take_regions 39
+
+royal_sarmatians
+hold_regions Sauromaton_Taphai Skython_Taphai Skythopolis Seraka Hexapolis Sarbakon Amadoka Argidava Piroboridaua Carsidava Napoca Sarmizegetusa Dacidava Castrum_Anartorum Aquincum Arcobadara Asanca
+take_regions 17
+
+royal_scythians
+hold_regions Skython_Taphai Skythike_Neapolis Sauromaton_Taphai Hexapolis Tanais Amadoka Sarbakon Azara Phanagoreia Dioskourias Sakon_Taphai Tsats Seraka Massageton_Taphai Chorasmia Baktra-Zariaspa Amisos Skythopolis
+take_regions 18
+
+saba
+hold_regions Marib Sapphar Saue Karna Iathrippa Kryptos_Limen Sabbatha Tamna Egra
+take_regions 9
+
+saka
+hold_regions Sakon_Taphai Marakanda Antiocheia-Skythia Chorasmia Trybaktra Tsats Kasia Talats Massageton_Taphai Baktra_Basileion Alexandreia-Prophthasia Alexandreia-Ariane Alexandreia-Kaukasia Alexandreia-Arachosia Alexandreia-Karmania Alexandreia-Indos Taxila Sangala Patala Poura
+take_regions 20
+
+scordisci
+hold_regions Singidunum Sirmium Kapedounon Naissos Delmium Ratiaria Serdica Oescus Segestica Sarmizegetusa
+take_regions 10
+
+seleucid
+hold_regions Seleucia Antioch Apameia-Syria Kyrrhos Arados Damascus Antiocheia-Mygdonia Doura-Europos Edessa Sareisa Babylon Uruk Arbela Susa Ekbatana Gabai Europos-Rhagai Hekatompylos Persepolis Zadrakarta Nisa Antiocheia-Margiane Alexandreia-Karmania Alexandreia-Ariane Alexandreia-Prophthasia Alexandreia-Charax Sardis Ikonion Ephesos Apameia-Kelainai Pessinous Sagalassos Tarsos Side Abydos Lysimachia Amphipolis Thessalonike Pella Bessapara Bylazora Argos_Orestikon Mazaka Ankyra Gangra Kryptos_Limen Gerrha Alexandreia-Arachosia Taxila Poura Paphos Salamis Alexandria Tanis Phoinike Ambrakia Larissa Athens
+take_regions 59
+
+silures
+hold_regions Ratostabius Castrum_Ordovicum Oppidum_Dumnoniorum Vorgium Oppidum_Brigantum Magnata Otadinium Castrum_Caledoniorum Castrum_Cantiacorum Catuvellaunium Camelodunum Durotrigium Eblana Ivernis
+take_regions 14
+
+siraces
+hold_regions Seraka Hexapolis Amadoka Azara Phanagoreia Pantikapaion Dioskourias Chersonesos Skythike_Neapolis Olbia Skython_Taphai Skythopolis Tanais Sauromaton_Taphai Tyras Istrie Hekatompylos
+take_regions 17
+
+sotiates
+hold_regions Sotium Limonum Uxellodunum Nemausus Narbo Emporion Tolosa Atanagrum Aracillum Pompelo
+take_regions 10
+
+sparta
+hold_regions Sparta Elis Argos Megalopolis Corinth Aigion Orchomenos Knosos Kydonia Athens Halikarnassos Rhodes Larissa Tarentum Consentia Rhegium Syracuse
+take_regions 17
+
+suebi
+hold_regions Lupfurdum Asanca Furgisatis Eburodunum-Boihaemum Marionis Devona Vienna Cabillonum Avaricum Andemantunnum Luppia Nemetum Ascalingium
+take_regions 13
+
+sugambri
+hold_regions Sugambrium Ascalingium Treverium Eburonium Menapium Frisium Samarobriva Bagacum Durocortorum Fabiranum Avionium Cimbrium Marionis Arctaunum
+take_regions 14
+
+syracuse
+hold_regions Syracuse Agrigentum Panormos Lilybaeum Enna Messana Venicum Aleria Rhegium Caralis Uselis Consentia Grumentum Tarentum Brundisium Hadrumetum Carthage Utica Capua Bovianum Corfinium Arretium Asculum Iguvium Bononia Patavium Nesactium Idassa Epetion-Salona Rhizon Skodra Lissos Phoinike Ambrakia Athens Naxos Kydonia Knosos Ephesos Rome
+take_regions 43
+
+taurisci
+hold_regions Poetovio Noreia Segestica Idassa Isarcium-Brixentium Nesactium Aquincum Dacidava Castrum_Anartorum Arcobadara
+take_regions 10
+
+treveri
+hold_regions Treverium Sugambrium Arctaunum Eburonium Menapium Durocortorum Frisium Andemantunnum Menosgada Devona
+take_regions 10
+
+triballi
+hold_regions Oescus Ratiaria Singidunum Kapedounon Naissos Serdica Helis Argidava Tylis Odryssa Kallatis Apollonia-Pontos Byzantium Lysimachia Philippopolis Bessapara Bylazora Amphipolis Thessalonike Pella Argos_Orestikon Lissos Istrie Tyras
+take_regions 24
+
+tylis
+hold_regions Tylis Helis Serdica Odryssa Apollonia-Pontos Kallatis Istrie Oescus Argidava Byzantium
+take_regions 10
+
+venedae
+hold_regions Venedium Aestium Marionis Leucaristus Scurgum Asanca Castrum_Anartorum Lupfurdum Eburodunum-Boihaemum Arcobadara
+take_regions 10
+
+veneti
+hold_regions Patavium Brixia Isarcium-Brixentium Noreia Idassa Nesactium Epetion-Salona Bononia Asculum Iguvium
+take_regions 10
+
+volcae
+hold_regions Rucinatium Noreia Poetovio Susudata Aquincum Arctaunum Lupfurdum Menosgada Furgisatis Eburodunum-Boihaemum Devona Luppia
+take_regions 12
+
+volcae_gallia
+hold_regions Nemausus Tolosa Segustero Vienna Uxellodunum Narbo Emporion Massalia Sotium Nemetum
+take_regions 10

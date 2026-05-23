@@ -1,0 +1,74 @@
+{
+  "name": "apple-settlement-processor",
+  "version": "0.16.0",
+  "description": "Settlement Processor Suite - Electron GUI",
+  "main": "main.js",
+  "author": "Apple",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "package": "electron-builder --win --x64",
+    "package-dir": "electron-builder --win --x64 --dir"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.3"
+  },
+  "devDependencies-comment": "monaco-editor moved to dev only — fetched from CDN at runtime to keep the installer small.",
+  "devDependencies": {
+    "electron": "^42.0.1",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.apple.settlement-processor",
+    "productName": "Settlement Processor Suite",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Tarnholm",
+        "repo": "Settlement-Processor-Suite",
+        "releaseType": "release"
+      }
+    ],
+    "directories": {
+      "output": "../dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*"
+    ],
+    "asar": true,
+    "extraResources": [
+      {
+        "from": "../",
+        "to": "app_data",
+        "filter": [
+          "*.py"
+        ]
+      },
+      {
+        "from": "../config",
+        "to": "app_data/config"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": null,
+      "artifactName": "SettlementProcessorSuite-${version}-Setup.${ext}",
+      "shortcutName": "Settlement Processor Suite",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

@@ -1,0 +1,596 @@
+/* ══════════════════════════════════════
+   macOS Design System
+   ══════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* macOS Dark palette */
+  --bg-window: rgba(30, 30, 30, 0.92);
+  --bg-sidebar: rgba(38, 38, 40, 0.85);
+  --bg-content: #1e1e1e;
+  --bg-elevated: rgba(50, 50, 52, 0.95);
+  --bg-hover: rgba(255, 255, 255, 0.06);
+  --bg-active: rgba(255, 255, 255, 0.1);
+  --bg-selected: rgba(0, 122, 255, 0.25);
+  --bg-input: rgba(0, 0, 0, 0.25);
+  --bg-inset: rgba(0, 0, 0, 0.18);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  --border-control: rgba(255, 255, 255, 0.15);
+
+  --text-primary: rgba(255, 255, 255, 0.88);
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --text-tertiary: rgba(255, 255, 255, 0.35);
+  --text-accent: #64a0ff;
+
+  --accent: #0a84ff;
+  --accent-hover: #409cff;
+  --green: #32d74b;
+  --red: #ff453a;
+  --orange: #ff9f0a;
+  --yellow: #ffd60a;
+  --purple: #bf5af2;
+  --pink: #ff375f;
+  --teal: #64d2ff;
+
+  --font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', 'Menlo', 'Consolas', monospace;
+
+  --radius-sm: 5px;
+  --radius: 8px;
+  --radius-lg: 12px;
+
+  --titlebar-height: 40px;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-system);
+  font-size: 13px;
+  color: var(--text-primary);
+  background: var(--bg-window);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar (macOS-thin style) ── */
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* ══════════════════════════════════════
+   Titlebar
+   ══════════════════════════════════════ */
+
+#titlebar {
+  display: flex;
+  align-items: center;
+  height: var(--titlebar-height);
+  padding: 0 16px;
+  padding-right: 140px; /* space for Windows close/min/max overlay buttons */
+  background: var(--bg-sidebar);
+  border-bottom: 1px solid var(--border-subtle);
+  -webkit-app-region: drag;
+  user-select: none;
+  position: relative;
+  z-index: 100;
+}
+
+.titlebar-drag {
+  width: 12px; /* small left margin */
+  flex-shrink: 0;
+}
+
+.titlebar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.titlebar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  -webkit-app-region: no-drag;
+}
+
+.path-badge {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  background: var(--bg-inset);
+  padding: 2px 8px;
+  border-radius: 4px;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════
+   Segmented Control (macOS style)
+   ══════════════════════════════════════ */
+
+.segmented-control {
+  display: inline-flex;
+  background: var(--bg-inset);
+  border-radius: var(--radius);
+  padding: 2px;
+  gap: 1px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--border-subtle);
+}
+
+.segmented-control.small {
+  border-radius: var(--radius-sm);
+}
+
+.segment {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-system);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.segmented-control.small .segment {
+  padding: 4px 10px;
+  font-size: 11px;
+  border-radius: 4px;
+}
+
+.segment:hover {
+  color: var(--text-primary);
+}
+
+.segment.active {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+}
+
+.segment svg {
+  opacity: 0.65;
+}
+
+.segment.active svg {
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════
+   Main Content
+   ══════════════════════════════════════ */
+
+#content {
+  height: calc(100vh - var(--titlebar-height));
+  overflow: hidden;
+}
+
+.tab-panel {
+  display: none;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tab-panel.active { display: flex; }
+
+/* ══════════════════════════════════════
+   macOS Sidebar
+   ══════════════════════════════════════ */
+
+.mac-sidebar {
+  width: 240px;
+  min-width: 240px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-subtle);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(20px);
+}
+
+.sidebar-header {
+  padding: 12px 16px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-header-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.sidebar-link-btn {
+  font-size: 10px;
+  padding: 1px 6px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.sidebar-link-btn:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-section {
+  padding: 4px 8px 8px;
+}
+
+/* ── Source List (macOS sidebar list) ── */
+
+.source-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.source-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.source-list-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.source-list-item.active {
+  background: var(--bg-selected);
+  color: var(--text-primary);
+}
+
+.source-list-item .item-icon {
+  font-size: 15px;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.source-list-item.active .item-icon {
+  opacity: 1;
+}
+
+.source-list-item .item-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.source-list-item .item-badge {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+/* ══════════════════════════════════════
+   macOS Toolbar
+   ══════════════════════════════════════ */
+
+.mac-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  min-height: 36px;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 8px;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolbar-spacer { flex: 1; }
+
+/* ── Toolbar Buttons ── */
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: var(--font-system);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  white-space: nowrap;
+  line-height: 1;
+  box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar-btn.small {
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+.toolbar-btn:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.toolbar-btn:active:not(:disabled) {
+  background: var(--bg-active);
+  transform: scale(0.98);
+}
+
+.toolbar-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.toolbar-btn.primary {
+  background: var(--accent);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.toolbar-btn.primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.toolbar-btn.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-secondary);
+  box-shadow: none;
+}
+
+.toolbar-btn.ghost:hover:not(:disabled) {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* ── Search Field (macOS rounded) ── */
+
+.search-field-wrap {
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.search-field {
+  width: 100%;
+  padding: 5px 8px 5px 24px;
+  background: var(--bg-inset);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-system);
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.search-field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.25);
+}
+
+.search-field::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* No search icon variant — only when NOT inside a search-field-wrap */
+:not(.search-field-wrap) > input.search-field {
+  padding-left: 8px;
+}
+
+/* ── macOS Select ── */
+
+.mac-select {
+  width: 100%;
+  padding: 6px 10px;
+  background-color: rgba(30, 30, 30, 0.95);
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-system);
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 24px;
+}
+
+.mac-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.25);
+}
+
+.mac-select option {
+  background: #2a2a2c;
+  color: rgba(255, 255, 255, 0.88);
+  padding: 4px 8px;
+}
+
+.mac-select option:checked,
+.mac-select option:hover {
+  background: #3a3a3c;
+}
+
+/* ── Selection + Focus ring ── */
+::selection {
+  background: rgba(10, 132, 255, 0.4);
+}
+
+/* ══════════════════════════════════════
+   Dialog Overlay (macOS sheet style)
+   ══════════════════════════════════════ */
+
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 80px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.dialog-overlay.visible {
+  display: flex;
+}
+
+.dialog-panel {
+  width: 480px;
+  max-width: 90vw;
+  background: #2a2a2c;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 0.5px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  animation: dialog-in 0.2s ease-out;
+}
+
+@keyframes dialog-in {
+  from { opacity: 0; transform: translateY(-12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dialog-header {
+  padding: 20px 20px 12px;
+}
+
+.dialog-header h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.dialog-header p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.dialog-body {
+  padding: 0 20px 16px;
+}
+
+.dialog-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 6px;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Submod-specific ── */
+
+.submod-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.submod-file-item {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.submod-file-item.missing {
+  color: var(--red);
+  background: rgba(255, 69, 58, 0.08);
+}
+
+.submod-file-item.filled {
+  color: var(--green);
+  background: rgba(50, 215, 75, 0.08);
+}
+
+.submod-parent-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.submod-parent-name {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.submod-status {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  min-height: 16px;
+}
