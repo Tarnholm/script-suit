@@ -59,6 +59,7 @@ contextBridge.exposeInMainWorld('api', {
   chainRegionsOutput: () => ipcRenderer.invoke('chain-regions-output'),
 
   // Auto-updater
+  getAppVersion: () => ipcRenderer.invoke('get-app-version'),
   updaterCheck: () => ipcRenderer.invoke('updater-check'),
   updaterQuitAndInstall: () => ipcRenderer.invoke('updater-quit-and-install'),
   getUpdateStatus: () => ipcRenderer.invoke('get-update-status'),

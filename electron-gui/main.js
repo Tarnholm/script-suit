@@ -4,6 +4,14 @@ const { spawn } = require('child_process');
 const fs = require('fs');
 const { autoUpdater } = require('electron-updater');
 
+// Pin the AppUserModelID so taskbar / Start-Menu pins survive auto-updates.
+// NSIS sets the installed shortcut's AppUserModelID from package.json's appId;
+// setting the same value here on every launch keeps the pin anchored to the new
+// exe after an electron-updater reinstall. (Mirrors Provincia.)
+if (process.platform === 'win32') {
+  try { app.setAppUserModelId('com.apple.settlement-processor'); } catch {}
+}
+
 let mainWindow;
 
 // In dev: electron-gui/../ = project root
@@ -133,6 +141,7 @@ autoUpdater.on('error', (err) => {
   sendUpdateEvent('update-status', { state: 'error', message: err.message });
 });
 
+ipcMain.handle('get-app-version', () => app.getVersion());
 ipcMain.handle('get-update-status', async () => lastUpdateStatus);
 ipcMain.handle('updater-check', async () => {
   if (!app.isPackaged) return { ok: false, reason: 'dev build' };
