@@ -7,6 +7,13 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.13",
+    date: "2026-05-25",
+    items: [
+      { type: "feature", text: "**Grain exports step.** A region with **grain ≥2** and a sea/river outlet (`base_port_level` 1-3 or `rivertrade`) gets a `food_storage` granary: large_town → `granary`, city/large_city/huge_city → `granary+1`; towns get none. Region **Gynaikopolites_Nomos** → `granary+2`. New pipeline step (editable, runs with the others)." },
+    ],
+  },
+  {
     version: "0.16.12",
     date: "2026-05-25",
     items: [

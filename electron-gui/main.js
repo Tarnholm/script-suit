@@ -66,6 +66,7 @@ const PIPELINE_STEPS = [
   { id: 'settlement_processor', name: 'Core Buildings', script: 'settlement_processor.py', color: '#a78bfa' },
   { id: 'temples', name: 'Temples', script: 'temples.py', color: '#fbbf24' },
   { id: 'civic', name: 'Civic Buildings', script: 'civic.py', color: '#34d399' },
+  { id: 'grain_exports', name: 'Grain Exports', script: 'grain_exports.py', color: '#eab308' },
   { id: 'slave_placer', name: 'Slave Placer', script: 'slave_placer.py', color: '#f472b6' },
   { id: 'port_mercenaries', name: 'Port Mercenaries', script: 'port_mercenaries.py', color: '#2dd4bf' },
 ];
