@@ -7,6 +7,14 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.5",
+    date: "2026-05-24",
+    items: [
+      { type: "fix", text: "**Temples now use the suite-wide -1 tier rule.** A non-capital settlement gets a temple one tier below its size (e.g. a large_town → a tier-1 temple); only the faction capital gets a temple matching its full level. Matches mics.py and the other placement scripts." },
+      { type: "feature", text: "**Special temples are respected.** A settlement that already has a special temple (`temples_of_viking`, `temples_of_horse`, etc.) keeps it and gets no culture temple — RTW allows only one temple per settlement." },
+    ],
+  },
+  {
     version: "0.16.4",
     date: "2026-05-23",
     items: [

@@ -64,6 +64,11 @@ CULTURE_SYNONYMS = {"roman": "italic", "italic": "roman"}
 # Factions whose settlements should be left untouched (no temple changes).
 SKIP_FACTIONS = {"slave"}
 
+# Special, non-culture temple chains (temples_of_viking, temples_of_horse, …).
+# A settlement that already has one of these keeps it and gets NO culture temple
+# (RTW allows only one temple per settlement).
+SPECIAL_TEMPLE_PREFIX = "temples_of"
+
 # If True, keep an existing temple's LEVEL and only switch its culture to the
 # region's dominant culture. If False (default), the temple level is chosen by
 # settlement size, mirroring mics.py's tier-based assignment.
@@ -332,13 +337,14 @@ class TempleBuildingProcessor:
                     level = parts[1]
         return region, level
 
-    def process_settlement_block(self, block, faction_id):
+    def process_settlement_block(self, block, faction_id, is_capital=False):
         region, level = self._extract_meta(block)
 
         # Find existing temple (chain + level), and strip ALL temple blocks so we
         # can re-insert exactly one (RTW allows only one temple per settlement).
         existing_chain = None       # e.g. temple_complex_dorian
         existing_level = None       # e.g. temple_dorian_2
+        special_temple = None       # e.g. temples_of_viking — leave the settlement alone
         new_block = []
         i, n = 0, len(block)
         while i < n:
@@ -360,6 +366,8 @@ class TempleBuildingProcessor:
                             is_temple = True
                             existing_chain = parts[1]
                             existing_level = parts[2] if len(parts) >= 3 else None
+                        elif len(parts) >= 2 and parts[1].startswith(SPECIAL_TEMPLE_PREFIX):
+                            special_temple = parts[1]
                 if not is_temple:
                     new_block += bb
                 i += 1
@@ -377,6 +385,10 @@ class TempleBuildingProcessor:
             info["reason"] = f"faction '{faction_id}' in SKIP_FACTIONS"
             return block, False, info  # leave block untouched
 
+        if special_temple:
+            info["reason"] = f"has special temple '{special_temple}' — left unchanged"
+            return block, False, info  # special temple wins; no culture temple added
+
         region_info = self.region_map.get(region)
         if not region_info:
             info["reason"] = f"region '{region}' not in descr_regions"
@@ -389,7 +401,12 @@ class TempleBuildingProcessor:
             info["reason"] = "region has no culture percentages"
             return block, False, info
 
-        tier = LEVEL_TO_TIER.get(level, 0)
+        # Capital keeps a temple sized to its level; every other settlement drops
+        # one tier (the suite-wide -1 rule, as in mics.py).
+        base = LEVEL_TO_TIER.get(level, 0)
+        tier = base if is_capital else max(0, base - 1)
+        info["is_capital"] = is_capital
+        info["tier"] = tier
         native = self.native_culture_of(faction_id)
         dom, tied, by_owner = self.dominant_culture(cultures, native)
         info["tied"], info["resolved_by_owner"] = tied, by_owner
@@ -498,12 +515,15 @@ class TempleBuildingProcessor:
         # Map each settlement's region -> owning faction (last `faction` decl
         # before the settlement).
         settlement_to_faction = {}
+        faction_capital_region = {}   # faction -> its first settlement's region (its capital)
         for start, _end in blocks:
             fm = list(re.finditer(r"^faction\s+([^\s,]+)", content[:start], re.MULTILINE))
             fac = fm[-1].group(1) if fm else None
             region, _ = self._extract_meta(content[start:_end].splitlines(keepends=True))
             if region and fac:
                 settlement_to_faction[region] = fac
+                if fac not in faction_capital_region:
+                    faction_capital_region[fac] = region
 
         rebuilt = []
         last_end = 0
@@ -514,8 +534,9 @@ class TempleBuildingProcessor:
             block_lines = content[start:end].splitlines(keepends=True)
             region, _ = self._extract_meta(block_lines)
             faction_id = settlement_to_faction.get(region)
+            is_capital = (region is not None and region == faction_capital_region.get(faction_id))
 
-            new_block, changed, info = self.process_settlement_block(block_lines, faction_id)
+            new_block, changed, info = self.process_settlement_block(block_lines, faction_id, is_capital)
             if changed:
                 settlements_changed += 1
 
@@ -561,7 +582,8 @@ class TempleBuildingProcessor:
 
         self.decisions.append(
             f"--- {city} ({region}) ---\n"
-            f"Faction: {info.get('faction')}  Level: {info.get('level')}\n"
+            f"Faction: {info.get('faction')}  Level: {info.get('level')}  "
+            f"(capital={info.get('is_capital')}, temple tier={info.get('tier')})\n"
             f"Dominant: {new or '(none)'}  Tied: {sorted(info['tied']) if info['tied'] else '-'}  "
             f"OwnerTieWin: {info['resolved_by_owner']}\n"
             f"Prev: {prev or '(none)'}  Reason: {info.get('reason')}\n"
