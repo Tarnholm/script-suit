@@ -20,6 +20,7 @@
   let manualCheck = false;     // true while a user-initiated check is pending
   let watching = false;        // background watch loop active
   let watchTimer = null;
+  let autoInstall = false;     // armed by double-click watch: install once downloaded, no click needed
   let clickTimer = null;       // single- vs double-click disambiguation
   let downloadPct = null;      // 0..100 while downloading, else null
 
@@ -218,6 +219,10 @@
   function stopWatch(silent) {
     if (watchTimer) { clearInterval(watchTimer); watchTimer = null; }
     watching = false;
+    // A silent stop (called from the status handler when an update appears) keeps
+    // auto-install armed so the download still installs itself. Only a manual
+    // cancel (user double-clicks again) disarms it.
+    if (!silent) autoInstall = false;
     updateVersionLabel();
     if (!silent) pushToast('Stopped watching for updates.', 'info');
   }
@@ -226,8 +231,9 @@
     if (watchTimer) { stopWatch(false); return; }
     if (!api.updaterCheck) return;
     watching = true;
+    autoInstall = true; // arm: auto-install once an update finishes downloading
     updateVersionLabel();
-    pushToast('Watching for updates in the background — checking every 5s until one is found.', 'info');
+    pushToast('Watching for updates — will download and install automatically once one appears.', 'info');
     const poll = () => { try { api.updaterCheck(); } catch (e) { console.warn('[updater] watch poll failed:', e); } };
     poll();
     watchTimer = setInterval(poll, 5000);
@@ -259,6 +265,13 @@
       downloadPct = null; updateVersionLabel();
       manualCheck = false;
       if (watchTimer) stopWatch(true);
+      // If the user opted into watching (double-click), install automatically —
+      // no "Restart & install" click required. The banner above is a fallback.
+      if (autoInstall) {
+        autoInstall = false;
+        pushToast(`Update ${s.version} downloaded — installing now…`, 'info');
+        setTimeout(() => { try { api.updaterQuitAndInstall && api.updaterQuitAndInstall(); } catch (e) { console.warn('[updater] auto-install failed:', e); } }, 600);
+      }
     } else if (s.state === 'none') {
       if (manualCheck) {
         pushToast(`You're on the latest version${appVersion ? ` (v${appVersion})` : ''}.`, 'info');

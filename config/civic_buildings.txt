@@ -1,0 +1,63 @@
+; civic_buildings.txt — editable list of civic buildings to place by settlement.
+; Format: <settlement name> <civic>   (one per line; ; starts a comment)
+;   <civic> = magistrate_court | centralized_mint | autonomous_mint | academy
+;            (or any civic LEVEL/CHAIN, e.g. law_court, royal_mint, scriptorium)
+; Civic buildings are no_other_civic, so an existing civic in a settlement is replaced.
+; Settlement names match with spaces or underscores. Re-run the Civic step after editing.
+Carthage magistrate_court
+Antioch centralized_mint
+Seleucia centralized_mint
+Rome magistrate_court
+Memphis magistrate_court
+Rhodes centralized_mint
+Syracuse academy
+Babylon magistrate_court
+Ephesos autonomous_mint
+Susa centralized_mint
+Sardis centralized_mint
+Taxila academy
+Uruk magistrate_court
+Antiocheia-Margiane magistrate_court
+Kyrene academy
+Marakanda autonomous_mint
+Apameia-Syria centralized_mint
+Capua magistrate_court
+Ekbatana autonomous_mint
+Gades centralized_mint
+Asta magistrate_court
+Ebusus centralized_mint
+Jerusalem magistrate_court
+Massalia academy
+Miletos autonomous_mint
+Pergamon academy
+Tarentum autonomous_mint
+Tyre centralized_mint
+Utica autonomous_mint
+Seleukeia-Pieria magistrate_court
+Laodikeia-Paralos centralized_mint
+Arsinoe-Krokodeilon Polis academy
+Thebes-Megale Diospolis magistrate_court
+Lilybaion centralized_mint
+Pantikapaion autonomous_mint
+Ptolemais-Kyrenaike academy
+Ptolemais-Hermeiou centralized_mint
+Oxyrhynchos academy
+Amphipolis centralized_mint
+Pella centralized_mint
+Thessalonike magistrate_court
+Kassandreia magistrate_court
+Corinth autonomous_mint
+Lysimacheia magistrate_court
+Kyzikos centralized_mint
+Alexandreia-Troas centralized_mint
+Lampsakos autonomous_mint
+Halikarnassos academy
+Paphos centralized_mint
+Salamis centralized_mint
+Antiocheia-Mygdonia magistrate_court
+Antiocheia-Persis magistrate_court
+Hekatompylos magistrate_court
+Baktra-Zariaspa centralized_mint
+Baktrias Basileion centralized_mint
+The Road to Methora academy
+The Road to Palibothra autonomous_mint

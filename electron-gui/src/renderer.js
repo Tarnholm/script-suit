@@ -354,6 +354,27 @@ function initPipeline() {
       card.querySelector('.step-info').appendChild(importRow);
     }
 
+    // Add import-list button for the civic step
+    if (step.id === 'civic') {
+      const importRow = document.createElement('div');
+      importRow.className = 'step-import-col';
+      const importBtn = document.createElement('button');
+      importBtn.className = 'step-import-btn';
+      importBtn.textContent = 'Import List';
+      importBtn.title = 'Import a civic buildings list (.txt) — replaces config/civic_buildings.txt';
+      importBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const result = await window.api.importCivicList();
+        if (result.success) {
+          appendConsole(`Imported civic list: ${result.name}\n`, 'info');
+        } else if (result.error) {
+          appendConsole(`Civic list import failed: ${result.error}\n`, 'stderr');
+        }
+      });
+      importRow.appendChild(importBtn);
+      card.querySelector('.step-info').appendChild(importRow);
+    }
+
     card.addEventListener('click', (e) => {
       if (e.target.classList.contains('step-checkbox')) return;
       if (e.target.classList.contains('step-import-btn')) return;

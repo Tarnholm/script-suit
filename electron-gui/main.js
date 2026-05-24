@@ -65,6 +65,7 @@ const PIPELINE_STEPS = [
   { id: 'port_authority', name: 'Port Authority', script: 'port_authority.py', color: '#38bdf8' },
   { id: 'settlement_processor', name: 'Core Buildings', script: 'settlement_processor.py', color: '#a78bfa' },
   { id: 'temples', name: 'Temples', script: 'temples.py', color: '#fbbf24' },
+  { id: 'civic', name: 'Civic Buildings', script: 'civic.py', color: '#34d399' },
   { id: 'slave_placer', name: 'Slave Placer', script: 'slave_placer.py', color: '#f472b6' },
   { id: 'port_mercenaries', name: 'Port Mercenaries', script: 'port_mercenaries.py', color: '#2dd4bf' },
 ];
@@ -605,6 +606,27 @@ ipcMain.handle('import-hidden-resources-csv', async () => {
     const now = Date.now();
     fs.writeFileSync(metaFile, JSON.stringify({ importedAt: now, name: path.basename(src) }));
     return { success: true, path: src, name: path.basename(src), importedAt: now };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+});
+
+// Import civic-buildings list (.txt) -> config/civic_buildings.txt
+ipcMain.handle('import-civic-list', async () => {
+  const result = await dialog.showOpenDialog(mainWindow, {
+    title: 'Import Civic Buildings List',
+    filters: [
+      { name: 'Text Files', extensions: ['txt'] },
+      { name: 'All Files', extensions: ['*'] },
+    ],
+    properties: ['openFile'],
+  });
+  if (result.canceled) return { success: false };
+  const src = result.filePaths[0];
+  const dest = path.join(PROJECT_ROOT, 'config', 'civic_buildings.txt');
+  try {
+    fs.copyFileSync(src, dest);
+    return { success: true, path: src, name: path.basename(src) };
   } catch (err) {
     return { success: false, error: err.message };
   }

@@ -1514,6 +1514,7 @@ import homelands
 import port_authority
 import settlement_processor
 import temples
+import civic
 
 
 PIPELINE = [
@@ -1528,6 +1529,7 @@ PIPELINE = [
     ("09_settlement_processor",lambda strat, out: settlement_processor.SettlementProcessor(run_out=out).process_file(str(strat))),
     ("10_temples",             lambda strat, out: temples.TempleBuildingProcessor().run(run_strat=strat, run_out=out)),
     ("11_slave_placer",        _step_slave_placer),           # inlined ✓
+    ("12_civic",               lambda strat, out: civic.CivicBuildingProcessor().run(run_strat=strat, run_out=out)),
 ]
 
 

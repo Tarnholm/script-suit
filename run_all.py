@@ -23,6 +23,7 @@ Output structure:
     09_settlement_processor/
     10_temples/
     11_slave_placer/
+    12_civic/
 """
 
 import sys
@@ -48,6 +49,7 @@ import port_authority
 import settlement_processor
 import temples
 import slave_placer
+import civic
 
 
 def write_unified_changelog(run_dir):
@@ -64,6 +66,7 @@ def write_unified_changelog(run_dir):
         ("09_settlement_processor","settlement_changelog.txt",   "Settlement Processor"),
         ("10_temples",            "changelog.txt",              "Temples"),
         ("11_slave_placer",       "changelog.txt",              "Slave Placer"),
+        ("12_civic",              "changelog.txt",              "Civic Buildings"),
     ]
     for folder, fname, label in simple:
         f = run_dir / folder / fname
@@ -194,6 +197,7 @@ def run_all():
         ("09_settlement_processor", lambda strat, out: settlement_processor.SettlementProcessor(run_out=out).process_file(str(strat))),
         ("10_temples",             lambda strat, out: temples.TempleBuildingProcessor().run(run_strat=strat, run_out=out)),
         ("11_slave_placer",        lambda strat, out: slave_placer.run(run_strat=strat, run_out=out)),
+        ("12_civic",               lambda strat, out: civic.CivicBuildingProcessor().run(run_strat=strat, run_out=out)),
     ]
 
     current_strat = CONFIG_DIR / "descr_strat.txt"

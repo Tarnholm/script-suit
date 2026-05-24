@@ -7,6 +7,14 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.6",
+    date: "2026-05-24",
+    items: [
+      { type: "feature", text: "**Civic buildings step.** A new pipeline section places civic buildings (`magistrate_court`, `centralized_mint`/`autonomous_mint`, `academy`) per settlement from an **editable list** (`config/civic_buildings.txt`). Edit it in the config editor, or click **Import List** on the Civic step to drop in an updated .txt — then re-run with the other scripts. Existing civics are replaced (`no_other_civic`)." },
+      { type: "improvement", text: "Double-clicking the version to watch for updates now **auto-installs** the update the moment it finishes downloading — no \"Restart & install\" click needed. Double-click again to cancel before one appears." },
+    ],
+  },
+  {
     version: "0.16.5",
     date: "2026-05-24",
     items: [

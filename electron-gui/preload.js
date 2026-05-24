@@ -51,6 +51,7 @@ contextBridge.exposeInMainWorld('api', {
     ipcRenderer.invoke('load-parent-mod-files', parentDataDir, missingFiles),
   saveBackToMod: (dataDir, campaign) => ipcRenderer.invoke('save-back-to-mod', dataDir, campaign),
   importHiddenResourcesCsv: () => ipcRenderer.invoke('import-hidden-resources-csv'),
+  importCivicList: () => ipcRenderer.invoke('import-civic-list'),
   checkHiddenResourcesCsv: () => ipcRenderer.invoke('check-hidden-resources-csv'),
   clearStaleOutput: () => ipcRenderer.invoke('clear-stale-output'),
   backupConfig: () => ipcRenderer.invoke('backup-config'),
