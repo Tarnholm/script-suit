@@ -7,6 +7,14 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.9",
+    date: "2026-05-24",
+    items: [
+      { type: "change", text: "**Military capped at tier 2.** Both MIC and garrison are capped at their tier-2 building (`mic_2` / `garrison+1`) — enables full homeland recruitment while leaving higher tiers for the player to build." },
+      { type: "change", text: "**Fewer pre-built cisterns.** Sanitation's water rule no longer counts `irrigation_lake` / `irrigation_springs` (only `lead` & `irrigation_river`), so fewer settlements start with a health building." },
+    ],
+  },
+  {
     version: "0.16.8",
     date: "2026-05-24",
     items: [

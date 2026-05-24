@@ -278,7 +278,7 @@ def _san_reconstruct_settlement(block_text, region_map, changelog, decisions):
     res = region_map.get(reg, set())
     has_trader = any("trader" in b.lower() for b in existing_buildings)
     med_boosters = {"pitch", "sulphur", "fruits", "honey"}
-    water_res = {"lead", "irrigation_river", "irrigation_lake", "irrigation_springs"}
+    water_res = {"lead", "irrigation_river"}  # irrigation_lake/springs removed — fewer pre-built cisterns/wells
 
     chain, reason = None, "No valid resources found"
     if ("perfumes" in res) and (res & med_boosters):

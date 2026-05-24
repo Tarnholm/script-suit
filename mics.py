@@ -36,6 +36,10 @@ FACTIONS_FILE = CONFIG_DIR / "descr_sm_factions.txt"
 
 THRESHOLD = 30.0  # culture pct threshold for high-branch preference / MIC preference
 
+# Cap both branches at their tier-2 building: full homeland recruitment while
+# leaving higher tiers for the player to build. mic -> mic_2, garrison -> garrison+1.
+MAX_MILITARY_TIER = 2
+
 # Low-branch mapping: tier -> garrison id (tier 1 is plain garrison)
 BUILDINGS_LOW = {1: "garrison", 2: "garrison+1", 3: "garrison+2"}
 # High-branch mapping: tier -> mic id (tier N -> mic_N)
@@ -397,11 +401,11 @@ class MilitaryBuildingProcessor:
             
             self.debug_logs.append(f"  Tier: {tier}, Branch: {branch}")
             
-            # Choose building
+            # Choose building (capped at tier 2 for both branches)
             if tier == 0 and not is_capital:
                 chosen_building_id = None
             else:
-                chosen_building_id = self.lookup_building(branch, tier)
+                chosen_building_id = self.lookup_building(branch, min(tier, MAX_MILITARY_TIER))
             
             self.debug_logs.append(f"  Chosen building ID: {chosen_building_id}")
             
