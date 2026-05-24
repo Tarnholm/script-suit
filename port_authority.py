@@ -14,6 +14,7 @@ REGIONS_FILE_PATH = CONFIG_DIR / "descr_regions.txt"
 
 SETTLEMENT_LEVEL_ORDER = ["town", "large_town", "city", "large_city", "huge_city"]
 LEVEL_TO_TIER = {level: i + 1 for i, level in enumerate(SETTLEMENT_LEVEL_ORDER)}
+LEVEL_TO_TIER["minor_city"] = LEVEL_TO_TIER["city"]  # minor_city == city tier
 TIER_TO_LEVEL = {v: k for k, v in LEVEL_TO_TIER.items()}
 PORT_BUILDING_NAMES = ['port', 'shipwright', 'dockyard', 'river_port1', 'river_port2']
 
@@ -227,6 +228,17 @@ def parse_regions_file(regions_path, debug_log):
         debug_log.append(f"  - ERROR: Regions file not found at '{regions_path}'.")
         return defaultdict(set), {}
 
+def parse_resources_by_region(strat_path):
+    """Trade-resource amounts per region from descr_strat (for the bump totals)."""
+    out = defaultdict(dict)
+    with open(strat_path, encoding='utf-8', errors='ignore') as f:
+        for l in f:
+            m = re.match(r'resource\s+([\w_-]+),\s*([\d.]+),\s*\d+,\s*\d+\s*;\s*([\w_&-]+)', l)
+            if m:
+                region = normalize_region_name(m.group(3))
+                out[region][m.group(1)] = out[region].get(m.group(1), 0) + float(m.group(2))
+    return out
+
 def parse_region_resource_lines(regions_path):
     region_resource_lines = {}
     with open(regions_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -277,63 +289,52 @@ def extract_settlement_meta(block_lines):
             level = s.split()[1]
     return region, level
 
-def choose_port_building_level_for_settlement(port_chains, settlement_level, resources, region_name, region_resource_lines, decision_log_entry=None):
+# Coastal levels, highest tier first: (level, size_no_bump, size_bump, base_port_level_required)
+COASTAL_LEVELS = (
+    ("dockyard",   "large_city", "huge_city",  3),
+    ("shipwright", "city",       "large_city", 2),
+    ("port",       "town",       "large_town", 1),
+)
+# River levels, highest tier first: (level, size_no_bump, size_bump)
+RIVER_LEVELS = (
+    ("river_port2", "city",       "large_city"),
+    ("river_port1", "large_town", "city"),
+)
+# Resources that exempt a river port from the bump (gets the bigger port sooner).
+RIVER_NO_BUMP_RESOURCES = ("grain", "stone", "marble", "timber")
+
+def choose_port(settlement_level, combined_resources, strat_resources, base_port_level, has_rivertrade, log=None):
+    """Coastal always wins when base_port_level 1-3 is present; otherwise a river
+    port if rivertrade. Coastal bump keys off the region's total resource amount
+    (>5 = no bump); river bump keys off grain/stone/marble/timber presence."""
     tier = LEVEL_TO_TIER.get(settlement_level, 0)
-    resource_line = region_resource_lines.get(region_name, "")
-    port_candidates = []
-    river_candidates = []
-    candidate_details = []
+    total = sum(strat_resources.values())
+    details = []
 
-    for building, levels in port_chains.items():
-        for lvl in levels:
-            min_tier = LEVEL_TO_TIER.get(lvl['settlement_min'], 99)
-            detail = f"building={building}, level={lvl['level']}, min_tier={min_tier}, current_tier={tier}"
-            if lvl['level'] in ['dockyard', 'shipwright', 'port']:
-                if any(res in resources for res in ['base_port_level_1', 'base_port_level_2', 'base_port_level_3']) and tier >= min_tier:
-                    port_candidates.append((building, lvl['level'], min_tier))
-                    if decision_log_entry: decision_log_entry.append(f"  - Can build '{lvl['level']}' (requires tier {min_tier}, building '{building}').")
-                else:
-                    candidate_details.append(f"  - Not eligible: {detail}")
-            elif lvl['level'] == 'river_port1':
-                if 'rivertrade' in resources and tier >= min_tier:
-                    river_candidates.append((building, lvl['level'], min_tier))
-                    if decision_log_entry: decision_log_entry.append(f"  - Can build '{lvl['level']}' (requires tier {min_tier}, building '{building}').")
-                else:
-                    candidate_details.append(f"  - Not eligible: {detail}")
+    if base_port_level and base_port_level >= 1:
+        bump = total <= 5
+        details.append(f"  - Coastal: resource_total={total:g}, bump={'yes' if bump else 'no'}, base_port_level={base_port_level}, tier={tier}")
+        for lvl, size_nobump, size_bump, bpl_req in COASTAL_LEVELS:
+            size_req = size_bump if bump else size_nobump
+            if tier >= LEVEL_TO_TIER[size_req] and base_port_level >= bpl_req:
+                if log is not None: log.append(f"  - Coastal -> {lvl} (needs {size_req}+ and base_port_level {bpl_req}+).")
+                return "port_buildings", lvl, details
+        details.append("  - Coastal: no level qualifies at this size/base_port_level.")
+        return None, None, details
 
-    base_port_match = re.search(r'base_port_level_(\d)', resource_line)
-    if base_port_match:
-        base_port_level = int(base_port_match.group(1))
-        if base_port_level > 0:
-            if port_candidates:
-                port_candidates.sort(key=lambda x: x[2], reverse=True)
-                chosen_building, chosen_level, _ = port_candidates[0]
-                if decision_log_entry: decision_log_entry.append(f"  - Chose '{chosen_level}' from building '{chosen_building}'.")
-                return chosen_building, chosen_level, candidate_details
-            elif river_candidates:
-                river_candidates.sort(key=lambda x: x[2], reverse=True)
-                chosen_building, chosen_level, _ = river_candidates[0]
-                if decision_log_entry: decision_log_entry.append(f"  - No regular port possible, chose river port instead.")
-                return chosen_building, chosen_level, candidate_details
-        else:
-            if river_candidates:
-                river_candidates.sort(key=lambda x: x[2], reverse=True)
-                chosen_building, chosen_level, _ = river_candidates[0]
-                if decision_log_entry: decision_log_entry.append(f"  - base_port_level_0: chose river port.")
-                return chosen_building, chosen_level, candidate_details
-            else:
-                if decision_log_entry: decision_log_entry.append(f"  - base_port_level_0: no river port possible.")
-                return None, None, candidate_details
+    if has_rivertrade:
+        no_bump = any(r in strat_resources for r in RIVER_NO_BUMP_RESOURCES)
+        details.append(f"  - River: no_bump={'yes' if no_bump else 'no'} (grain/stone/marble/timber present), tier={tier}")
+        for lvl, size_nobump, size_bump in RIVER_LEVELS:
+            size_req = size_nobump if no_bump else size_bump
+            if tier >= LEVEL_TO_TIER[size_req]:
+                if log is not None: log.append(f"  - River -> {lvl} (needs {size_req}+).")
+                return "river_port", lvl, details
+        details.append("  - River: no level qualifies at this size.")
+        return None, None, details
 
-    if port_candidates:
-        port_candidates.sort(key=lambda x: x[2], reverse=True)
-        chosen_building, chosen_level, _ = port_candidates[0]
-        return chosen_building, chosen_level, candidate_details
-    if river_candidates:
-        river_candidates.sort(key=lambda x: x[2], reverse=True)
-        chosen_building, chosen_level, _ = river_candidates[0]
-        return chosen_building, chosen_level, candidate_details
-    return None, None, candidate_details
+    details.append("  - No base_port_level 1-3 and no rivertrade.")
+    return None, None, details
 
 def explain_no_port_reason(region_name_raw, region_name, level, resources, port_chains, candidate_details):
     lines = []
@@ -477,6 +478,7 @@ def main(run_strat=None, run_out=None):
     port_chains = parse_edb_port_levels_with_settlement_min(edb_file, debug_log)
     region_resources, region_to_city_map = parse_regions_file(regions_file, debug_log)
     region_resource_lines = parse_region_resource_lines(regions_file)
+    resources_by_region = parse_resources_by_region(strat_file)
     port_pixel_regions = get_regions_with_port_pixel(debug_log)
 
     with open(strat_file, encoding="utf-8", errors="ignore") as f:
@@ -523,13 +525,12 @@ def main(run_strat=None, run_out=None):
                 decision_log_entry.append(f"  - BLOCKED: No port pixel on map_regions.tga for '{region_name_raw}'. Skipping port.")
                 chosen_building, chosen_level, candidate_details = None, None, []
             else:
-                chosen_building, chosen_level, candidate_details = choose_port_building_level_for_settlement(
-                    port_chains, level, combined_resources, region_name, region_resource_lines, decision_log_entry
+                base_port_level = get_max_port_tier_from_resource_line(region_resource_lines.get(region_name, "")) or 0
+                has_rivertrade = 'rivertrade' in combined_resources
+                strat_resources = resources_by_region.get(region_name, {})
+                chosen_building, chosen_level, candidate_details = choose_port(
+                    level, combined_resources, strat_resources, base_port_level, has_rivertrade, decision_log_entry
                 )
-            if chosen_building and chosen_level and chosen_level in ['dockyard', 'shipwright', 'port']:
-                downgraded_level = downgrade_port_if_needed(region_name, chosen_level, region_resource_lines, decision_log_entry)
-                if downgraded_level != chosen_level:
-                    chosen_level = downgraded_level
 
             rebuilt_block_lines, meta_region, meta_level, port_found = process_settlement_block(block_lines, chosen_building, chosen_level, PORT_BUILDING_NAMES)
             if chosen_building and chosen_level:

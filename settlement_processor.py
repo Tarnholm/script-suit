@@ -19,6 +19,16 @@ MAX_WALL_TIER = 3
 # both MAX_WALL_TIER and NO_DEFENSES_REGIONS.
 WALL_TIER_EXCEPTIONS = {"trinakria": 4, "korinthia": 3}
 
+# ── Roads (hinterland_roads) ─────────────────────────────────────────────
+ROAD_LEVELS = {1: "roads", 2: "paved_roads", 3: "highways"}
+# Terrains that cap roads at tier 1 (roads).
+ROAD_TERRAIN_CAP = {"desert", "mountains", "alpine", "sub_artic",
+                    "small_islands_and_rocky_coast", "karst_terrain"}
+# Highways (tier 3) require the region's total resource amount to EXCEED this.
+ROAD_HIGHWAY_MIN_TOTAL = 12
+# Regions (lowercased; matched on region or capital name) that always get highways.
+ROADS_ALWAYS_HIGHWAY = {"roma"}
+
 TRADER_OVERRIDE_QTY = 4  # Minimum resource quantity to trigger trader override in towns
 TRADER_OVERRIDE_RESOURCES = set()  # Leave empty = ALL resources count. Add names to restrict.
 
@@ -444,8 +454,28 @@ class SettlementProcessor:
         else:
             debug_log.append(f"    - Defenses: Skipped for {region} (in NO_DEFENSES_REGIONS)")
 
-        for chain in ["hinterland_roads", "market"]:
-            self._assign_chain(building_map, assigned_chains, chain, tier, debug_log)
+        # Roads — custom rule (overrides the generic size-based bump):
+        #   Roma always gets highways; the listed terrains cap roads at tier 1;
+        #   otherwise highways needs the region's total resource amount to exceed
+        #   ROAD_HIGHWAY_MIN_TOTAL, else paved_roads.
+        road_total = sum(q for (_r, q) in region_resources)
+        capping_terrain = hidden_resources & ROAD_TERRAIN_CAP
+        if region_key in ROADS_ALWAYS_HIGHWAY or name.strip().lower() in ROADS_ALWAYS_HIGHWAY:
+            road_level = ROAD_LEVELS[3]
+            debug_log.append(f"    - Roads: {region} exception -> {road_level}")
+        elif capping_terrain:
+            road_level = ROAD_LEVELS[1]
+            debug_log.append(f"    - Roads: terrain {capping_terrain} caps at {road_level}")
+        elif road_total > ROAD_HIGHWAY_MIN_TOTAL:
+            road_level = ROAD_LEVELS[3]
+            debug_log.append(f"    - Roads: resource_total={road_total:g} > {ROAD_HIGHWAY_MIN_TOTAL} -> {road_level}")
+        else:
+            road_level = ROAD_LEVELS[2]
+            debug_log.append(f"    - Roads: default -> {road_level} (resource_total={road_total:g})")
+        building_map["hinterland_roads"] = road_level
+        assigned_chains.add("hinterland_roads")
+
+        self._assign_chain(building_map, assigned_chains, "market", tier, debug_log)
 
         try:
             # Filter resources for trader override

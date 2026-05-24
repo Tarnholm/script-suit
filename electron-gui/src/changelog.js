@@ -7,6 +7,14 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.12",
+    date: "2026-05-25",
+    items: [
+      { type: "change", text: "**Port authority reworked.** Coastal port always wins when a `base_port_level` 1-3 is present (even alongside rivertrade); tier-1 `port` is now a **town**-level building. Coastal bump keys off the region's **total resource amount** (>5 = no bump → bigger port at smaller settlement size); river-port bump keys off grain/stone/marble/timber presence." },
+      { type: "change", text: "**Roads rule.** Desert / mountains / alpine / sub_artic / small-islands / karst cap roads at **tier 1**; **highways** require the region's total resource amount to **exceed 12**, otherwise paved_roads; region **Roma** always gets highways." },
+    ],
+  },
+  {
     version: "0.16.11",
     date: "2026-05-24",
     items: [
