@@ -7,6 +7,13 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.11",
+    date: "2026-05-24",
+    items: [
+      { type: "change", text: "**Urban exploits reworked around stack size** (matching rural). Placed when a mapped resource is at stack **2+**; **highest amount wins** (priority breaks exact ties). Building tier follows settlement size + amount: **towns get none**, large_town only at amount 4-5; tier = settlement_tier−1 (4-5) or −2 (2-3), capped at 3. `…supply` levels are never used. `sheep`/`flax`/`cotton` → `textiles_production`; fish no longer needs salt." },
+    ],
+  },
+  {
     version: "0.16.10",
     date: "2026-05-24",
     items: [
