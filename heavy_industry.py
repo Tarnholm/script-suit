@@ -27,57 +27,31 @@ LEVEL_TO_TIER = {
 
 SETTLEMENT_LEVEL_ORDER = ["town", "large_town", "city", "large_city", "huge_city"]
 
-RESOURCE_SCORES = {
-    "gold": 10, "silver": 8, "copper": 5, "lead": 3, "coal": 5, "iron": 6,
-    "marble": 3, "stone": 2, "purple_dye": 8, "sulphur": 4, "tin": 3,
-    "gemstones": 6, "glass": 3, "amber": 3, "elephants": 3, "sheep": 1, "cotton": 1,
-    "flax": 1, "timber": 1, "livestock": 1, "slave_trade": 2, "wine": 1,
+# Per-building resource weights. A building's score = max over its resources of
+# (resource_amount × weight); its input resources are simply the dict keys.
+BUILDING_RESOURCE_WEIGHTS = {
+    "smith":                {"iron": 7, "copper": 4, "coal": 6, "livestock": 3, "flax": 3, "timber": 1},
+    "mines":                {"gold": 9, "silver": 8, "copper": 6, "lead": 4, "tin": 6, "iron": 5, "slave_trade": 2},
+    "purple_dye_production": {"purple_dye": 8},
+    "marble_production":     {"marble": 7, "slave_trade": 2},
+    "jewelry":              {"gold": 8, "silver": 7, "gemstones": 8, "elephants": 3, "glass": 3, "amber": 4},
+    "artisans":             {"copper": 6, "iron": 5, "tin": 6, "lead": 5, "timber": 1},
+    "stone_quarry":         {"stone": 5, "slave_trade": 2},
+    "sulphur_industry":     {"sulphur": 5, "slave_trade": 2, "grain": 1},
+    "pitch_gathering":      {"pitch": 6, "hemp": 1, "timber": 1},
+    "salt_production":      {"salt": 6, "slave_trade": 2, "fish": 2, "livestock": 1},
 }
+HEAVY_IND_BUILDINGS = set(BUILDING_RESOURCE_WEIGHTS)
 
-BUILDING_TO_RESOURCES = {
-    "smith": ["iron", "copper", "tin", "lead", "coal"],
-    "mines": ["gold", "silver", "copper", "lead", "tin", "iron"],
-    "purple_dye_production": ["purple_dye"],
-    "marble_production": ["marble"],
-    "jewelry": ["gold", "silver", "gemstones", "glass", "elephants", "amber"],
-    "artisans": ["copper", "iron", "lead", "tin"],
-    "stone_quarry": ["stone"],
-    "sulphur_industry": ["sulphur"],
-    # Removed: single-resource mines (tin_mine/gold_mine/…) are DEFUNCT (not in the
-    # EDB), and glass/amber/slave/wine/timber/textile/livestock are URBAN/RURAL
-    # chains owned by other steps. Heavy industry only competes among real
-    # heavy_ind buildings now.
-}
-
-# Per-building resource weight overrides. A (building, resource) entry here
-# overrides the global RESOURCE_SCORES weight for THAT building only — so e.g.
-# jewelry can value amber differently from amber_trade.
-BUILDING_RESOURCE_SCORES = {
-    # tin is shared (smith/mines/tin_mine); artisans needs a HIGHER tin weight
-    # than the global (3) so it WINS tin settlements — a global tin=5 would let
-    # smith take them via the tie-break order instead.
-    "artisans": {"tin": 5},
-}
-
-def resource_score(building, resource):
-    return BUILDING_RESOURCE_SCORES.get(building, {}).get(resource, RESOURCE_SCORES.get(resource, 0))
-
-# Luxury rule: a settlement that has any of these "luxury" inputs should build
-# jewelry instead of raw mining (gold/silver/etc. otherwise make `mines` win on
-# a tie). This does NOT override the dedicated luxury buildings
-# (glass_production / amber_trade) — only the mining family below.
+# Luxury rule: a settlement with glass/amber/elephants builds jewelry instead of
+# raw mining (gold/silver otherwise make `mines` win the tie).
 LUXURY_RESOURCES = ("glass", "amber", "elephants")
 JEWELRY_OVER_MINING = {"mines"}
 
 EXPLICIT_HEAVY_IND_TIE_BREAKER_ORDER = [
     "smith", "mines", "purple_dye_production", "marble_production",
-    "jewelry", "artisans", "sulphur_industry", "stone_quarry",
+    "artisans", "salt_production", "stone_quarry", "pitch_gathering",
 ]
-
-HEAVY_IND_BUILDINGS = {
-    "smith", "mines", "purple_dye_production", "marble_production",
-    "jewelry", "artisans", "stone_quarry", "sulphur_industry",
-}
 
 class HeavyIndustryProcessor:
     def __init__(self):
@@ -160,11 +134,10 @@ class HeavyIndustryProcessor:
 
     def select_building(self, res_dict, tier, chains):
         scores = {}
-        for b, reqs in BUILDING_TO_RESOURCES.items():
-            if b not in HEAVY_IND_BUILDINGS: continue  # glass/amber/etc. are urban chains — not in this competition
+        for b, weights in BUILDING_RESOURCE_WEIGHTS.items():
             lvls = chains.get(b, [])
             if not lvls or tier < min(LEVEL_TO_TIER.get(l['settlement_min'], 99) for l in lvls): continue
-            val = max([res_dict.get(r, 0) * resource_score(b, r) for r in reqs] + [0])
+            val = max([res_dict.get(r, 0) * w for r, w in weights.items()] + [0])
             if val >= 10: scores[b] = val
         if not scores: return None, None, [], {}
         m_val = max(scores.values())
@@ -177,7 +150,10 @@ class HeavyIndustryProcessor:
             if jl and tier >= min(LEVEL_TO_TIER.get(l['settlement_min'], 99) for l in jl):
                 best_b = "jewelry"
         allowed = [l['level'] for l in chains[best_b] if tier >= LEVEL_TO_TIER.get(l['settlement_min'], 99)]
-        return best_b, (allowed[-1] if allowed else None), tied, scores
+        # Never select a '...supply' level — drop to the highest non-supply level.
+        non_supply = [lv for lv in allowed if 'supply' not in lv.lower()]
+        chosen = non_supply[-1] if non_supply else None
+        return best_b, chosen, tied, scores
 
     def run(self, run_strat=None, run_out=None):
         _strat = Path(run_strat) if run_strat else STRAT_FILE

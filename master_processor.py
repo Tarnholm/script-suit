@@ -349,43 +349,25 @@ EDB_FILE = CONFIG_DIR / "export_descr_buildings.txt"
 _HI_LEVEL_TO_TIER = {"village": 0, "town": 1, "large_town": 2, "minor_city": 3,
                      "city": 3, "large_city": 4, "huge_city": 5}
 _HI_SETTLEMENT_LEVEL_ORDER = ["town", "large_town", "city", "large_city", "huge_city"]
-_HI_RESOURCE_SCORES = {
-    "gold": 10, "silver": 8, "copper": 5, "lead": 3, "coal": 5, "iron": 6,
-    "marble": 3, "stone": 2, "purple_dye": 8, "sulphur": 4, "tin": 3,
-    "gemstones": 6, "glass": 3, "amber": 3, "elephants": 3, "sheep": 1, "cotton": 1,
-    "flax": 1, "timber": 1, "livestock": 1, "slave_trade": 2, "wine": 1,
+# Per-building resource weights (mirror of heavy_industry.py). Building score =
+# max over its resources of (amount × weight); resources are the dict keys.
+_HI_BUILDING_RESOURCE_WEIGHTS = {
+    "smith":                {"iron": 7, "copper": 4, "coal": 6, "livestock": 3, "flax": 3, "timber": 1},
+    "mines":                {"gold": 9, "silver": 8, "copper": 6, "lead": 4, "tin": 6, "iron": 5, "slave_trade": 2},
+    "purple_dye_production": {"purple_dye": 8},
+    "marble_production":     {"marble": 7, "slave_trade": 2},
+    "jewelry":              {"gold": 8, "silver": 7, "gemstones": 8, "elephants": 3, "glass": 3, "amber": 4},
+    "artisans":             {"copper": 6, "iron": 5, "tin": 6, "lead": 5, "timber": 1},
+    "stone_quarry":         {"stone": 5, "slave_trade": 2},
+    "sulphur_industry":     {"sulphur": 5, "slave_trade": 2, "grain": 1},
+    "pitch_gathering":      {"pitch": 6, "hemp": 1, "timber": 1},
+    "salt_production":      {"salt": 6, "slave_trade": 2, "fish": 2, "livestock": 1},
 }
-_HI_BUILDING_TO_RESOURCES = {
-    "smith": ["iron", "copper", "tin", "lead", "coal"],
-    "mines": ["gold", "silver", "copper", "lead", "tin", "iron"],
-    "purple_dye_production": ["purple_dye"],
-    "marble_production": ["marble"],
-    "jewelry": ["gold", "silver", "gemstones", "glass", "elephants", "amber"],
-    "artisans": ["copper", "iron", "lead", "tin"],
-    "stone_quarry": ["stone"],
-    "sulphur_industry": ["sulphur"],
-    # Removed defunct single-resource mines + urban/rural chains (see heavy_industry.py).
-}
+_HI_BUILDINGS = set(_HI_BUILDING_RESOURCE_WEIGHTS)
 _HI_TIE_BREAKER_ORDER = [
     "smith", "mines", "purple_dye_production", "marble_production",
-    "jewelry", "artisans", "sulphur_industry", "stone_quarry",
+    "artisans", "salt_production", "stone_quarry", "pitch_gathering",
 ]
-# Per-building resource weight overrides (override global _HI_RESOURCE_SCORES
-# for that building only — e.g. jewelry values amber differently from amber_trade).
-_HI_BUILDING_RESOURCE_SCORES = {
-    # tin is shared; artisans needs a higher-than-global tin weight to win tin
-    # settlements (a global tin=5 would let smith take them via tie-break).
-    "artisans": {"tin": 5},
-}
-
-def _hi_resource_score(building, resource):
-    return _HI_BUILDING_RESOURCE_SCORES.get(building, {}).get(resource, _HI_RESOURCE_SCORES.get(resource, 0))
-_HI_BUILDINGS = {
-    "smith", "mines", "purple_dye_production", "marble_production",
-    "jewelry", "artisans", "stone_quarry", "sulphur_industry",
-}
-# Luxury inputs make jewelry beat raw mining (the dedicated glass/amber chains
-# are urban — handled in the urban step — so they don't compete here).
 _HI_LUXURY_RESOURCES = ("glass", "amber", "elephants")
 _HI_JEWELRY_OVER_MINING = {"mines"}
 
@@ -485,15 +467,13 @@ def _hi_parse_resources_by_region(strat_text):
 
 def _hi_select_building(res_dict, tier, chains):
     scores = {}
-    for b, reqs in _HI_BUILDING_TO_RESOURCES.items():
-        if b not in _HI_BUILDINGS:
-            continue  # urban/rural chains (glass/amber/etc.) don't compete here
+    for b, weights in _HI_BUILDING_RESOURCE_WEIGHTS.items():
         lvls = chains.get(b, [])
         if not lvls:
             continue
         if tier < min(_HI_LEVEL_TO_TIER.get(l["settlement_min"], 99) for l in lvls):
             continue
-        val = max([res_dict.get(r, 0) * _hi_resource_score(b, r) for r in reqs] + [0])
+        val = max([res_dict.get(r, 0) * w for r, w in weights.items()] + [0])
         if val >= 10:
             scores[b] = val
     if not scores:
@@ -507,7 +487,10 @@ def _hi_select_building(res_dict, tier, chains):
         if jl and tier >= min(_HI_LEVEL_TO_TIER.get(l["settlement_min"], 99) for l in jl):
             best_b = "jewelry"
     allowed = [l["level"] for l in chains[best_b] if tier >= _HI_LEVEL_TO_TIER.get(l["settlement_min"], 99)]
-    return best_b, (allowed[-1] if allowed else None), tied, scores
+    # Never select a '...supply' level — drop to the highest non-supply level.
+    non_supply = [lv for lv in allowed if "supply" not in lv.lower()]
+    chosen = non_supply[-1] if non_supply else None
+    return best_b, chosen, tied, scores
 
 
 def _step_heavy_industry(run_strat, run_out):

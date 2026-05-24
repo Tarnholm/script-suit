@@ -7,6 +7,14 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.8",
+    date: "2026-05-24",
+    items: [
+      { type: "change", text: "**Heavy industry rebalanced to per-building weights.** Each building now scores resources with its own weights (e.g. mines gold 9 / silver 8…, jewelry gemstones 8…, smith iron 7 / coal 6…) instead of one global table. Added two buildings — **`salt_production`** and **`pitch_gathering`** — and a new tie-break order." },
+      { type: "fix", text: "**No more `…_supply` levels.** A building's top `_supply` level is never selected; it drops to the tier below (affects salt, pitch, jewelry, stone, sulphur, purple_dye, marble)." },
+    ],
+  },
+  {
     version: "0.16.7",
     date: "2026-05-24",
     items: [
