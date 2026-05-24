@@ -1488,6 +1488,8 @@ import port_authority
 import settlement_processor
 import temples
 import civic
+import rural_exploits
+import urban_exploits
 
 
 PIPELINE = [
@@ -1496,8 +1498,8 @@ PIPELINE = [
     ("03_sanitation_healers",  _step_sanitation_healers),     # inlined ✓
     ("04_mics",                lambda strat, out: mics.MilitaryBuildingProcessor().run(run_strat=strat, run_out=out)),
     ("05_homelands",           lambda strat, out: homelands.main(run_strat=strat, run_out=out)),
-    ("06_rural_exploits",      _step_rural_exploits),         # inlined ✓
-    ("07_urban_exploits",      _step_urban_exploits),         # inlined ✓
+    ("06_rural_exploits",      lambda strat, out: rural_exploits.main(run_strat=strat, run_out=out)),   # standalone (single source)
+    ("07_urban_exploits",      lambda strat, out: urban_exploits.main(run_strat=strat, run_out=out)),   # standalone (single source)
     ("08_port_authority",      lambda strat, out: port_authority.main(run_strat=strat, run_out=out)),
     ("09_settlement_processor",lambda strat, out: settlement_processor.SettlementProcessor(run_out=out).process_file(str(strat))),
     ("10_temples",             lambda strat, out: temples.TempleBuildingProcessor().run(run_strat=strat, run_out=out)),

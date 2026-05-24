@@ -7,6 +7,14 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.10",
+    date: "2026-05-24",
+    items: [
+      { type: "change", text: "**Rural exploits reworked around stack size.** A rural building is placed whenever a mapped resource is present in a stack of **2+**; the **highest-amount** resource wins (priority list breaks exact ties). Building tier follows settlement size **and** amount: tier = settlement tier for amount 4-5, one below for 2-3 (capped at 3) — so a town only gets one at amount 4-5. `…supply`/`…sawmill` levels are never used (drops to the tier below)." },
+      { type: "change", text: "**Elephants → ivory_trade moved from urban to rural** exploits." },
+    ],
+  },
+  {
     version: "0.16.9",
     date: "2026-05-24",
     items: [
