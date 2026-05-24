@@ -298,7 +298,7 @@ class FarmExploitProcessor:
                 return pick_chain("qanat_farming")
             if "sheep" in resources:
                 return pick_chain("highland_pastoralism")
-            if ("plateau" in hidden and not self.has_any_hr(hidden, ["arid"] + plateau_irrigation)) or ("plateau" in hidden and (self.has_any_hr(hidden, ["oceanic", "continental"]) or "temperate" in hidden)):
+            if (not self.has_any_hr(hidden, plateau_irrigation + ["arid", "sub_artic", "alpine"])) or self.has_any_hr(hidden, ["oceanic", "continental", "temperate"]):
                 return pick_chain("rainfed_farming")
             if ("plateau" in hidden and self.has_any_hr(hidden, plateau_irrigation)) and not self.has_any_hr(hidden, climate):
                 return pick_chain("irrigated_farming")
@@ -320,7 +320,11 @@ class FarmExploitProcessor:
         if "hills" in hidden:
             hills_irrigation = ["irrigation_river", "irrigation_springs", "irrigation_lake", "irrigation_oasis"]
             climate = ["oceanic", "continental", "temperate", "sub_artic"]
-            if ((self.has_any(resources, ["grain", "sulphur", "wine", "olive_oil"]) and not self.has_any_hr(hidden, ["arid"] + hills_irrigation)) or (self.has_any_hr(hidden, climate[:3]) and self.has_any(resources, ["grain", "sulphur", "wine", "olive_oil", "cotton"]))):
+            if "irrigation_aquifer" in hidden:
+                return pick_chain("qanat_farming")
+            if (self.has_any(resources, ["grain", "sulphur", "wine", "olive_oil", "cotton"])
+                    and (not self.has_any_hr(hidden, hills_irrigation + ["arid", "sub_artic", "alpine"])
+                         or self.has_any_hr(hidden, ["oceanic", "continental", "temperate"]))):
                 return pick_chain("rainfed_farming")
             if self.has_any(resources, ["sheep", "livestock"]):
                 return pick_chain("highland_pastoralism")
@@ -333,14 +337,18 @@ class FarmExploitProcessor:
             climate = ["oceanic", "continental", "temperate", "sub_artic"]
             if "irrigation_aquifer" in hidden:
                 return pick_chain("qanat_farming")
-            if ((self.has_any(resources, ["grain", "sulphur", "wine", "olive_oil", "cotton"]) and not self.has_any_hr(hidden, ["arid"] + mv_irrigation)) or (self.has_any_hr(hidden, climate[:3]) and self.has_any(resources, ["grain", "sulphur", "wine", "olive_oil", "cotton"]))):
+            if (self.has_any(resources, ["grain", "sulphur", "wine", "olive_oil", "cotton"])
+                    and (not self.has_any_hr(hidden, mv_irrigation + ["arid", "sub_artic", "alpine"])
+                         or self.has_any_hr(hidden, ["oceanic", "continental", "temperate"]))):
                 return pick_chain("rainfed_farming")
             if (self.has_any(resources, ["grain", "sulphur", "wine", "olive_oil", "cotton"]) and self.has_any_hr(hidden, mv_irrigation) and not self.has_any_hr(hidden, climate)):
                 return pick_chain("irrigated_farming")
             return pick_chain("highland_pastoralism")
 
         if "mountains" in hidden:
-            return pick_chain("highland_pastoralism")
+            if self.has_any(resources, ["sheep", "livestock", "perfumes", "honey", "salt"]):
+                return pick_chain("highland_pastoralism")
+            return None, None  # mountains without a qualifying resource get no farm
 
         if "desert" in hidden:
             if "irrigation_aquifer" in hidden and self.has_any(resources,["dates","grain","fruits","cotton"]):
@@ -363,9 +371,10 @@ class FarmExploitProcessor:
         if "karst_terrain" in hidden:
             irrigation = {"irrigation_river", "irrigation_springs", "irrigation_lake", "irrigation_oasis"}
             climate = {"oceanic", "continental", "temperate", "sub_artic"}
+            climate_rule2 = {"oceanic", "continental", "temperate"}  # sub_artic excluded from rule 2 only
             if self.has_any(resources, ["sheep", "livestock"]):
                 return pick_chain("highland_pastoralism")
-            if not self.has_any_hr(hidden, irrigation) or self.has_any_hr(hidden, climate):
+            if not self.has_any_hr(hidden, irrigation) or self.has_any_hr(hidden, climate_rule2):
                 return pick_chain("rainfed_farming")
             if self.has_any_hr(hidden, irrigation) and not self.has_any_hr(hidden, climate):
                 return pick_chain("irrigated_farming")
@@ -382,11 +391,11 @@ class FarmExploitProcessor:
             faction_lower = owner_faction.strip().lower()
             logmsg(f"Wetlands detected. Owner faction: {faction_lower}")
             
-            if faction_lower in allowed:
-                logmsg(f"Faction {faction_lower} can reclaim marshes, selecting marsh_reclamation")
+            if faction_lower in allowed and self.has_any(resources, ["grain", "sulphur", "slave_trade", "wine", "olive_oil", "cotton", "fruits"]):
+                logmsg(f"Faction {faction_lower} can reclaim marshes (has qualifying resource), selecting marsh_reclamation")
                 return pick_chain("marsh_reclamation")
             else:
-                logmsg(f"Faction {faction_lower} cannot reclaim marshes, selecting wetland_pastoralism")
+                logmsg(f"Faction {faction_lower} -> wetland_pastoralism")
                 return pick_chain("wetland_pastoralism")
 
         if "grassland" in hidden:
@@ -412,11 +421,7 @@ class FarmExploitProcessor:
                 if farm_level:
                     logmsg(f"Floodplains_delta: Selecting irrigated_farming {farm_level}")
                     return "irrigated_farming", farm_level
-            elif self.has_any_hr(hidden, ["oceanic", "continental", "temperate"]) and rain:
-                farm_level = self.choose_farm_level_for_settlement(rain, tier, fertility=fertility)
-                if farm_level:
-                    logmsg(f"Floodplains_delta: Selecting rainfed_farming {farm_level}")
-                    return "rainfed_farming", farm_level
+            # rule 3 (rainfed on oceanic/continental/temperate) removed per design
 
         logmsg(f"No farm chain selected for current conditions.")
         return None, None

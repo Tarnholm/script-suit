@@ -364,13 +364,7 @@ _HI_BUILDING_TO_RESOURCES = {
     "artisans": ["copper", "iron", "lead", "tin"],
     "stone_quarry": ["stone"],
     "sulphur_industry": ["sulphur"],
-    "tin_mine": ["tin"], "lead_mine": ["lead"], "silver_mine": ["silver"],
-    "gold_mine": ["gold"], "copper_mine": ["copper"], "iron_mine": ["iron"],
-    "livestock_trade": ["livestock"],
-    "textile_industry": ["cotton", "flax", "sheep"],
-    "timber_industry": ["timber"], "glass_production": ["glass"],
-    "amber_trade": ["amber"], "slave_market": ["slave_trade"],
-    "wine_production": ["wine"],
+    # Removed defunct single-resource mines + urban/rural chains (see heavy_industry.py).
 }
 _HI_TIE_BREAKER_ORDER = [
     "smith", "mines", "purple_dye_production", "marble_production",
@@ -388,16 +382,12 @@ def _hi_resource_score(building, resource):
     return _HI_BUILDING_RESOURCE_SCORES.get(building, {}).get(resource, _HI_RESOURCE_SCORES.get(resource, 0))
 _HI_BUILDINGS = {
     "smith", "mines", "purple_dye_production", "marble_production",
-    "jewelry", "artisans", "stone_quarry", "sulphur_industry", "tin_mine",
-    "lead_mine", "silver_mine", "gold_mine", "copper_mine", "iron_mine",
+    "jewelry", "artisans", "stone_quarry", "sulphur_industry",
 }
 # Luxury inputs make jewelry beat raw mining (the dedicated glass/amber chains
 # are urban — handled in the urban step — so they don't compete here).
 _HI_LUXURY_RESOURCES = ("glass", "amber", "elephants")
-_HI_JEWELRY_OVER_MINING = {
-    "mines", "gold_mine", "silver_mine", "copper_mine",
-    "lead_mine", "tin_mine", "iron_mine",
-}
+_HI_JEWELRY_OVER_MINING = {"mines"}
 
 
 def _hi_get_block(text, start_offset):

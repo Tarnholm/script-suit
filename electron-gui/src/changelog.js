@@ -7,6 +7,14 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.7",
+    date: "2026-05-24",
+    items: [
+      { type: "fix", text: "**Heavy industry cleaned up.** Removed urban/rural chains (glass, amber, slave, wine, timber, textile, livestock) and the defunct single-resource mines from the heavy-industry pool — fixes duplicate buildings (e.g. double glass in Alexandria) and references to buildings that no longer exist. Heavy industry now competes only among real `heavy_ind` buildings." },
+      { type: "change", text: "**Farms rules updated.** Plateau/Hills/Mountain-valley rainfed rules now key off the no-irrigation/cold exclusion (incl. `sub_artic` & `alpine`) or a warm climate; Hills & Mountain-valley gain a qanat rule for `irrigation_aquifer`; Mountains now needs sheep/livestock/perfumes/honey/salt (else no farm); Karst rainfed drops `sub_artic`; Wetlands marsh_reclamation needs a qualifying resource; Floodplains drops its rainfed fallback." },
+    ],
+  },
+  {
     version: "0.16.6",
     date: "2026-05-24",
     items: [

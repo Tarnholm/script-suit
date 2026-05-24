@@ -43,11 +43,10 @@ BUILDING_TO_RESOURCES = {
     "artisans": ["copper", "iron", "lead", "tin"],
     "stone_quarry": ["stone"],
     "sulphur_industry": ["sulphur"],
-    "tin_mine": ["tin"], "lead_mine": ["lead"], "silver_mine": ["silver"],
-    "gold_mine": ["gold"], "copper_mine": ["copper"], "iron_mine": ["iron"],
-    "livestock_trade": ["livestock"], "textile_industry": ["cotton", "flax", "sheep"],
-    "timber_industry": ["timber"], "glass_production": ["glass"],
-    "amber_trade": ["amber"], "slave_market": ["slave_trade"], "wine_production": ["wine"],
+    # Removed: single-resource mines (tin_mine/gold_mine/…) are DEFUNCT (not in the
+    # EDB), and glass/amber/slave/wine/timber/textile/livestock are URBAN/RURAL
+    # chains owned by other steps. Heavy industry only competes among real
+    # heavy_ind buildings now.
 }
 
 # Per-building resource weight overrides. A (building, resource) entry here
@@ -68,10 +67,7 @@ def resource_score(building, resource):
 # a tie). This does NOT override the dedicated luxury buildings
 # (glass_production / amber_trade) — only the mining family below.
 LUXURY_RESOURCES = ("glass", "amber", "elephants")
-JEWELRY_OVER_MINING = {
-    "mines", "gold_mine", "silver_mine", "copper_mine",
-    "lead_mine", "tin_mine", "iron_mine",
-}
+JEWELRY_OVER_MINING = {"mines"}
 
 EXPLICIT_HEAVY_IND_TIE_BREAKER_ORDER = [
     "smith", "mines", "purple_dye_production", "marble_production",
@@ -80,8 +76,7 @@ EXPLICIT_HEAVY_IND_TIE_BREAKER_ORDER = [
 
 HEAVY_IND_BUILDINGS = {
     "smith", "mines", "purple_dye_production", "marble_production",
-    "jewelry", "artisans", "stone_quarry", "sulphur_industry", "tin_mine",
-    "lead_mine", "silver_mine", "gold_mine", "copper_mine", "iron_mine"
+    "jewelry", "artisans", "stone_quarry", "sulphur_industry",
 }
 
 class HeavyIndustryProcessor:
