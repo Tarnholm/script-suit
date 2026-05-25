@@ -7,6 +7,13 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.16",
+    date: "2026-05-25",
+    items: [
+      { type: "fix", text: "**Walls: size bump restored.** Regular walls are one tier below settlement size, capped at `stone_wall` (tier 3): town → none, large_town → wooden_pallisade, city → wooden_wall, large_city/huge_city → stone_wall. Per-region exceptions (Trinakria 4, Korinthia 3) stay un-bumped (full tier up to their cap). Fixes tier-1 walls on tier-1 towns." },
+    ],
+  },
+  {
     version: "0.16.15",
     date: "2026-05-25",
     items: [

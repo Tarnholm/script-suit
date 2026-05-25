@@ -462,10 +462,15 @@ class SettlementProcessor:
         elif region_key in NO_DEFENSES_REGIONS:
             debug_log.append(f"    - Defenses: Skipped for {region} (in NO_DEFENSES_REGIONS)")
         else:
-            wall_tier = min(tier, MAX_WALL_TIER)
+            # Regular walls get the size bump: one tier below settlement size,
+            # capped at MAX_WALL_TIER. So town -> none, large_town -> wooden_pallisade,
+            # city -> wooden_wall, large_city/huge_city -> stone_wall (tier 3).
+            wall_tier = min(tier - 1, MAX_WALL_TIER)
             if wall_tier >= 1:
                 building_map["defenses"] = DEFENSE_LEVELS[wall_tier]; assigned_chains.add("defenses")
-            debug_log.append(f"    - Defenses: tier {wall_tier} -> {DEFENSE_LEVELS.get(wall_tier)} (cap {MAX_WALL_TIER})")
+                debug_log.append(f"    - Defenses: bump tier {tier}->{wall_tier} -> {DEFENSE_LEVELS[wall_tier]} (cap {MAX_WALL_TIER})")
+            else:
+                debug_log.append(f"    - Defenses: tier {tier} too small after bump -> none")
 
         # Roads — keep the size-based bump as the BASE level, then modify it:
         #   Roma always -> highways; listed terrains cap at tier 1 (roads);
