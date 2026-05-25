@@ -7,6 +7,13 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.15",
+    date: "2026-05-25",
+    items: [
+      { type: "feature", text: "**Starting Treasury step.** Sets each faction's starting denari = **5000 + 500 × (starting settlements)**. Slave/dummies and the emergent/rebel markers are left untouched. New pipeline step — runs with the others, editable KEEP list in the script." },
+    ],
+  },
+  {
     version: "0.16.14",
     date: "2026-05-25",
     items: [

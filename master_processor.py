@@ -1504,6 +1504,7 @@ import settlement_processor
 import temples
 import civic
 import grain_exports
+import starting_treasury
 import rural_exploits
 import urban_exploits
 
@@ -1522,6 +1523,7 @@ PIPELINE = [
     ("11_slave_placer",        _step_slave_placer),           # inlined ✓
     ("12_civic",               lambda strat, out: civic.CivicBuildingProcessor().run(run_strat=strat, run_out=out)),
     ("13_grain_exports",       lambda strat, out: grain_exports.GrainExportProcessor().run(run_strat=strat, run_out=out)),
+    ("14_starting_treasury",   lambda strat, out: starting_treasury.StartingTreasuryProcessor().run(run_strat=strat, run_out=out)),
 ]
 
 

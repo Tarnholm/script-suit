@@ -25,6 +25,7 @@ Output structure:
     11_slave_placer/
     12_civic/
     13_grain_exports/
+    14_starting_treasury/
 """
 
 import sys
@@ -52,6 +53,7 @@ import temples
 import slave_placer
 import civic
 import grain_exports
+import starting_treasury
 
 
 def write_unified_changelog(run_dir):
@@ -70,6 +72,7 @@ def write_unified_changelog(run_dir):
         ("11_slave_placer",       "changelog.txt",              "Slave Placer"),
         ("12_civic",              "changelog.txt",              "Civic Buildings"),
         ("13_grain_exports",      "changelog.txt",              "Grain Exports"),
+        ("14_starting_treasury",  "changelog.txt",              "Starting Treasury"),
     ]
     for folder, fname, label in simple:
         f = run_dir / folder / fname
@@ -202,6 +205,7 @@ def run_all():
         ("11_slave_placer",        lambda strat, out: slave_placer.run(run_strat=strat, run_out=out)),
         ("12_civic",               lambda strat, out: civic.CivicBuildingProcessor().run(run_strat=strat, run_out=out)),
         ("13_grain_exports",       lambda strat, out: grain_exports.GrainExportProcessor().run(run_strat=strat, run_out=out)),
+        ("14_starting_treasury",   lambda strat, out: starting_treasury.StartingTreasuryProcessor().run(run_strat=strat, run_out=out)),
     ]
 
     current_strat = CONFIG_DIR / "descr_strat.txt"
