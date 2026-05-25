@@ -28,6 +28,15 @@ ROAD_TERRAIN_CAP = {"desert", "mountains", "alpine", "sub_artic",
 ROAD_HIGHWAY_MIN_TOTAL = 12
 # Regions (lowercased; matched on region or capital name) that always get highways.
 ROADS_ALWAYS_HIGHWAY = {"roma"}
+ROAD_TIER_BY_LEVEL = {"roads": 1, "paved_roads": 2, "highways": 3}
+
+# ── Defenses (walls): tier -> level, assigned directly (no size bump) ─────
+DEFENSE_LEVELS = {1: "wooden_pallisade", 2: "wooden_wall", 3: "stone_wall",
+                  4: "large_stone_wall", 5: "epic_stone_wall"}
+
+# ── Treasury: tier -> level, capped at MAX_TREASURY_TIER (assigned directly) ─
+TREASURY_LEVELS = {1: "treasury", 2: "large_treasury", 3: "great_treasury", 4: "imperial_treasury"}
+MAX_TREASURY_TIER = 2
 
 TRADER_OVERRIDE_QTY = 4  # Minimum resource quantity to trigger trader override in towns
 TRADER_OVERRIDE_RESOURCES = set()  # Leave empty = ALL resources count. Add names to restrict.
@@ -441,39 +450,45 @@ class SettlementProcessor:
         building_map: Dict[str, str] = {}
         debug_log.append("\n  Assigning Managed Building Chains (bump logic each run):")
 
+        # Defenses (walls): assigned directly by tier (no size bump). Regular cap
+        # is MAX_WALL_TIER (stone_wall); per-region exceptions override that and
+        # the no-defenses list. A wall never exceeds the settlement's own tier.
         region_key = region.lower()
         if region_key in WALL_TIER_EXCEPTIONS:
             wall_tier = min(tier, WALL_TIER_EXCEPTIONS[region_key])
-            debug_log.append(f"    - Defenses: {region} exception cap {WALL_TIER_EXCEPTIONS[region_key]} -> tier {wall_tier}")
-            self._assign_chain(building_map, assigned_chains, "defenses", wall_tier, debug_log)
-        elif region_key not in NO_DEFENSES_REGIONS:
-            wall_tier = min(tier, MAX_WALL_TIER)
-            if wall_tier != tier:
-                debug_log.append(f"    - Defenses: capped tier {tier} -> {wall_tier} (MAX_WALL_TIER={MAX_WALL_TIER})")
-            self._assign_chain(building_map, assigned_chains, "defenses", wall_tier, debug_log)
-        else:
+            if wall_tier >= 1:
+                building_map["defenses"] = DEFENSE_LEVELS[wall_tier]; assigned_chains.add("defenses")
+            debug_log.append(f"    - Defenses: {region} exception cap {WALL_TIER_EXCEPTIONS[region_key]} -> {DEFENSE_LEVELS.get(wall_tier)}")
+        elif region_key in NO_DEFENSES_REGIONS:
             debug_log.append(f"    - Defenses: Skipped for {region} (in NO_DEFENSES_REGIONS)")
-
-        # Roads — custom rule (overrides the generic size-based bump):
-        #   Roma always gets highways; the listed terrains cap roads at tier 1;
-        #   otherwise highways needs the region's total resource amount to exceed
-        #   ROAD_HIGHWAY_MIN_TOTAL, else paved_roads.
-        road_total = sum(q for (_r, q) in region_resources)
-        capping_terrain = hidden_resources & ROAD_TERRAIN_CAP
-        if region_key in ROADS_ALWAYS_HIGHWAY or name.strip().lower() in ROADS_ALWAYS_HIGHWAY:
-            road_level = ROAD_LEVELS[3]
-            debug_log.append(f"    - Roads: {region} exception -> {road_level}")
-        elif capping_terrain:
-            road_level = ROAD_LEVELS[1]
-            debug_log.append(f"    - Roads: terrain {capping_terrain} caps at {road_level}")
-        elif road_total > ROAD_HIGHWAY_MIN_TOTAL:
-            road_level = ROAD_LEVELS[3]
-            debug_log.append(f"    - Roads: resource_total={road_total:g} > {ROAD_HIGHWAY_MIN_TOTAL} -> {road_level}")
         else:
-            road_level = ROAD_LEVELS[2]
-            debug_log.append(f"    - Roads: default -> {road_level} (resource_total={road_total:g})")
-        building_map["hinterland_roads"] = road_level
-        assigned_chains.add("hinterland_roads")
+            wall_tier = min(tier, MAX_WALL_TIER)
+            if wall_tier >= 1:
+                building_map["defenses"] = DEFENSE_LEVELS[wall_tier]; assigned_chains.add("defenses")
+            debug_log.append(f"    - Defenses: tier {wall_tier} -> {DEFENSE_LEVELS.get(wall_tier)} (cap {MAX_WALL_TIER})")
+
+        # Roads — keep the size-based bump as the BASE level, then modify it:
+        #   Roma always -> highways; listed terrains cap at tier 1 (roads);
+        #   highways (tier 3) ALSO requires the region's total resource amount to
+        #   exceed ROAD_HIGHWAY_MIN_TOTAL (settlement size still gates it via the
+        #   bump), else it drops to paved_roads.
+        self._assign_chain(building_map, assigned_chains, "hinterland_roads", tier, debug_log)
+        base_road = building_map.get("hinterland_roads")
+        base_rt = ROAD_TIER_BY_LEVEL.get(base_road, 0)
+        road_total = sum(q for (_r, q) in region_resources)
+        if region_key in ROADS_ALWAYS_HIGHWAY or name.strip().lower() in ROADS_ALWAYS_HIGHWAY:
+            building_map["hinterland_roads"] = ROAD_LEVELS[3]; assigned_chains.add("hinterland_roads")
+            debug_log.append(f"    - Roads: {region} exception -> highways")
+        elif base_rt == 0:
+            debug_log.append("    - Roads: settlement too small for a road (bump)")
+        elif (hidden_resources & ROAD_TERRAIN_CAP) and base_rt > 1:
+            building_map["hinterland_roads"] = ROAD_LEVELS[1]
+            debug_log.append(f"    - Roads: terrain {hidden_resources & ROAD_TERRAIN_CAP} caps {base_road} -> roads")
+        elif base_rt >= 3 and road_total <= ROAD_HIGHWAY_MIN_TOTAL:
+            building_map["hinterland_roads"] = ROAD_LEVELS[2]
+            debug_log.append(f"    - Roads: highways needs resource_total>{ROAD_HIGHWAY_MIN_TOTAL} (have {road_total:g}) -> paved_roads")
+        else:
+            debug_log.append(f"    - Roads: {base_road} (bump; resource_total={road_total:g})")
 
         self._assign_chain(building_map, assigned_chains, "market", tier, debug_log)
 
@@ -512,8 +527,13 @@ class SettlementProcessor:
             debug_log.append("    - No existing temple found")
 
         if "capital_treasury" in [b.split()[0] for b in orig_buildings if b]:
-            debug_log.append("    - Found existing capital_treasury")
-            self._assign_chain(building_map, assigned_chains, "capital_treasury", tier, debug_log)
+            # Assigned directly (no bump) and capped at MAX_TREASURY_TIER so it's
+            # actually built rather than dropped by the bump rule.
+            t_tier = min(tier, MAX_TREASURY_TIER)
+            if t_tier >= 1:
+                building_map["capital_treasury"] = TREASURY_LEVELS[t_tier]
+                assigned_chains.add("capital_treasury")
+                debug_log.append(f"    - Treasury: tier {t_tier} -> {TREASURY_LEVELS[t_tier]} (cap {MAX_TREASURY_TIER})")
         else:
             debug_log.append("    - No existing capital_treasury found")
 

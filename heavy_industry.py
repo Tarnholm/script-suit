@@ -43,6 +43,21 @@ BUILDING_RESOURCE_WEIGHTS = {
 }
 HEAVY_IND_BUILDINGS = set(BUILDING_RESOURCE_WEIGHTS)
 
+# A building can only be BUILT if at least one of its enabling resources is
+# present. Other weighted resources only contribute to the selection score.
+ENABLING_RESOURCES = {
+    "smith":                {"iron", "copper", "coal", "flax", "livestock"},
+    "mines":                {"gold", "silver", "copper", "lead", "tin", "iron", "coal"},
+    "purple_dye_production": {"purple_dye"},
+    "marble_production":     {"marble"},
+    "jewelry":              {"gold", "silver", "gemstones"},
+    "artisans":             {"copper", "iron", "tin", "lead"},
+    "stone_quarry":         {"stone"},
+    "sulphur_industry":     {"sulphur"},
+    "pitch_gathering":      {"pitch"},
+    "salt_production":      {"salt"},
+}
+
 # Luxury rule: a settlement with glass/amber/elephants builds jewelry instead of
 # raw mining (gold/silver otherwise make `mines` win the tie).
 LUXURY_RESOURCES = ("glass", "amber", "elephants")
@@ -135,6 +150,8 @@ class HeavyIndustryProcessor:
     def select_building(self, res_dict, tier, chains):
         scores = {}
         for b, weights in BUILDING_RESOURCE_WEIGHTS.items():
+            if not any(res_dict.get(r, 0) > 0 for r in ENABLING_RESOURCES.get(b, ())):
+                continue  # no enabling resource -> building can't be built
             lvls = chains.get(b, [])
             if not lvls or tier < min(LEVEL_TO_TIER.get(l['settlement_min'], 99) for l in lvls): continue
             val = max([res_dict.get(r, 0) * w for r, w in weights.items()] + [0])
@@ -145,7 +162,8 @@ class HeavyIndustryProcessor:
         best_b = next((b for b in EXPLICIT_HEAVY_IND_TIE_BREAKER_ORDER if b in tied), tied[0])
         # Luxury override: a settlement with glass/amber/elephants builds jewelry
         # instead of raw mining (gold/silver otherwise make `mines` win the tie).
-        if best_b in JEWELRY_OVER_MINING and any(res_dict.get(r, 0) > 0 for r in LUXURY_RESOURCES):
+        if (best_b in JEWELRY_OVER_MINING and any(res_dict.get(r, 0) > 0 for r in LUXURY_RESOURCES)
+                and any(res_dict.get(r, 0) > 0 for r in ENABLING_RESOURCES["jewelry"])):
             jl = chains.get("jewelry", [])
             if jl and tier >= min(LEVEL_TO_TIER.get(l['settlement_min'], 99) for l in jl):
                 best_b = "jewelry"

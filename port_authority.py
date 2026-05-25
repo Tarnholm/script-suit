@@ -545,20 +545,19 @@ def main(run_strat=None, run_out=None):
                     changelog.append(f"Settlement '{region_name_raw}': Added '{chosen_level}'.")
                 elif old_port and old_port == chosen_level:
                     changelog.append(f"Settlement '{region_name_raw}': Unchanged ('{chosen_level}').")
-            elif port_found:
-                region = meta_region or region_name_raw
-                settlement = region_to_city_map.get(region_name, region)
-                tier = LEVEL_TO_TIER.get(meta_level or level, "?")
-                port_settlements.append((region, settlement, tier, port_found))
-                decision_log_entry.append(f"  - FINAL DECISION: Port already present: '{port_found}'.")
-                if old_port and old_port == port_found:
-                    changelog.append(f"Settlement '{region_name_raw}': Unchanged ('{port_found}').")
             else:
+                # No port qualifies. process_settlement_block has already STRIPPED
+                # any existing port from the block, so this is a removal (not a
+                # "port already present" — that was the old bug that left towns
+                # looking like they kept ports in the report).
                 reasons = explain_no_port_reason(region_name_raw, region_name, level, combined_resources, port_chains, candidate_details)
-                decision_log_entry.append("  - FINAL DECISION: No suitable port building found.")
+                removed = old_port or port_found
+                if removed:
+                    decision_log_entry.append(f"  - FINAL DECISION: No port qualifies — removed existing '{removed}'.")
+                    changelog.append(f"Settlement '{region_name_raw}': Removed '{removed}'.")
+                else:
+                    decision_log_entry.append("  - FINAL DECISION: No suitable port building found.")
                 decision_log_entry.extend(reasons)
-                if old_port:
-                    changelog.append(f"Settlement '{region_name_raw}': Removed '{old_port}'.")
             final_output_lines.extend(rebuilt_block_lines)
             decision_log.append("\n".join(decision_log_entry))
             i = end_index + 1

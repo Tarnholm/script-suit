@@ -346,9 +346,7 @@ class FarmExploitProcessor:
             return pick_chain("highland_pastoralism")
 
         if "mountains" in hidden:
-            if self.has_any(resources, ["sheep", "livestock", "perfumes", "honey", "salt"]):
-                return pick_chain("highland_pastoralism")
-            return None, None  # mountains without a qualifying resource get no farm
+            return pick_chain("highland_pastoralism")
 
         if "desert" in hidden:
             if "irrigation_aquifer" in hidden and self.has_any(resources,["dates","grain","fruits","cotton"]):

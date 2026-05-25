@@ -7,6 +7,18 @@ window.SPS_TYPE_COLOURS = { feature: "#4a9", fix: "#c66", improvement: "#6ac", c
 
 window.SPS_CHANGELOG = [
   {
+    version: "0.16.14",
+    date: "2026-05-25",
+    items: [
+      { type: "fix", text: "**Walls reach stone_wall (tier 3) again** for cities — the size bump was capping them at wooden_wall. Exceptions (Trinakria 4, Korinthia 3) and never-exceed-settlement-tier still apply." },
+      { type: "fix", text: "**Roads bump restored** (large_town → roads, city → paved_roads, large_city+ → highways) and **highways now also require** the region's total resource amount to exceed 12 (size still gates it). Roma → highways." },
+      { type: "fix", text: "**Treasuries are built again**, capped at tier 2 (large_treasury) — the bump had been dropping them." },
+      { type: "fix", text: "**Heavy industry: enabling vs scoring resources.** A building is only considered when one of its real inputs is present (e.g. mines needs an actual metal/coal); slave_trade/timber/grain/glass/amber etc. only adjust the score." },
+      { type: "fix", text: "**Ports:** towns that no longer qualify are correctly reported as **removed** (the port was already stripped, but the report mislabeled it as kept)." },
+      { type: "change", text: "Urban-exploit priority list reordered; farms **mountains** reverted to plain highland_pastoralism." },
+    ],
+  },
+  {
     version: "0.16.13",
     date: "2026-05-25",
     items: [

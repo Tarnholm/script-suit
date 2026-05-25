@@ -364,6 +364,18 @@ _HI_BUILDING_RESOURCE_WEIGHTS = {
     "salt_production":      {"salt": 6, "slave_trade": 2, "fish": 2, "livestock": 1},
 }
 _HI_BUILDINGS = set(_HI_BUILDING_RESOURCE_WEIGHTS)
+_HI_ENABLING_RESOURCES = {
+    "smith":                {"iron", "copper", "coal", "flax", "livestock"},
+    "mines":                {"gold", "silver", "copper", "lead", "tin", "iron", "coal"},
+    "purple_dye_production": {"purple_dye"},
+    "marble_production":     {"marble"},
+    "jewelry":              {"gold", "silver", "gemstones"},
+    "artisans":             {"copper", "iron", "tin", "lead"},
+    "stone_quarry":         {"stone"},
+    "sulphur_industry":     {"sulphur"},
+    "pitch_gathering":      {"pitch"},
+    "salt_production":      {"salt"},
+}
 _HI_TIE_BREAKER_ORDER = [
     "smith", "mines", "purple_dye_production", "marble_production",
     "artisans", "salt_production", "stone_quarry", "pitch_gathering",
@@ -468,6 +480,8 @@ def _hi_parse_resources_by_region(strat_text):
 def _hi_select_building(res_dict, tier, chains):
     scores = {}
     for b, weights in _HI_BUILDING_RESOURCE_WEIGHTS.items():
+        if not any(res_dict.get(r, 0) > 0 for r in _HI_ENABLING_RESOURCES.get(b, ())):
+            continue  # no enabling resource -> building can't be built
         lvls = chains.get(b, [])
         if not lvls:
             continue
@@ -482,7 +496,8 @@ def _hi_select_building(res_dict, tier, chains):
     tied = [b for b, v in scores.items() if v == m_val]
     best_b = next((b for b in _HI_TIE_BREAKER_ORDER if b in tied), tied[0])
     # Luxury override: glass/amber/elephants present -> jewelry beats raw mining.
-    if best_b in _HI_JEWELRY_OVER_MINING and any(res_dict.get(r, 0) > 0 for r in _HI_LUXURY_RESOURCES):
+    if (best_b in _HI_JEWELRY_OVER_MINING and any(res_dict.get(r, 0) > 0 for r in _HI_LUXURY_RESOURCES)
+            and any(res_dict.get(r, 0) > 0 for r in _HI_ENABLING_RESOURCES["jewelry"])):
         jl = chains.get("jewelry", [])
         if jl and tier >= min(_HI_LEVEL_TO_TIER.get(l["settlement_min"], 99) for l in jl):
             best_b = "jewelry"
